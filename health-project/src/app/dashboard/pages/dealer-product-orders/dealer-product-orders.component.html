@@ -1,0 +1,82 @@
+<div class="card pt-3">
+    <div class="container">
+        <h5>Order List</h5>
+    </div>
+    <div class="container">
+        <div class="card mb-3" *ngFor="let p of orderList">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        ORDER ID : {{p?.order_id}}
+                    </div>
+                    <div class="col-md-3">
+                        <app-rating-section [review]="p?.comment"  [user_id]="p?.dealer_id"  [count]="p?.stars" [service_id]="p?.id" [agent_type]="'Equipment'" (reviewData)="onReviewData($event)"></app-rating-section>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color: ghostwhite;">
+                <div class="container">
+                    <div class="card mb-1">
+                        <div class="card-header">
+                            {{p?.item_name}}  <a [href]="p?.priscription_image | concatBase: 'uploads/'" style="width: 40px"
+                            *ngIf="p?.priscription_image != ''" target="_blank" style="float:right">View prescription</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img [src]="p?.image | concatBase: 'uploads/'" style="width: 40px"
+                                        *ngIf="p?.image != ''" />
+                                </div>
+                                <div class="col-md-6">
+                                    Payment status : {{p?.payment_status | titlecase}} <br>
+                                    Price Paid : {{p?.price }} <span *ngIf="p?.security_for_rent != 0"> (including security {{p?.security_for_rent}} Rs) </span> <br>
+                                    <span class="badge badge-warning" *ngIf="p?.type == 'rent'">Rent for {{p?.qty}}
+                                        days</span>
+                                    <span class="badge badge-success" *ngIf="p?.type != 'rent'">Ordered Quantity
+                                        {{p?.qty}}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span class="badge badge-primary" *ngIf="p?.status == '0'">Order not accepted
+                                        yet</span>
+                                    <span class="badge badge-info" *ngIf="p?.status == '1'">Order accepted</span>
+                                    <span class="badge badge-warning" *ngIf="p?.status == '2'">Out for delivery</span>
+                                    <span class="badge badge-success" *ngIf="p?.status == '3'">Delivered </span>
+                                    <span class="badge badge-info" *ngIf="p?.status == '4'">Order Picked</span>
+                                    <span class="badge badge-info" *ngIf="p?.status == '5'">Returned to dealer</span>
+                                    <span class="badge badge-danger" *ngIf="p?.status == '6'">Order cancelled</span>
+
+                                    <mat-form-field appearance="fill" *ngIf="pageFor != 'user'">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select matInput [(ngModel)]="p.status"
+                                            (selectionChange)="changeStatus($event,p?.id)">
+                                            <mat-option value="0">Order not accepted yet</mat-option>
+                                            <mat-option value="1">Order accepted</mat-option>
+                                            <mat-option value="2">Order out for delivery</mat-option>
+                                            <mat-option value="3">Order delivered</mat-option>
+                                            <mat-option value="4">Order Picked from customer location</mat-option>
+                                            <mat-option value="5">Returned to dealer</mat-option>
+                                            <mat-option value="6">Order Cancelled</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="col-md-8">
+                            Customer info : {{p?.customer_name}} (<a href="tel:{{p?.customer_mobile}}"> <i class="fa fa-phone-square" aria-hidden="true"></i>{{p?.customer_mobile}}</a>) <br> 
+                        Address : {{ p?.address}}, {{ p?.city}}, {{ p?.pincode}}
+                    </div>
+                    <div class="col-md-4">
+                        Total Amount : {{p?.price }} <br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

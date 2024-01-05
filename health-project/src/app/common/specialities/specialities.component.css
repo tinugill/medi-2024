@@ -1,0 +1,61 @@
+.our-specialities-section {
+  padding: 40px 0px;
+}
+.our-specialities-section p {
+  margin-bottom: 0px;
+}
+.our-specialities-section .specialities-box {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  padding: 10px 15px;
+  box-shadow: 0px 0px 5px #aba4a4;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: 0.5s;
+  position: relative;
+  transition: 0.5s;
+  text-align: left;
+}
+.our-specialities-section .specialities-box span {
+  width: 35px;
+  height: 35px;
+  float: left;
+}
+.our-specialities-section .specialities-box span img {
+  width: 32px;
+  height: 32px;
+}
+.our-specialities-section .specialities-box h6 {
+  font-size: 14px;
+  margin: 8px 0px 5px;
+  color: #000;
+  transition: 0.5s;
+}
+.our-specialities-section .specialities-box:hover {
+  background-color: rgb(241, 238, 238);
+}
+
+@media only screen and (max-width: 820px) {
+  .our-specialities-section {
+    padding: 20px 0px;
+  }
+  .our-specialities-section .specialities-box {
+    width: 100%;
+    height: auto;
+    padding: 5px 5px;
+    border-radius: 3px;
+    text-align: left;
+  }
+  .our-specialities-section .specialities-box span {
+    width: 25px;
+    height: 30px;
+  }
+  .our-specialities-section .specialities-box span img {
+    width: 20px;
+  }
+  .our-specialities-section .specialities-box h6 {
+    font-size: 12px;
+    margin: 8px 0px 5px;
+  }
+}/*# sourceMappingURL=specialities.component.css.map */

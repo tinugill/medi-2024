@@ -1,0 +1,178 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<section class="py-3">
+  <div class="container">
+    <div class="row" *ngIf="info">
+      <div class="col-md-12">
+        <h3>{{info?.title}} <span *ngIf="info?.strength && info?.strength != 'null'"> {{ info?.strength  || '' }}</span> {{ info?.formulation }} </h3>
+        <p *ngIf="info?.manufacturer_name != 'null' && info?.manufacturer_name != ''">Company name : {{ info?.manufacturer_name }}</p>
+        <p *ngIf="info?.salt_name && info?.salt_name != 'null'">Composition : {{info?.salt_name}}</p>
+        
+      </div>
+      <div class="col-md-8 col-sm-8 col-12">
+        <div class="product-detail">
+          <img [src]="changeImageUrl || info?.image" style="width:100%"/> 
+          <br>
+          <div class="d-flex mt-2">
+            <div class="col p-1" (click)="changeImage(info?.image)">
+                <img [src]="info?.image" style="width:100%; cursor:pointer"/> 
+            </div>
+            <div class="col p-1" (click)="changeImage(info?.image_2)"*ngIf="info?.image_2 !=''">
+                <img [src]="info?.image_2" style="width:100%; cursor:pointer"/> 
+            </div>
+            <div class="col p-1" (click)="changeImage(info?.image_3)" *ngIf="info?.image_3 !=''">
+                <img [src]="info?.image_3" style="width:100%; cursor:pointer"/> 
+            </div>
+            <div class="col p-1" (click)="changeImage(info?.image_4)"*ngIf="info?.image_4 !=''">
+                <img [src]="info?.image_4" style="width:100%; cursor:pointer"/> 
+            </div>
+          </div>
+            <!-- <div class="tab-content">
+              <div id="img" class="tab-pane active">
+                <img [src]="info?.image | concatBase: 'product_image/'" class="w100" />
+              </div>
+            </div>  -->
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-4 col-12">
+        <div class="product-price"> 
+          <p>Pack size: {{ info?.variant_name | number:'2.0-2' }}</p> 
+          <h4>Rs {{ info?.mrp - (info?.mrp*(info?.discount/100)) | number:'2.0-2'}}</h4>
+          <h5>
+            <span class="mrp">MRP {{ info?.mrp }}</span>
+            <span class="off">{{ info?.discount | number: "1.2-2" }}% OFF</span>
+          </h5>
+          <div class="quantity">
+            <span>Quantity
+              <select id="qty_{{info?.id}}" (change)="updateToCart($event,info?.id, 'product')">
+                <option [value]="f" *ngFor="let f of qtyLoop">{{f}}</option>
+              </select>
+            </span>
+            <button class="btn btn-sm btn-success" (click)="addToCart(info?.id, 'product',info.pharmacy_id)"
+              *ngIf="findInCart(info?.id, 'product') == false">Add to cart</button>
+            <button class="btn btn-sm btn-warning" (click)="removeFromCart(info?.id, 'product')"
+              *ngIf="findInCart(info?.id, 'product') == true"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="my-3">
+  <div class="container">
+    <div class="row" *ngIf="info">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="product-overview">
+          <h3 class="heading">Product Details</h3>
+          <div class="tab-section">
+            <div class="scroll">
+              <ul class="nav nav-tabs inner-scroll">
+                <li class="nav-item active">
+                  <!-- <a class="nav-link" data-bs-toggle="tab" href="#Home">Description</a> -->
+                </li>
+
+              </ul>
+            </div>
+            <div class="tab-content pb-4">
+              <div id="Home" class="tab-pane active">
+                <div [innerHtml]="info?.description" *ngIf="info?.description != 'null'"></div>
+                <div>
+                  <table class="table table-striped mt-3">
+                    <tbody>
+                      <tr>
+                        <td>Prescription required</td>
+                        <td>{{ info?.prescription_required }}</td>
+                      </tr>
+                      <tr *ngIf="info?.expiry_month">
+                        <td>Expiry</td>
+                        <td> {{ info?.expiry_month }} {{ info?.expiry_year }} </td>
+                      </tr> 
+                      <tr>
+                        <td>Company Address</td>
+                        <td>{{ info?.manufacturer_address }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="clear border-one"></div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <h5 class="heading" *ngIf="similar?.length > 0">Similar Composition Products</h5>
+        <div class="row mt-3" *ngIf="similar?.length > 0">
+          <div *ngFor="let p of similar">
+            <div class="shadow row mt-2">
+              <div class="col-md-3 parentdiv">
+                 
+                  <img
+                    [src]="p?.image | concatBase: 'product_image/'"
+                    width="100%" style="max-height: 80px;"
+                  />
+                 
+              </div> 
+              <div class="col-md-9 ">
+                <div class="product-details p-2">
+                  <h4>
+                    <a [routerLink]="['/pharmacy/p/' + p?.slug]">{{
+                      p?.title
+                    }}</a>
+                  </h4>
+                  <div class="price-add-cart">
+                    <a [routerLink]="['/pharmacy/p/' + p?.slug]">
+                      <button class="btn btn-success w100">
+                        View Details
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+<section class="pharmacy-slider-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+                <h3 class="heading mt-3">Top Health Products Offers</h3>
+                <div class="pharmacy-common-slider">
+					<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints">
+                        <div ngxSlickItem *ngFor="let slide of slides" class="slide">                            
+                            <div class="pharmacy-common-box">
+                                <figure>
+                                    <img [src]="['./assets/images/pharmacy/p2.jpg']" alt="">
+                                </figure>
+                                <div class="product-details">
+                                    <h4><a href="">Equinox Personal Weighing Scale-Digital EQ-EB-9300</a></h4>
+                                    <p>box of 1 Device</p>
+                                    <div class="mrp_off">
+                                        <span>MRP <span>600</span></span>
+                                        <span class="off">30%</span>
+                                    </div>
+                                    <div class="price-add-cart">
+                                        <span class="price">Rs 420</span>
+                                        <span class="addtocart">
+                                            <a href="#" class="btn-sm btn-outline-success">ADD</a>
+                                        </span>
+                                    </div>								
+                                </div>							
+                            </div>
+                        </div>
+                    </ngx-slick-carousel>					
+				</div>
+            </div>             
+        </div>
+    </div>
+</section> -->
+<app-footer></app-footer>

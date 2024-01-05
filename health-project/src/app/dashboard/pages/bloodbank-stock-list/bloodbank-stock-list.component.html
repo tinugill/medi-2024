@@ -1,0 +1,94 @@
+<div class="common-record">
+  <div class="d-block p-2">
+    <strong class="text-gray rounded-0"> Stock Info </strong>
+  </div>
+  <div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0" *ngIf="!editPage">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <input type="text" class="form-control" placeholder="Search Component" style="width:250px" [(ngModel)]="filterText">
+      </div>
+      <button class="btn btn-success" (click)="editStock()">
+        Add New Component
+      </button>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Component name</th>
+          <th>Avialablity</th>
+          <th>Available unit</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of stockList | productFilter: filterText:'component_name'; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ a?.component_name }}</td>
+          <td>{{ a?.avialablity }}</td>
+          <td>{{ a?.available_unit }}</td>
+
+          <td>
+            <button class="btn btn-primary" (click)="editStock(a?.id)">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0" *ngIf="editPage">
+    <button class="btn btn-warning" (click)="editStock()">Cancel</button>
+    <div class="col-md-12">
+      <div class="d-block p-2">
+        <strong class="text-gray rounded-0">
+          Note: Fill all info to make yourself visible on website
+        </strong>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title> Basic Information </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <form [formGroup]="sForm" novalidate>
+              <mat-form-field appearance="fill">
+                <mat-label>Component Name</mat-label>
+                <mat-select matInput max="500" min="1" [ngClass]="{
+                    'is-invalid': b1 && f1.component_name.errors
+                  }" formControlName="component_name" required>
+                  <mat-option [value]="c?.title" *ngFor="let c of cList">{{
+                    c?.title
+                    }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Avialablity? </mat-label>
+                <mat-select matInput [ngClass]="{
+                    'is-invalid': b1 && f1.avialablity.errors
+                  }" (selectionChange)="statusChange($event)" formControlName="avialablity" required>
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Available Unit</mat-label>
+                <input matInput type="number" min="0" [ngClass]="{
+                    'is-invalid': b1 && f1.available_unit.errors
+                  }" formControlName="available_unit" required />
+              </mat-form-field>
+
+              <div class="col-md-12">
+                <button (click)="onSubmit()"  type="button" class="btn btn-primary">
+                  UPDATE
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

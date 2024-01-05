@@ -1,0 +1,182 @@
+section {
+  border-bottom: 10px solid #f0f0f0;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .ck-content {
+  border-bottom: 1px solid gray !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.cart-section h4 {
+  padding: 0px 10px;
+}
+.cart-section h5 {
+  padding: 15px 10px;
+  font-size: 14px;
+}
+.cart-section .cart-price {
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+  border: 1px dashed #ccc;
+  padding: 10px;
+  display: flex;
+}
+.cart-section .cart-price figure {
+  width: 20%;
+  float: left;
+  margin-right: 10px;
+}
+.cart-section .cart-price figure img {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.cart-section .cart-price .cart-data {
+  padding: 0px;
+  width: 60%;
+}
+.cart-section .cart-price .cart-data p {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.cart-section .cart-price .cart-data p a {
+  margin: 10px 0px;
+  display: block;
+  color: rgb(134, 130, 130);
+}
+.cart-section .cart-price .cart-data p a:hover {
+  color: #cb0000;
+}
+.cart-section .cart-price .cart-data p small {
+  width: 100%;
+  color: rgb(133, 130, 130);
+}
+.cart-section .cart-price .cart-data p small .mrp {
+  text-decoration: line-through;
+}
+.cart-section .cart-price .product-plus-minus {
+  width: 20%;
+  text-align: right;
+}
+.cart-section .cart-price .product-plus-minus p i {
+  color: rgb(12, 121, 194);
+}
+.cart-section .cart-price .product-plus-minus p span {
+  padding: 0px 10px;
+}
+.cart-section .check-out {
+  border: 1px dashed #ccc;
+  padding: 10px;
+  font-size: 14px;
+}
+.cart-section .check-out p {
+  margin-bottom: 5px;
+}
+.cart-section .check-out p span {
+  float: right;
+}
+
+@media only screen and (max-width: 820px) {
+  .cart-section h4 {
+    padding: 0px 10px;
+  }
+  .cart-section h5 {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+  .cart-section .check-out {
+    font-size: 12px;
+  }
+  .cart-section .alert {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .cart-section .alert a {
+    font-size: 11px;
+  }
+}
+.pharmacy-slider-section h3 {
+  margin: 0px 5px;
+  font-size: 18px;
+  color: #0071cb;
+  font-weight: 500;
+}
+.pharmacy-slider-section .pharmacy-common-slider {
+  padding: 10px 0px;
+  width: 100%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box {
+  position: relative;
+  min-height: 150px;
+  width: 97%;
+  border: 1px solid #e4dbdb;
+  padding: 5px;
+  margin: 10px 5px;
+  transition: 0.5s;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box figure {
+  width: 100%;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box figure img {
+  width: 100%;
+  height: 150px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details {
+  width: 100%;
+  margin-left: 0px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details h4 {
+  margin: 0px;
+  padding-top: 7px;
+  line-height: 16px;
+  margin-bottom: 7px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details h4 a {
+  padding: 0px;
+  font-size: 13px;
+  margin: 5px 0px;
+  color: #000;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details p {
+  margin: 0px;
+  font-size: 14px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off {
+  width: 100%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span {
+  padding: 5px 0;
+  font-size: 14px;
+  color: hsla(0, 0%, 46%, 0.87);
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span :first-child {
+  text-decoration: line-through;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off .off {
+  color: #4caf50;
+  font-weight: 600;
+  margin-left: 20%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart {
+  width: 100%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span {
+  width: 49%;
+  font-size: 14px;
+  padding: 5px 0px;
+  font-weight: 600;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span :last-child {
+  float: right;
+}/*# sourceMappingURL=cart-list.component.css.map */

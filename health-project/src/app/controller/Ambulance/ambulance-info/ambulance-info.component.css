@@ -1,0 +1,336 @@
+#slider {
+  width: 100%;
+  max-height: 350px;
+}
+#slider img {
+  max-height: 250px;
+  width: 100%;
+}
+
+.profile-details-box {
+  display: block !important;
+}
+
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .cdk-global-overlay-wrapper, ::ng-deep .cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+.dr-profile {
+  width: 89%;
+  margin: 0px auto;
+  position: relative;
+  top: -165px;
+  display: flex;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.dr-profile figure {
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 200px;
+  padding: 15px;
+  height: 220px;
+  background-color: #fff;
+  border: 1px solid rgb(43, 42, 42);
+}
+.dr-profile figure img {
+  width: 100%;
+  height: 100%;
+}
+.dr-profile .dr-details {
+  position: relative;
+  width: 100%;
+  padding-left: 4%;
+  color: #fff;
+}
+.dr-profile .dr-details h5 {
+  text-align: left;
+  font-size: 28px;
+  font-weight: 700;
+}
+.dr-profile .dr-details .rating {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.dr-profile .dr-details .rating span {
+  font-size: 14px;
+  margin-right: 10px;
+  background-color: #257c2e;
+  color: #fff;
+  padding: 2px 5px 4px;
+}
+.dr-profile .dr-details .rating span i {
+  font-size: 11px;
+}
+.dr-profile .dr-details .rating a {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.dr-profile .dr-details p {
+  font-size: 14px;
+  margin: 0px;
+}
+.dr-profile .share {
+  border-top: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;
+  margin-top: 30px;
+  padding: 7px 0px;
+}
+.dr-profile .share a {
+  margin-right: 10px;
+}
+.dr-profile .share :hover {
+  color: #1055c4;
+}
+.dr-profile .share span {
+  float: right;
+}
+.dr-profile .share span :hover {
+  color: #fff;
+}
+.dr-profile .video-consult {
+  width: auto;
+}
+
+.profile-details-box {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 10px;
+  display: flex;
+  padding: 15px;
+}
+.profile-details-box p {
+  font-size: 14px;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 820px) {
+  #slider {
+    width: 100%;
+    max-height: 270px;
+  }
+  #slider img {
+    max-height: 170px;
+  }
+  .dr-profile {
+    width: 89%;
+    margin: 0px auto;
+    top: -155px;
+    padding: 5px;
+  }
+  .dr-profile figure {
+    margin-bottom: 10px;
+    max-width: 130px;
+    padding: 5px;
+    height: 140px;
+  }
+  .dr-profile .dr-details {
+    padding-left: 2%;
+  }
+  .dr-profile .dr-details h5 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .dr-profile .share {
+    margin-top: 15px;
+  }
+  .dr-profile .share a {
+    margin-right: 10px;
+    font-size: 12px;
+  }
+  .dr-profile .video-consult {
+    width: 125px;
+    font-size: 12px;
+  }
+  .profile-details-box {
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #slider {
+    width: 100%;
+    max-height: 360px;
+  }
+  #slider img {
+    max-height: 170px;
+    width: auto;
+  }
+  .dr-profile {
+    width: 100%;
+    top: -165px;
+    display: inline-block;
+  }
+  .dr-profile figure {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 80px;
+    padding: 5px;
+    height: 80px;
+  }
+  .dr-profile figure img {
+    width: 68px !important;
+    height: 70px;
+  }
+  .dr-profile .dr-details {
+    width: 100%;
+    padding-left: 4%;
+    color: rgb(0, 0, 0);
+  }
+  .dr-profile .dr-details h5 {
+    font-size: 18px;
+    color: #fff;
+  }
+  .dr-profile .dr-details .fee {
+    position: relative;
+    right: 0px;
+  }
+  .dr-profile .dr-details .fee span {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .dr-profile .share {
+    margin-top: 30px;
+    padding: 7px 0px;
+  }
+  .dr-profile .share a {
+    margin-right: 3px;
+    font-size: 10px;
+  }
+  .dr-profile .video-consult {
+    width: 200px;
+    margin-left: 15%;
+  }
+}
+.widget {
+  position: relative;
+  padding: 20px;
+  font-size: 14px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 35px 0px;
+  background-color: #def8f6;
+}
+.widget :after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 0;
+  width: 3px;
+  background-color: #21cdc0;
+}
+.widget .widget-content .widget-icon {
+  color: #213360;
+  font-size: 50px;
+  margin-bottom: 6px;
+}
+.widget .widget-content .widget-icon img {
+  width: 45px;
+}
+.widget .widget-content h4 {
+  font-size: 19px;
+  margin-bottom: 23px;
+}
+.widget .widget-content ul li {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #dcdee2;
+  font-size: 14px;
+}
+.widget .phone__number {
+  font-size: 24px;
+  margin-top: 5px;
+  color: #fff !important;
+  font-weight: 600;
+}
+.widget .phone__number .fa-phone-volume {
+  font-size: 17px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 10px;
+  background-color: #3851a2;
+}
+
+.emergency-call-bg {
+  background-color: #26a59a;
+  color: #fff;
+}
+
+@media only screen and (max-width: 820px) {
+  .widget {
+    padding: 10px;
+  }
+  .widget .widget-content .widget-icon {
+    font-size: 25px;
+  }
+  .widget .widget-content .widget-icon img {
+    width: 30px;
+  }
+  .widget .widget-content h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .widget .widget-content ul li {
+    font-size: 12px;
+  }
+  .widget .phone__number {
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .widget .phone__number .fa-phone-volume {
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 10px;
+  }
+  .widget p {
+    font-size: 12px;
+  }
+}
+.award-section {
+  margin: 0px 0px;
+}
+.award-section h4 {
+  font-size: 20px;
+}
+.award-section .award figure img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 820px) {
+  .award-section h4 {
+    font-size: 18px;
+  }
+  .award-section .award figure img {
+    width: 100%;
+  }
+  .award-section p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .award-section h4 {
+    font-size: 16px;
+  }
+  .award-section p {
+    font-size: 12px;
+  }
+}
+.mimg {
+  margin-top: 20px;
+  gap: 20px;
+}
+.mimg div {
+  max-width: 80px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 0px #e7e7e7;
+}/*# sourceMappingURL=ambulance-info.component.css.map */

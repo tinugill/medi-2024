@@ -1,0 +1,13 @@
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+
+.mb13 {
+  margin-bottom: 13px;
+}
+
+::ng-deep .ck-content {
+  border-bottom: 1px solid gray !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}/*# sourceMappingURL=dashboard-blog.component.css.map */

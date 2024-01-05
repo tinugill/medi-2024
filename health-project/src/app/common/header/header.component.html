@@ -1,0 +1,162 @@
+
+<div class="head">
+  <div class="container">
+    <header>
+      <div id="sideNav" href="#" class="toggle">
+          <i class="fa fa-bars" id="menuIcon"></i> 
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-sm-3 col-5">
+          <a class="logo" [routerLink]="['/home']">
+            <img [src]="['./assets/images/logo.jpg']" alt="Logo" />
+          </a>
+        </div>
+        <div class="col-md-8 col-sm-6 col-12 order-md-0 order-1 px-0">
+          <div class="header-search">
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+              <input type="text" (click)="openPincodeDialog()" class="form-control city f13" readonly
+                placeholder="Enter pincode" name="pincode" [(ngModel)]="pincode" [ngModelOptions]="{standalone: true}" />
+              
+              <select class="form-control city searchby" [(ngModel)]="searchby" [ngModelOptions]="{standalone: true}"
+                (change)="searchByChange()">
+                <option value="Hospital">Search For Hospital/Clinic</option>
+                <option value="Doctor">Doctor</option> 
+                <option value="Medicine">Medicine & Health Products</option>
+                <option value="Lab">Lab</option>
+                <option value="Ambulance">Ambulance</option>
+                <option value="Bloodbank">Bloodbank</option>
+                <option value="Equipment">Healthcare Device</option>
+                <option value="Homecare">Homecare</option>
+              </select>
+              <select class="form-control city searchby" *ngIf="searchby != 'Medicine' && searchby != 'Equipment'" [(ngModel)]="searchby2" [ngModelOptions]="{standalone: true}" (change)="searchData = [];">
+                <ng-container *ngIf="searchby == 'Doctor'">
+                  <option value="Name">Search By Name</option>
+                  <option value="Specility">Speciality</option>
+                  <option value="Symptoms">Symptoms</option> 
+                  <option value="Diseases">Diseases</option> 
+                  <option value="Treatment">Treatment</option> 
+                </ng-container>
+                <ng-container *ngIf="searchby == 'Hospital'">
+                  <option value="Name">Search By Name</option>
+                  <option value="Specility">Speciality</option>
+                  <option value="Facility">Facility</option>
+                  <option value="Empanelments">Empanelments</option>
+                </ng-container>
+                <ng-container *ngIf="searchby == 'Lab'">
+                  <option value="Name">Search By Name</option>
+                  <option value="Test">Test</option>
+                </ng-container>
+                <ng-container *ngIf="searchby == 'Homecare'">
+                  <option value="Nurse">Nurse</option>
+                  <option value="Attendant">Attendant</option>
+                  <option value="Dai">Dai</option>
+                  <option value="Aya">Aya</option>
+                  <option value="Physiotherapist">Physiotherapist</option>
+                  <option value="Docter(BAMS)">Docter(BAMS)</option>
+                  <option value="Docter(MBBS)">Docter(MBBS)</option>
+                  <option value="Name">Name</option>
+                </ng-container>
+                <ng-container *ngIf="searchby == 'Ambulance'">
+                  <option value="Name">Search By Name</option>
+                  <option value="Type">Ambulance Type</option>
+                </ng-container>
+                <ng-container *ngIf="searchby == 'Bloodbank'">
+                  <option value="Name">Search By Name</option>
+                  <option value="Component">Search By Component</option>
+                </ng-container>
+              </select>
+              <div style="position: relative;">
+                <input type="text" class="form-control search" placeholder="Search" [(ngModel)]="search" required
+                [ngModelOptions]="{standalone: true}" style="width: 100%;height: 100%;" (keyup)="changeVal()"/>
+                <div class="s-result">
+                  <ng-container *ngFor="let d of searchData">
+                    <ng-container *ngIf="searchby == 'Doctor'">
+                      <ng-container *ngIf="searchby2 == 'Name'"> 
+                        <div (click)="selectValue(d?.full_name)">{{d?.full_name}} - {{d?.designation}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Specility'"> 
+                        <div (click)="selectValue(d?.speciality_name)">{{d?.speciality_name}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Symptoms' || searchby2 == 'Diseases' || searchby2 == 'Treatment'"> 
+                        <div (click)="selectValue(d?.title)">{{d?.title}}</div>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Hospital'">
+                      <ng-container *ngIf="searchby2 == 'Name'"> 
+                        <div (click)="selectValue(d?.name)">{{d?.name}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Specility'">
+                        <div (click)="selectValue(d?.speciality_name)">{{d?.speciality_name}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Facility' || searchby2 == 'Empanelments'">
+                        <div (click)="selectValue(d?.title)">{{d?.title}}</div>
+                      </ng-container>
+                      
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Lab'">
+                      <ng-container *ngIf="searchby2 == 'Name'"> 
+                        <div (click)="selectValue(d?.name)">{{d?.name}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Test'"> 
+                        <div (click)="selectValue(d?.test_name)">{{d?.test_name}}</div>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Homecare'">
+                      <div (click)="selectValue(d?.name)">{{d?.name}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Ambulance'">
+                      <ng-container *ngIf="searchby2 == 'Name'"> 
+                        <div (click)="selectValue(d?.name)">{{d?.name}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Type'"> 
+                        <div (click)="selectValue(d?.ambulance_type)">{{d?.ambulance_type}}</div>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Bloodbank'">
+                      <ng-container *ngIf="searchby2 == 'Name'"> 
+                        <div (click)="selectValue(d?.name)">{{d?.name}}</div>
+                      </ng-container>
+                      <ng-container *ngIf="searchby2 == 'Component'"> 
+                        <div (click)="selectValue(d?.component_name)">{{d?.component_name}}</div>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Medicine'">
+                      <div (click)="selectValue(d?.title)">{{d?.title}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="searchby == 'Equipment'">
+                      <div (click)="selectValue(d?.item_name)">{{d?.item_name}}</div>
+                    </ng-container>
+                  </ng-container> 
+                </div>
+              </div>
+        
+              <button class="input-group-text search-icon" (click)="searchNow()">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-3 col-7">
+          <ul>
+            <!-- <li class="d-display"><a href="#" class="text-info">OFFERS</a></li> -->
+            <li>
+              <a [href]="['/cart']" class="cart c-pointer"> 
+                <img [src]="['./assets/images/cart.png']" alt="" />
+                <span class="cartcount">{{cartCount}}</span>
+              </a>
+            </li>
+            <li *ngIf="!isLoggedIn">
+              <a [routerLink]="['/login']" class="c-pointer btn btn-sm btn-success rounded-pill">Login</a>
+            </li>
+            <li *ngIf="isLoggedIn" class="mt-md-2">
+              <a [routerLink]="['/Patient-Record/record']" class="c-pointer btn-sm btn-info">Go to Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  </div>  
+</div>

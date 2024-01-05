@@ -1,0 +1,20 @@
+<div class="">
+    <div class="dr-profile-share" id="printDiv">
+        <div class="inner-profile">
+            <p>Search by</p>
+            <p><strong>{{dInfo?.my_referal}}</strong></p>
+            <figure>
+                <img class=""  [src]="
+                (((dInfo?.doctor_image && dInfo?.doctor_image != '') ? dInfo?.doctor_image : 'dummy.png')
+                  | concatBase: 'doctor_image/' ) | imageToBase64 | async
+              " >
+            </figure>
+            <h4>{{dInfo?.full_name}}</h4>
+            <h6>{{dInfo?.designation}} /</h6>
+            <h6>&nbsp;</h6>
+            <div class="topmedz-logo">
+                <img class="" [src]="['./assets/images/logo.jpg']" alt="">
+            </div>
+        </div>
+    </div>
+</div>

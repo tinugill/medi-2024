@@ -1,0 +1,74 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0"> Treatment Package Requests</strong>
+    </div>
+    <div class="col-md-12">
+    </div>
+    <div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0">
+        <div class="card mb-3" *ngFor="let o of tList">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        ORDER ID : {{o?.order_id}}
+                    </div>
+                    <div class="col-md-3">
+                        <app-rating-section [review]="o?.comment"  [user_id]="o?.doctor_id"  [count]="o?.stars" [service_id]="o?.order_id" [agent_type]="'Treatment'" (reviewData)="onReviewData($event)"></app-rating-section>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="badge badge-warning" *ngIf="o?.is_completed == '0'">Order pending</span>
+                        <span class="badge badge-success" *ngIf="o?.is_completed == '1'">Order completed</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color: ghostwhite;">
+                <div class="container">
+                    <div class="card mb-1" *ngFor="let p of o?.treatment">
+                        <div class="card-header">
+                            {{p?.package_name}} - <small> {{ p?.stay_type}} {{ p?.package_location}} </small>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Booked by : {{p?.name | titlecase}} <br>
+                                    Mobile : {{p?.mobile }} <br>
+                                    Email : {{p?.email }} <br>
+                                </div>
+                                <div class="col-md-4">
+                                    Payment status : {{p?.payment_status | titlecase}} <br>
+                                    Price Paid : {{p?.price - ((p?.discount/100)*p?.price)}} <br>
+                                    Service Location: <span *ngIf="p?.package_location == 'Clinic'">{{p?.a1}} {{p?.c1}}
+                                        {{p?.p1}}</span>
+                                        <span>Under : {{p?.doctor_name}}</span> <br>
+                                        <span
+                                        *ngIf="p?.package_location != 'Clinic'">{{p?.hospital_name}} -
+                                        {{( p?.hospital_address && p?.hospital_address != 'null') ? p?.hospital_address : ''}}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    Requested Date: {{p?.req_date}} 
+                                    <ng-container *ngIf="p?.record_image != ''">
+                                        <a class="badge badge-info" [href]="img | concatBase: 'uploads/'" target="_blank" *ngFor="let img of getAray(p?.record_image); let i = index ">
+                                            View Previous Records ({{i+1}})
+                                        </a><br>
+                                    </ng-container>
+                                    <span class="badge badge-warning" *ngIf="p?.is_completed == '0'">Request not
+                                        accepted yet</span>
+                                    <span class="badge badge-info" *ngIf="p?.is_completed == '1'">Requested
+                                        accepted</span>
+                                    <span class="badge badge-success" *ngIf="p?.is_completed == '2'">Treatment
+                                        Completed</span>
+                                    <span class="badge badge-success" *ngIf="p?.is_completed == '3'">Treatment
+                                        Started</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0" *ngIf="tList?.length == 0">
+        <p>No record found</p>
+    </div>
+</div>

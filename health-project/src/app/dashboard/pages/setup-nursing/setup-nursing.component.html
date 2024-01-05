@@ -1,0 +1,357 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0">
+            Note: Fill all info to make yourself visible on website
+        </strong>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="stepExpn == 1">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Basic Information </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <form [formGroup]="setupForm" novalidate>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Registered Name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.name.errors
+                }" formControlName="name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.mobile.errors
+                }" formControlName="mobile" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Official Email</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.email.errors
+                }" formControlName="email" required />
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="fill" *ngIf="page == 'home'">
+                        <mat-label>Nursing Type</mat-label>
+                        <mat-select matInput [ngClass]="{
+                    'is-invalid': b1 && f1.regis_type.errors
+                  }" formControlName="regis_type" required>
+                            <mat-option value="Individual">Individual</mat-option>
+                            <mat-option value="Buero">Bureau</mat-option> 
+                        </mat-select>
+                    </mat-form-field>
+
+                    <ng-container *ngIf="f1.regis_type.value == 'Individual' || page == 'nursing'">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Gender</mat-label>
+                            <mat-select matInput [ngClass]="{
+                        'is-invalid': b1 && f1.gender.errors
+                      }" formControlName="gender" required>
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
+                                <mat-option value="Special">Special</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="fill">
+                            <mat-label>You are a ?</mat-label>
+                            <mat-select matInput [ngClass]="{
+                        'is-invalid': b1 && f1.type.errors
+                      }" formControlName="type" required>
+                                <mat-option value="Nurse">Nurse</mat-option>
+                                <mat-option value="Attendant">Attendant</mat-option>
+                                <mat-option value="Dai">Dai</mat-option>
+                                <mat-option value="Aya">Aya</mat-option>
+                                <mat-option value="Physiotherapist">Physiotherapist</mat-option>
+                                <mat-option value="Docter(BAMS)">Docter(BAMS)</mat-option>
+                                <mat-option value="Docter(MBBS)">Docter(MBBS)</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="fill">
+                            <mat-label>Part / Full time</mat-label>
+                            <mat-select matInput [ngClass]="{
+                        'is-invalid': b1 && f1.part_fill_time.errors
+                      }" formControlName="part_fill_time" required>
+                                <mat-option value="Full time">Full time</mat-option>
+                                <mat-option value="Part time">Part time</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="fill" *ngIf="f1.part_fill_time.value != 'Full time'">
+                            <mat-label>Timing</mat-label>
+                            <mat-select matInput [ngClass]="{
+                        'is-invalid': b1 && f1.work_hours.errors
+                      }" formControlName="work_hours">
+                                <mat-option value="1">1 Hour</mat-option>
+                                <mat-option value="2">2 Hours</mat-option>
+                                <mat-option value="3">3 Hours</mat-option>
+                                <mat-option value="4">4 Hours</mat-option>
+                                <mat-option value="5">5 Hours</mat-option>
+                                <mat-option value="6">6 Hours</mat-option>
+                                <mat-option value="7">7 Hours</mat-option>
+                                <mat-option value="8">8 Hours</mat-option>
+                                <mat-option value="9">9 Hours</mat-option>
+                                <mat-option value="10">10 Hours</mat-option>
+                                <mat-option value="11">11 Hours</mat-option>
+                                <mat-option value="12">12 Hours</mat-option>
+                                <mat-option value="13">13 Hours</mat-option>
+                                <mat-option value="14">14 Hours</mat-option>
+                                <mat-option value="15">15 Hours</mat-option>
+                                <mat-option value="16">16 Hours</mat-option>
+                                <mat-option value="17">17 Hours</mat-option>
+                                <mat-option value="18">18 Hours</mat-option>
+                                <mat-option value="19">19 Hours</mat-option>
+                                <mat-option value="20">20 Hours</mat-option>
+                                <mat-option value="21">21 Hours</mat-option>
+                                <mat-option value="22">22 Hours</mat-option>
+                                <mat-option value="23">23 Hours</mat-option>
+                                <mat-option value="24">24 Hours</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Is weekly off</mat-label>
+                            <mat-select matInput [ngClass]="{
+                        'is-invalid': b1 && f1.is_weekof_replacement.errors
+                      }" formControlName="is_weekof_replacement">
+                                <mat-option value="Yes (without replacement)">Yes (without replacement)</mat-option>
+                                <mat-option value="Yes (with replacement)">Yes (with replacement)</mat-option>
+                                <mat-option value="No">No</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Experience (In years)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                        'is-invalid': b1 && f1.experience.errors
+                      }" formControlName="experience"  [min]="0"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Work condition (if any)</mat-label>
+                            <input matInput [ngClass]="{
+                        'is-invalid': b1 && f1.custom_remarks.errors
+                      }" formControlName="custom_remarks"
+                                placeholder="example: food and tea to be provided, special room needed if booked for more then 5hr, etc" />
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Single visit charges for procedure (excluding procedure charges)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                        'is-invalid': b1 && f1.visit_charges.errors
+                      }" formControlName="visit_charges"  [min]="0"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Care Charges (per hours)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                        'is-invalid': b1 && f1.per_hour_charges.errors
+                      }" formControlName="per_hour_charges" [min]="0"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Care Charges (per day)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                        'is-invalid': b1 && f1.per_days_charges.errors
+                      }" formControlName="per_days_charges"  [min]="0"/>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Care Charges (per month)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                        'is-invalid': b1 && f1.per_month_charges.errors
+                      }" formControlName="per_month_charges" [min]="0" />
+                        </mat-form-field>
+                        
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Highest Qualification</mat-label>
+                            <input matInput max="1000" min="1" [ngClass]="{
+                    'is-invalid': b1 && f1.qualification.errors
+                    }" formControlName="qualification" required />
+                        </mat-form-field>
+
+                        <label class="mt-2">UPLOAD QUALIFICATION PROOF
+                            <a href="{{ Linfo?.degree }}" target="_blank">View File</a></label>
+                        <input class="form-control mb13" (change)="onFileChange($event, 'degree')" type="file" />
+
+                    </ng-container>
+ 
+                    <mat-form-field appearance="fill">
+                        <mat-label>About</mat-label>
+                        <textarea matInput [ngClass]="{
+                    'is-invalid': b1 && f1.about.errors
+                  }" formControlName="about"></textarea>
+                    </mat-form-field>
+                    
+                    <div class="row mb-2" *ngIf="editId != ''">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    Nursing Address
+                                    <button class="btn btn-success f-right" type="button"
+                                        (click)="openAddressPopup(addressAddModel)">Edit</button>
+                                </div>
+                                <div class="card-body">
+                                    {{this.Linfo.address}} {{this.Linfo.city}} {{this.Linfo.pincode}}
+                                    {{this.Linfo.country}}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="mt-2">UPLOAD REGISTRATION CERTIFICATE
+                        <a href="{{ Linfo?.registration_certificate }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'registration_certificate')"
+                        type="file" accept="image/*" />
+
+
+
+                    <label class="mt-2">UPLOAD ID PROOF (AADHAR {{page == 'home' ? 'OF OWNER': '' }})
+                        <a href="{{ Linfo?.id_proof }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'id_proof')" type="file"
+                        accept="image/*" />
+
+                    <label class="mt-2">UPLOAD Image (For profile image)
+                        <a href="{{ Linfo?.image }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'image')" type="file"
+                        accept="image/*" />
+
+                    <!-- <label class="mt-2">UPLOAD BANNER (For profile image)
+                        <a href="{{ Linfo?.banner }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'banner')" type="file"
+                        accept="image/*" /> -->
+
+                    <mat-form-field appearance="fill"  *ngIf="editId != '' && f1.regis_type.value != 'Individual'">
+                        <mat-label>Status</mat-label>
+                        <mat-select matInput formControlName="is_deleted" required>
+                            <mat-option value="0">Active</mat-option>
+                            <mat-option value="1">Delete</mat-option> 
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="col-md-12">
+                        <button (click)="onSubmit()"  type="button" type="button" class="btn btn-primary">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="stepExpn == 2">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Login & Contact Details </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <form [formGroup]="lForm" novalidate>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact person name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.cp_name.errors
+                }" formControlName="cp_name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.email.errors
+                }" formControlName="email" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Mobile number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.mobile.errors
+                }" formControlName="mobile" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password (Enter you want to change)</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.password.errors
+                }" formControlName="password" />
+                    </mat-form-field>
+                    <div class="col-md-12">
+                        <button (click)="onSubmitCp()"  type="button" class="btn btn-primary">
+                            UPDATE
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="stepExpn == 3" *ngIf="page == 'home'">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Bank Details </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <form [formGroup]="bForm" novalidate>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Full name in bank account</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.name.errors
+                }" formControlName="name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Bank name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.bank_name.errors
+                }" formControlName="bank_name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Branch name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.branch_name.errors
+                }" formControlName="branch_name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>IFSC</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.ifsc.errors
+                }" formControlName="ifsc" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Account Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.ac_no.errors
+                }" formControlName="ac_no" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Account Type</mat-label>
+                        <mat-select matInput [ngClass]="{
+                  'is-invalid': b4 && f4.ac_type.errors
+                }" formControlName="ac_type" required>
+                            <mat-option value="saving">Saving</mat-option>
+                            <mat-option value="current">Current</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>MICR Code</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.micr_code.errors
+                }" formControlName="micr_code" />
+                    </mat-form-field>
+                    <label class="mt-2">Cancelled Cheque
+                        <a href="{{ Linfo?.cancel_cheque }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'cancel_cheque')" type="file" />
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>PAN Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.pan_no.errors
+                }" formControlName="pan_no" required />
+                    </mat-form-field>
+                    <label class="mt-2">PAN Image
+                        <a href="{{ Linfo?.pan_image }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'pan_image')" type="file" />
+                    <div class="col-md-12">
+                        <button (click)="onSubmitBank()"  type="button" class="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+
+<ng-template #addressAddModel let-modal>
+    <div class="modal-body" style="padding-top: 30px">
+        <app-addresss-add [updating_for]="'nursing'"></app-addresss-add>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+            Cancel
+        </button>
+    </div>
+</ng-template>

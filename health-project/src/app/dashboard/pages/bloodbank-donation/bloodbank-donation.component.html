@@ -1,0 +1,45 @@
+<div class="common-record">
+  <div class="d-block p-2">
+    <strong class="text-gray rounded-0"> List </strong>
+  </div>
+  <div class="card mt-2" *ngFor="let i of info">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-9">Name: {{ i?.name }} <span>(Blood group : {{ i?.blood_group }})</span></div>
+        <div class="col-md-3">
+          <app-rating-section [review]="i?.comment"  [user_id]="i?.bloodbank_id"  [count]="i?.stars" [service_id]="i?.id" [agent_type]="'Bloodbank'" (reviewData)="onReviewData($event)"></app-rating-section>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-8">
+          Date: {{ i?.date }} <br />
+          Email: {{ i?.email }} <br />
+          Mobile: {{ i?.mobile }} <br />
+          Avaliblity in emergency : {{ i?.available_in_emergency }} <br />
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-warning" *ngIf="i?.is_donated == '0' && myInfo.type == 'Bloodbank'" (click)="donationComplete(i?.id)">
+            Donation complete
+          </button>
+          <span *ngIf="i?.is_donated == '0' && myInfo.type != 'Bloodbank'" class="badge badge-warning">Donation pending</span>
+          <span *ngIf="i?.is_donated == '1'" class="badge badge-success">Donation complete</span>
+
+        </div>
+      </div>
+    </div>
+    <div class="card-footer" *ngIf="myInfo.type != 'Bloodbank'">
+      Bloodbank address: {{ i?.address }} {{ i?.city }} {{ i?.pincode }} {{ i?.country }}
+    </div>
+  </div>
+  <div class="card mt-2" *ngIf="info?.length == 0">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+           No request found
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

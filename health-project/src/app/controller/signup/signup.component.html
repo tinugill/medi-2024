@@ -1,0 +1,194 @@
+<section class="login-section">
+  <div class="container">
+    <div class="row">
+      <div class="login">
+        <form class="login-content animate" *ngIf="signupType == ''" novalidate>
+          <figure>
+            <img [src]="['./assets/images/login.png']" alt="Avatar" />
+          </figure>
+          <div class="login-container p10">
+            <label for="" class="text-center w100"><b>Signup as?</b></label>
+            <div class="row">
+              <div class="col-md-4 m-div" (click)="typeFn('User')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/user.png'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>User / Patient</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-div" (click)="typeFn('Doctor')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/doctor.webp'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Doctor</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-div" (click)="typeFn('Hospital')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/hospital.jpg'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Hospital / Clinic</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-div" (click)="typeFn('Nursing')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/nursing.png'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Home Care</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-div" (click)="typeFn('Pharmacy')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/pharmasy.jpg'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Pharmacy</b></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 m-div" (click)="typeFn('Lab')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/lab.jpg'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Lab</b></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 m-div" (click)="typeFn('Bloodbank')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/bloodbank.png'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Bloodbank</b></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 m-div" (click)="typeFn('Dealer')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/medeq.png'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Medical Equipment</b></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 m-div" (click)="typeFn('Ambulance')">
+                <div class="shadow mt-2 pt-3 pb-3">
+                  <img [src]="'../../../assets/images/signup/amb.png'" class="img-j" alt="" />
+                  <div>
+                    <h4 class="m0"><b>Ambulance</b></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <ng-container *ngIf="!isLoggedIn && !isOtpSent && signupType != '' && userForm">
+          <form [formGroup]="userForm" class="login-content animate"  novalidate>
+            <figure>
+              <img [src]="['./assets/images/login.png']" alt="Avatar" />
+            </figure>
+            <div class="login-container p10">
+              
+                <h4 class="text-center" *ngIf="signupType != 'Nursing'">Join as a {{ signupType }}</h4>
+                <h4 class="text-center" *ngIf="signupType == 'Nursing'">Join as a Home care</h4>
+                <mat-form-field appearance="fill">
+                  <mat-label *ngIf="signupType != 'Nursing'">Name of {{ signupType == 'Ambulance' ? (signupType + ' firm'): signupType }}</mat-label>
+                  <mat-label *ngIf="signupType == 'Nursing'">Home care service provider name</mat-label>
+                  <input matInput max="500" min="1" [ngClass]="{
+                      'is-invalid': u1 && uf.name.errors
+                    }" formControlName="name" required />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Mobile Number</mat-label>
+                  <input matInput max="500" min="1" [ngClass]="{
+                      'is-invalid': u1 && uf.mobile.errors
+                    }" formControlName="mobile" required />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput max="500" min="1" type="email" [ngClass]="{
+                      'is-invalid': u1 && uf.email.errors
+                    }" formControlName="email" required />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" [ngClass]="{
+                      'is-invalid': u1 && uf.password.errors
+                    }" formControlName="password" style="border: none; padding: 0px" required />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Referal Code (If any)</mat-label>
+                  <input matInput type="text" formControlName="joined_from" style="border: none; padding: 0px" />
+                </mat-form-field>
+                <div class="col-lg-12 mt--20">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="yes" formControlName="tc" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault"  [ngClass]="{
+                      'is-invalid': u1 && uf.tc.errors
+                    }">
+                      Read and accept <a [routerLink]="['/tearms-and-conditions']">terms & conditions</a> 
+                    </label>
+                  </div>
+                  <button mat-button class="btn btn-success ml-2" (click)="commonSubmit()">
+                    SUBMIT
+                  </button>
+                </div>
+              
+            </div>
+          </form>
+        </ng-container>
+        <form class="login-content animate" *ngIf="!isLoggedIn && isOtpSent" [formGroup]="otpForm" novalidate>
+          <figure>
+            <img [src]="['./assets/images/login.png']" alt="Avatar" />
+          </figure>
+          <div class="login-container p10" *ngIf="isOtpSent">
+            <label>Fill out details</label>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter OTP</mat-label>
+              <input matInput max="6" min="6" [ngClass]="{
+                  'is-invalid': isOtpSent && op.otp.errors
+                }" formControlName="otp" required />
+            </mat-form-field>
+            <div class="col-lg-12 mt--20">
+              <button mat-button class="btn btn-warning" (click)="isOtpSent = false">
+                <span>BACK</span>
+                <i class="feather-arrow-right"></i>
+              </button>
+              <button mat-button class="btn btn-success ml-2" (click)="verifyOtp()">
+                <span>SUBMIT</span>
+                <i class="feather-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <form class="login-content animate" *ngIf="isLoggedIn">
+          <div class="login-container text-center">
+            <p>You are already logged in.</p>
+            <button type="button" tabindex="0" class="btn btn-warning" (click)="openVerticallyCentered(logoutModel)">
+              Logout
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #logoutModel let-modal>
+  <div class="modal-body" style="padding-top: 30px">
+    <p class="text-center">Are you sure you want to logout?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-sm btn-danger" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</ng-template>

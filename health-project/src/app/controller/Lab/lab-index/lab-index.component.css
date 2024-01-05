@@ -1,0 +1,563 @@
+#slider img {
+  width: 100%;
+  height: 400px;
+}
+
+.banner-search {
+  position: absolute;
+  width: 87%;
+  top: 60px;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+}
+.banner-search h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: normal;
+}
+.banner-search h6 {
+  font-size: 14px;
+  color: #ffffff;
+  line-height: normal;
+}
+.banner-search a {
+  margin: 10px;
+}
+
+@media only screen and (max-width: 820px) {
+  .banner-search {
+    width: 87%;
+    top: 30px;
+  }
+  .banner-search h1 {
+    font-size: 2rem;
+  }
+  .banner-search a {
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #slider img {
+    width: 100%;
+    height: 153px;
+  }
+  .banner-search {
+    width: 95%;
+    top: 10px;
+    text-align: center;
+  }
+  .banner-search h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: -1px 2px 0px #000;
+    letter-spacing: 1px;
+  }
+  .banner-search h6 {
+    font-size: 14px;
+  }
+  .banner-search a {
+    margin: 5px;
+    margin-top: 3px !important;
+    font-size: 12px;
+    padding: 3px;
+  }
+}
+.banner-bottom-section {
+  padding: 5px 0px;
+  background-color: #f7f6f6;
+}
+.banner-bottom-section p {
+  margin-bottom: 0px;
+}
+.banner-bottom-section .banner-bottom-box {
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
+  border: 1px solid #b4cdeb;
+  border-radius: 3px;
+  background-color: #fff;
+  position: relative;
+  transition: 0.5s;
+  text-align: left;
+}
+.banner-bottom-section .banner-bottom-box a {
+  color: #000;
+}
+.banner-bottom-section .banner-bottom-box a span {
+  width: 25%;
+  float: left;
+  margin-right: 10px;
+}
+.banner-bottom-section .banner-bottom-box a span img {
+  width: 100%;
+}
+.banner-bottom-section .banner-bottom-box a h6 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 8px 0px 5px;
+  color: #000;
+  transition: 0.5s;
+}
+.banner-bottom-section .banner-bottom-box:hover {
+  background-color: #b4cdeb;
+}
+
+@media only screen and (max-width: 820px) {
+  .banner-bottom-section {
+    padding: 5px 0px;
+  }
+  .banner-bottom-section .banner-bottom-box {
+    height: auto;
+    padding: 10px 5px;
+  }
+  .banner-bottom-section .banner-bottom-box a span {
+    width: 20%;
+    margin-right: 10px;
+  }
+  .banner-bottom-section .banner-bottom-box a h6 {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .banner-bottom-section {
+    padding: 5px 5px;
+  }
+  .banner-bottom-section .banner-bottom-box {
+    padding: 10px 5px;
+    text-align: center;
+  }
+  .banner-bottom-section .banner-bottom-box a span {
+    width: 100%;
+    float: none;
+    margin-right: 0px;
+  }
+  .banner-bottom-section .banner-bottom-box a span img {
+    width: 30px;
+  }
+  .banner-bottom-section .banner-bottom-box a h6 {
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .banner-bottom-section .banner-bottom-box a p {
+    font-size: 12px;
+  }
+  .banner-bottom-section .banner-bottom-box a p small {
+    color: #065486;
+    font-weight: 600;
+  }
+}
+.Instant-call {
+  background-color: #75e6f1;
+  padding: 15px 0px;
+  border-radius: 20px;
+}
+.Instant-call .Instant-call-box {
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
+  position: relative;
+  text-align: left;
+}
+.Instant-call .Instant-call-box span {
+  width: 15%;
+  float: left;
+  text-align: center;
+  margin-right: 10px;
+}
+.Instant-call .Instant-call-box span img {
+  width: 80%;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: #e4dfdf;
+  box-shadow: 0px 1px 3px #7a6e6e;
+}
+.Instant-call .Instant-call-box h6 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 8px 0px 5px;
+}
+.Instant-call a {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 40px;
+  display: block;
+  transition: 0.5s;
+}
+.Instant-call a img {
+  width: 45px;
+}
+.Instant-call a:hover {
+  color: #206b31;
+}
+
+@media only screen and (max-width: 820px) {
+  .Instant-call .Instant-call-box {
+    padding: 10px 15px;
+  }
+  .Instant-call .Instant-call-box h6 {
+    font-size: 20px;
+  }
+  .Instant-call a {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .Instant-call a img {
+    width: 25px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .Instant-call {
+    border-radius: 20px;
+  }
+  .Instant-call .Instant-call-box {
+    padding: 10px 15px;
+    text-align: center;
+  }
+  .Instant-call .Instant-call-box span {
+    width: 100%;
+    float: none;
+    margin-right: 0px;
+  }
+  .Instant-call .Instant-call-box span img {
+    width: 50px;
+  }
+  .Instant-call .Instant-call-box h6 {
+    font-size: 22px;
+  }
+  .Instant-call a {
+    font-size: 18px;
+    margin-top: 0px;
+    text-align: center;
+  }
+  .Instant-call a img {
+    width: 28px;
+  }
+}
+.lab-test-offer-section {
+  padding: 20px 0px;
+}
+.lab-test-offer-section h3 {
+  font-size: 18px;
+  color: #065486;
+  margin-bottom: 28px;
+}
+.lab-test-offer-section .lab-test-offer {
+  border: 10px solid #065486;
+  padding: 10px;
+}
+.lab-test-offer-section .lab-test-offer h4 {
+  margin: 0px;
+  font-size: 18px;
+}
+.lab-test-offer-section .lab-test-offer h4 span {
+  color: #206b31;
+  font-weight: 600;
+}
+.lab-test-offer-section .lab-test-offer .offer-bg {
+  background-repeat: no-repeat;
+  width: 157px;
+  height: 50px;
+  background-size: 100%;
+  text-align: center;
+  padding: 10px 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.lab-test-offer-section .lab-test-offer .code-1 {
+  background-image: url("../../../../assets/images/lab/shape-1.png");
+}
+.lab-test-offer-section .lab-test-offer .code-2 {
+  background-image: url("../../../../assets/images/lab/shape-2.png");
+}
+.lab-test-offer-section .lab-test {
+  padding: 10px;
+  box-shadow: 0px 1px 1px 2px #c9daf3;
+}
+.lab-test-offer-section .lab-test h4 {
+  margin: 0px;
+  font-size: 16px;
+}
+.lab-test-offer-section .lab-test p {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 820px) {
+  .lab-test-offer-section {
+    padding: 10px 0px;
+  }
+  .lab-test-offer-section h3 {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+  .lab-test-offer-section .lab-test-offer {
+    border: 5px solid #065486;
+    padding: 10px;
+  }
+  .lab-test-offer-section .lab-test-offer h4 {
+    font-size: 16px;
+  }
+  .lab-test-offer-section .lab-test-offer .offer-bg {
+    font-size: 14px;
+  }
+  .lab-test-offer-section .lab-test-offer p {
+    font-size: 14px;
+  }
+  .lab-test-offer-section .lab-test {
+    padding: 10px;
+    border: 2px solid #c9daf3;
+    box-shadow: 0px 0px 0px 0px #c9daf3;
+  }
+  .lab-test-offer-section .lab-test h4 {
+    font-size: 16px;
+  }
+  .lab-test-offer-section .lab-test p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .lab-test-offer-section {
+    padding: 10px 0px;
+  }
+  .lab-test-offer-section h3 {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+  .lab-test-offer-section .lab-test-offer {
+    padding: 10px;
+  }
+  .lab-test-offer-section .lab-test-offer h4 {
+    font-size: 16px;
+  }
+  .lab-test-offer-section .lab-test-offer .offer-bg {
+    font-size: 14px;
+  }
+  .lab-test-offer-section .lab-test-offer p {
+    font-size: 14px;
+  }
+  .lab-test-offer-section .lab-test {
+    min-width: 260px;
+  }
+  .lab-test-offer-section .lab-test h4 {
+    font-size: 14px;
+  }
+  .lab-test-offer-section .lab-test p {
+    font-size: 14px;
+  }
+}
+.test-type-section {
+  margin: 0px;
+  padding: 20px 0px;
+}
+.test-type-section h3 {
+  font-size: 18px;
+  color: #065486;
+  margin-bottom: 28px;
+}
+.test-type-section .test-type-slider {
+  display: flex;
+}
+.test-type-section .test-type-slider .test-type {
+  width: 17%;
+  text-align: center;
+}
+.test-type-section .test-type-slider .test-type img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  box-shadow: 0px 0px 2px 2px #8ab4f2;
+}
+.test-type-section .test-type-slider .test-type a {
+  color: #000;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 820px) {
+  .test-type-section {
+    margin: 0px;
+    padding: 20px 0px;
+  }
+  .test-type-section .test-type-slider .test-type img {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+  }
+  .test-type-section .test-type-slider .test-type a {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .test-type-section .test-type-slider {
+    padding-top: 10px;
+  }
+  .test-type-section .test-type-slider .test-type {
+    width: 108px;
+  }
+  .test-type-section .test-type-slider .test-type img {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+  }
+  .test-type-section .test-type-slider .test-type a {
+    font-size: 11px;
+  }
+}
+.product-overview h3 {
+  padding: 5px 0px 15px;
+  font-size: 18px;
+}
+.product-overview .nav {
+  width: 100%;
+  height: auto;
+  top: 0;
+  font-size: 14px;
+  z-index: 99;
+  padding: 0px 0px;
+}
+.product-overview .nav li a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.product-overview .tab-content {
+  padding-top: 0px;
+}
+
+.pharmacy-common-slider {
+  padding: 10px 0px;
+  width: 100%;
+}
+.pharmacy-common-slider .pharmacy-common-box {
+  position: relative;
+  min-height: 150px;
+  width: 98%;
+  border: 1px solid #e4dbdb;
+  padding: 5px;
+  margin: 10px 5px;
+  transition: 0.5s;
+}
+.pharmacy-common-slider .pharmacy-common-box figure {
+  width: 100%;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.pharmacy-common-slider .pharmacy-common-box figure img {
+  width: 100%;
+  height: 150px;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details {
+  width: 100%;
+  margin-left: 0px;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details h4 {
+  margin: 0px;
+  padding-top: 7px;
+  line-height: 16px;
+  margin-bottom: 7px;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details h4 a {
+  padding: 0px;
+  font-size: 13px;
+  margin: 5px 0px;
+  color: #000;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details p {
+  margin: 0px;
+  font-size: 14px;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off {
+  width: 100%;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span {
+  padding: 5px 0;
+  font-size: 14px;
+  color: hsla(0, 0%, 46%, 0.87);
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span :first-child {
+  text-decoration: line-through;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off .off {
+  color: #4caf50;
+  font-weight: 600;
+  margin-left: 20%;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart {
+  width: 100%;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span {
+  width: 49%;
+  font-size: 14px;
+  padding: 5px 0px;
+  font-weight: 600;
+}
+.pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span :last-child {
+  float: right;
+  font-size: 11px;
+}
+
+@media only screen and (max-width: 767px) {
+  .product-overview .nav {
+    font-size: 12px;
+  }
+  .product-overview .nav li a {
+    padding: 10px 10px;
+    font-size: 12px;
+  }
+  .product-overview .tab-content {
+    padding-top: 0px;
+  }
+  .pharmacy-common-slider .pharmacy-common-box {
+    width: 97%;
+    margin: 10px 0px;
+  }
+  .pharmacy-common-slider .pharmacy-common-box figure img {
+    width: 100%;
+    height: 100px;
+  }
+  .pharmacy-common-slider .pharmacy-common-box .product-details h4 a {
+    font-size: 12px;
+  }
+  .pharmacy-common-slider .pharmacy-common-box .product-details p {
+    font-size: 12px;
+  }
+  .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off {
+    width: 100%;
+  }
+  .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span {
+    font-size: 12px;
+  }
+  .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span {
+    font-size: 12px;
+  }
+}
+.popular-checkup {
+  padding: 20px 0px;
+}
+.popular-checkup h3 {
+  font-size: 18px;
+  color: #065486;
+  margin-bottom: 5px;
+}
+.popular-checkup .madical-test-box {
+  background-color: #e8e5e5;
+  padding: 15px;
+}
+.popular-checkup .madical-test-box img {
+  float: left;
+  margin: -5px 10px 0px 0px;
+  box-shadow: 1px 1px 1px 2px #285ca7;
+}
+.popular-checkup .madical-test-box h5 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.popular-checkup .madical-test-box .madical-test h6 {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+.popular-checkup .madical-test-box .madical-test p {
+  font-size: 14px;
+}/*# sourceMappingURL=lab-index.component.css.map */

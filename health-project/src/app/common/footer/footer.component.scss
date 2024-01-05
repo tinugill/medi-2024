@@ -1,0 +1,76 @@
+footer{width: 100%; min-height: 100px; padding: 30px 0px 0px; background-color: #1f6fae; clear: both; color:#fff;
+    .footer-contant{padding:10px 5px; color:#fff; font-size: 13px;
+        h3{padding: 0px 0px 7px; border-bottom: 1px solid #ccc; font-size: 18px; margin-bottom: 10px;}
+        ul{padding:0px; list-style: none;
+            li{
+                a{ color: #fff; text-decoration: none; padding: 2px 0px; display: block;}
+                a:hover{ color: #f1f1f1;}
+            }
+        }
+    }
+    
+    .social{margin: 0px 0px; width: 75%; float: left;
+        h5{margin: 0;font-size: 16px; padding: 0px 0px 15px 10px;}
+        a {
+            img{ transition: 0.5s; width: 35px; height: 35px; border:2px solid #fff; border-radius: 50%; margin: 3px}
+        }
+        a:hover img{border-radius: 20px;}  
+    }
+
+    .accepted-card{margin: 0px 0px; width: 25%; float: left;
+        h5{margin: 0; font-size: 16px; padding: 0px 0px 15px 10px;}
+        a{margin: 0px 10px; color:#fff; text-decoration: none;
+            img{height: 40px; width: auto;}
+        }
+    }
+    .all-right{width: 88%; margin: 0px auto; height: 50px; line-height: 50px; border-top:1px solid #b1b1bb;
+    margin-top: 10px; text-align: center; font-size: 12px;
+        a{color: #fff;}
+    }
+}
+@media only screen and (max-width: 820px)
+{
+	footer{padding: 30px 0px 0px;
+        .footer-contant{padding:10px 5px;font-size: 13px;
+            ul{
+                li{
+                    a{padding: 2px 0px; display: block;}
+                }
+            }
+        }        
+        .social{width: 50%;
+            a {
+                img{ width: 35px; height: 35px;margin: 3px}
+            } 
+        }    
+        .accepted-card{width: 50%;
+            a{margin: 0px 0px;
+                img{height: 30px; width: 100%;}
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+	footer{padding: 30px 0px 0px;
+        .footer-contant{padding:10px 5px;font-size: 13px;
+            ul{
+                li{
+                    a{padding: 2px 0px; display: block;}
+                }
+            }
+        }        
+        .social{width: 50%;
+            a {
+                img{ width: 35px; height: 35px;margin: 3px}
+            } 
+        }    
+        .accepted-card{width: 50%;
+            a{margin: 0px 0px;
+                img{height: 30px; width: 100%;}
+            }
+        }
+        .all-right{width: 100%;}
+    }
+}

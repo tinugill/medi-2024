@@ -1,0 +1,105 @@
+<div class="head">
+    <div class="container">
+        <header>
+            <!-- <div id="sideNav" href="#" class="toggle">
+                        <i class="fa fa-bars"></i> 
+                    </div> -->
+            <div class="row">
+                <div class="col-md-7 col-sm-7 col-6">
+                    <a class="logo" [routerLink]="['/home']">
+                        <img [src]="['./assets/images/logo.jpg']" alt="Logo" />
+                    </a>
+                </div>
+                <div class="col-md-5 col-sm-5 col-6">
+                    <ul>
+                        <li *ngIf="isLoggedIn">
+                            <span>
+                                {{ myInfo?.name }}
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </li>
+                        <li *ngIf="isLoggedIn">
+                            <span (click)="openVerticallyCentered(logoutModel)" style="cursor: pointer">Logout
+                                <i class="fas fa-sign-out"></i>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div class="bg-dark bg-opacity-10 px-3">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-12 my-2">
+            <div class="patient-name bg-success bg-opacity-75 p-3">
+                <img [src]="['./assets/images/doctor-demo.png']" alt="" />
+                <span>{{ myInfo?.name }}</span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <app-listingstatus [service_id]="6"  *ngIf="myInfo?.buero_type == 'Buero'"></app-listingstatus>
+            <app-listingstatus [service_id]="7"  *ngIf="myInfo?.buero_type != 'Buero'"></app-listingstatus>
+          </div>
+        <div class="col-md-3 col-sm-">
+            <aside>
+                <nav>
+                    <ul>
+
+
+                        <li>
+                            <a href="javascript:void(0)" (click)="changePage('care')">
+                                <span><i class="fas fa-heart"></i></span>Home Care Request
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changePage('pro')">
+                                <span><i class="fas fa-plus"></i></span>Manage Procedures
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changePage('setup-profile')">
+                                <span><i class="fas fa-user"></i></span>Setup Profile
+                            </a>
+                        </li>
+                        <li *ngIf="(indOrBuero == 'Buero' || indOrBuero == '')">
+                            <a href="javascript:void(0)" (click)="changePage('manage-nurses')">
+                                <span><i class="fas fa-user"></i></span>Manage Nurses / Attendent
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="javascript:void(0)" (click)="changePage('blog-list')">
+                                <span><i class="fas fa-rss-square"></i></span>Blog List
+                            </a>
+                        </li> -->
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+        <div class="col-md-9 col-sm-9 col-12">
+            <div class="row">
+
+                <app-dashboard-blog *ngIf="page == 'blog-list'"></app-dashboard-blog>
+                <app-setup-nursing [editId]="editId" *ngIf="page == 'setup-profile'"  [page]="'home'"></app-setup-nursing>
+                <app-nursing-care-request *ngIf="page == 'care'" [pageFor]="'nursing'"></app-nursing-care-request>
+                <app-nursing-procedure-list *ngIf="page == 'pro'"></app-nursing-procedure-list>
+                <app-homecare-nurse *ngIf="page == 'manage-nurses'"></app-homecare-nurse>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #logoutModel let-modal>
+    <div class="modal-body" style="padding-top: 30px">
+        <p class="text-center">Are you sure you want to logout?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+            Cancel
+        </button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="logout()">
+            Logout
+        </button>
+    </div>
+</ng-template>

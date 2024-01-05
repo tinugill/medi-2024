@@ -1,0 +1,22 @@
+<section class="our-specialities-section">
+  <div class="container">
+    <h3 class="heading">Our Specialities</h3>
+    <p>
+      We offer extensive medical procedures to outbound and inbound patients
+      what it is and we are very proud of achievement of our staff, We are all
+      work together to help our all patients for recovery
+    </p>
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-6" *ngFor="let s of sList">
+        <div class="specialities-box">
+          <a [routerLink]="['/doctor-list']" [queryParams]="{ sid: s?.id }">
+            <span *ngIf="s?.image != ''">
+              <img [src]="s?.image | concatBase: 'specialities_image/'" alt="" />
+            </span>
+            <h6>{{ s?.speciality_name }}</h6>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

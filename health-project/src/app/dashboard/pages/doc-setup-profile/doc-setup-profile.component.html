@@ -1,0 +1,452 @@
+<div class="common-record">
+  <div class="d-block p-2">
+    <strong class="text-gray rounded-0">
+      Note: Fill all info to make yourself visible on website
+    </strong>
+  </div>
+  
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="stepExpn == 1" (click)="matStep(1)">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Basic Information </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+
+        <form [formGroup]="setupForm" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Full Name With Prefix</mat-label>
+            <input matInput max="500" min="1" [ngClass]="{
+                'is-invalid': b1 && f1.full_name.errors
+              }" placeholder="Ex: Dr. Anandi Gopal, Dr. Madhusudhan Gupta" formControlName="full_name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Designation</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b1 && f1.designation.errors
+              }" formControlName="designation" name="designation" autocomplete="designation" [matAutocomplete]="auto" />
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredDesi | async" [value]="option.title">
+                {{option.title}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password (Enter if you want to change)</mat-label>
+            <input matInput type="password"  autocomplete="pass2" [ngClass]="{
+                'is-invalid': b1 && f1.password.errors
+              }" formControlName="password" style="border: none; padding: 0px" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select matInput [ngClass]="{
+                'is-invalid': b1 && f1.gender.errors
+              }" formControlName="gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Special">Special</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Home visit?</mat-label>
+            <mat-select matInput max="500" min="1" [ngClass]="{
+                'is-invalid': b1 && f1.home_visit.errors
+              }" formControlName="home_visit" required>
+              <mat-option value="Yes">Yes</mat-option>
+              <mat-option value="No">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Consultancy fee</mat-label>
+            <input matInput type="number" [ngClass]="{
+                'is-invalid': b1 && f1.consultancy_fee.errors
+              }" formControlName="consultancy_fee" style="border: none; padding: 0px" />
+          </mat-form-field>
+          <mat-form-field appearance="fill" *ngIf="f1.home_visit.value == 'Yes'">
+            <mat-label>Consultancy fee (Home)</mat-label>
+            <input matInput type="number" [ngClass]="{
+                'is-invalid': b1 && f1.home_consultancy_fee.errors
+              }" formControlName="home_consultancy_fee" style="border: none; padding: 0px" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Consultancy fee (Online)</mat-label>
+            <input matInput type="number" [ngClass]="{
+                'is-invalid': b1 && f1.online_consultancy_fee.errors
+              }" formControlName="online_consultancy_fee" style="border: none; padding: 0px" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Registration No. of medical council</mat-label>
+            <input matInput type="text" [ngClass]="{
+                'is-invalid': b1 && f1.registration_details.errors
+              }" formControlName="registration_details" style="border: none; padding: 0px" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Medical council </mat-label>
+            <input matInput [ngClass]="{
+              'is-invalid': b1 && f1.medical_counsiling.errors
+            }" formControlName="medical_counsiling" [matAutocomplete]="autoM" required />
+            <mat-autocomplete autoActiveFirstOption #autoM="matAutocomplete">
+              <mat-option *ngFor="let option of filteredMedi | async" [value]="option.title">
+                {{option.title}}
+              </mat-option>
+            </mat-autocomplete>
+
+          </mat-form-field>
+          <label class="mt-2">UPLOAD REGESTRATION PROOF
+            <a href="{{ docInfo?.registration_certificate }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'registration_certificate')" type="file" />
+
+          <mat-form-field appearance="fill">
+            <mat-label>About</mat-label>
+            <textarea matInput max="1000" min="1" [ngClass]="{
+                'is-invalid': b1 && f1.about.errors
+              }" formControlName="about"></textarea>
+          </mat-form-field>
+          <label class="mt-2">UPLOAD YOUR PHOTO (For profile image)
+            <a href="{{ docInfo?.doctor_image }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'doctor_image')" type="file"
+            accept="image/*" />
+          <!-- <label class="mt-2">UPLOAD BANNER IMAGE  (For profile image)
+            <a href="{{ docInfo?.doctor_banner }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'doctor_banner')" type="file"
+            accept="image/*" /> -->
+          <!-- <label class="mt-2">Letterhead Header Image
+            <a href="{{ docInfo?.l_h_image }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'l_h_image')" type="file" />
+          <label class="mt-2">Signature for Letterhead
+            <a href="{{ docInfo?.l_h_sign }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'l_h_sign')" type="file" /> -->
+          <mat-form-field appearance="fill">
+            <mat-label>Experience (in years)</mat-label>
+            <input matInput max="50" min="1" type="number" [ngClass]="{
+                'is-invalid': b1 && f1.experience.errors
+              }" formControlName="experience" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Working Days</mat-label>
+            <mat-select matInput multiple [ngClass]="{
+                'is-invalid': b1 && f1.working_days.errors
+              }" formControlName="working_days" required>
+              <mat-option value="Monday">Monday</mat-option>
+              <mat-option value="Tuesday">Tuesday</mat-option>
+              <mat-option value="Wednesday">Wednesday</mat-option>
+              <mat-option value="Thursday">Thursday</mat-option>
+              <mat-option value="Friday">Friday</mat-option>
+              <mat-option value="Saturday">Saturday</mat-option>
+              <mat-option value="Sunday">Sunday</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <label class="mt-2">UPLOAD LETTERHEAD
+            <a href="{{ docInfo?.letterhead }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'letterhead')" type="file" />
+          <label class="mt-2">UPLOAD SIGNATURE IMAGE
+            <a href="{{ docInfo?.signature }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'signature')" type="file" />
+
+
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  Address
+                  <button class="btn btn-success f-right" type="button"
+                    (click)="openAddressPopup(addressAddModel,'clinic')">Edit</button>
+                </div>
+                <div class="card-body">
+                  {{this.docInfo.address}} {{this.docInfo.city}} {{this.docInfo.pincode}} {{this.docInfo.country}}
+                </div>
+
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  Hospital Address
+                  <button class="btn btn-success f-right" type="button"
+                    (click)="openAddressPopup(addressAddModel,'hospital')">Edit</button>
+
+                </div>
+                <div class="card-body">
+                  {{this.docInfo.address_2}} {{this.docInfo.city_2}} {{this.docInfo.pincode_2}}
+                  {{this.docInfo.country_2}}
+                </div>
+              </div>
+
+            </div> -->
+          </div>
+
+          <div class="col-md-12">
+            <button (click)="onSubmit()"  type="button" class="btn btn-primary">
+              Save and Next
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="stepExpn == 2" (click)="matStep(2)">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Qualification & Speciality </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <form [formGroup]="sForm" novalidate>
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Select Qualification / Degree</mat-label>
+            <mat-select matInput [ngClass]="{
+                'is-invalid': b2 && f2.specialization_id.errors
+              }" formControlName="specialization_id" (selectionChange)="changeSpecialization($event.value)" required
+              multiple>
+              <mat-option [value]="s?.id" *ngFor="let s of spz_list">{{ s?.degree }} ({{ s?.type }})</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Select Qualification / Degree (please type and press enter)</mat-label>
+            <mat-chip-list #chipListQ aria-label="Select Qualification / Degree">
+              <mat-chip *ngFor="let sInfo of selectedQualifi; let i = index" (removed)="remove(sInfo,'qualification')">
+                {{ sInfo?.degree }} 
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="Enter qualification..." #qulfyInput [formControl]="qulfyCtrl"
+                [matAutocomplete]="autoQ" [matChipInputFor]="chipListQ"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event,'qualification')">
+            </mat-chip-list>
+            <mat-autocomplete #autoQ="matAutocomplete" (optionSelected)="selected($event,'qualification')">
+              <mat-option *ngFor="let s of filteredQulfy | async" [value]="s">
+                {{ s?.degree }} 
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <form [formGroup]="eForm" novalidate>
+            <table class="table table-striped mt-4">
+              <thead>
+                <tr>
+                  <td>Qualification</td>
+                  <td>Proof</td>
+                  <td>Upload Doc</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let s of qList">
+                  <td>{{ s?.degree }}</td>
+                  <td *ngIf="s?.link != ''">
+                    <a href="{{ s?.link | concatBase: 'doctor_image/' }}" target="_blank">View</a>
+                  </td>
+                  <td>
+                    <input class="form-control mb13" (change)="onQChange($event, s?.id)" type="file" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Select Specialities (please type and press enter)</mat-label>
+            <mat-chip-list #chipListSp aria-label="Select Specialities">
+              <mat-chip *ngFor="let sInfo of selectedSpl; let i = index" (removed)="remove(sInfo,'speciality')">
+                {{ sInfo?.speciality_name }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="Enter speciality..." #splInput [formControl]="spCtrl" [matAutocomplete]="autoSp"
+                [matChipInputFor]="chipListSp" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event,'speciality')">
+            </mat-chip-list>
+            <mat-autocomplete #autoSp="matAutocomplete" (optionSelected)="selected($event,'speciality')">
+              <mat-option *ngFor="let s of filteredSpl | async" [value]="s">
+                {{ s?.speciality_name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Symptom I See (please type and press enter)</mat-label>
+            <mat-chip-list #chipListSSI aria-label="Symptom I See">
+              <mat-chip *ngFor="let sInfo of selectedSSI; let i = index" (removed)="remove(sInfo,'ssi')">
+                {{ sInfo?.title }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="Enter Symptom..." #ssiInput [formControl]="ssiCtrl" [matAutocomplete]="autossi"
+                [matChipInputFor]="chipListSSI" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event,'ssi')">
+            </mat-chip-list>
+            <mat-autocomplete #autossi="matAutocomplete" (optionSelected)="selected($event,'ssi')">
+              <mat-option *ngFor="let s of filteredSSI | async" [value]="s">
+                {{ s?.title }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Diseases I Treat (please type and press enter)</mat-label>
+            <mat-chip-list #chipListDIT aria-label="Diseases I Treat">
+              <mat-chip *ngFor="let sInfo of selectedDIT; let i = index" (removed)="remove(sInfo,'dit')">
+                {{ sInfo?.title }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="Enter Diseases Name..." #ditInput [formControl]="ditCtrl" [matAutocomplete]="autodit"
+                [matChipInputFor]="chipListDIT" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event,'dit')">
+            </mat-chip-list>
+            <mat-autocomplete #autodit="matAutocomplete" (optionSelected)="selected($event,'dit')">
+              <mat-option *ngFor="let s of filteredDIT | async" [value]="s">
+                {{ s?.title }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Treatment & Surgery I Do (please type and press enter)</mat-label>
+            <mat-chip-list #chipListTI aria-label="Treatment & Surgery I Do">
+              <mat-chip *ngFor="let sInfo of selectedTI; let i = index" (removed)="remove(sInfo,'ti')">
+                {{ sInfo?.title }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="Enter Treatment Name..." #tiInput [formControl]="tiCtrl" [matAutocomplete]="autoti"
+                [matChipInputFor]="chipListTI" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event,'ti')">
+            </mat-chip-list>
+            <mat-autocomplete #autoti="matAutocomplete" (optionSelected)="selected($event,'ti')">
+              <mat-option *ngFor="let s of filteredTI | async" [value]="s">
+                {{ s?.title }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+
+
+          <div class="col-md-12">
+            <button (click)="onSubmitSS()"  type="button" class="btn btn-primary">
+              Save and Next
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="stepExpn == 3" (click)="matStep(3)">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Awards and Membership Info </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <form [formGroup]="aForm" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Membership Details Of Any Association</mat-label>
+            <textarea type="text" matInput [ngClass]="{
+                'is-invalid': b3 && f3.memberships_detail.errors
+              }" formControlName="memberships_detail" style="border: none; padding: 0px" ></textarea>
+          </mat-form-field>
+          <label class="mt-3">Awards & recognition Details</label>
+          <ckeditor [editor]="editor" formControlName="award" [ngClass]="{
+              'is-invalid': b3 && f3.award.errors
+            }" [config]="{
+              placeholder: 'Enter description...',
+              ckfinder: {
+                options: {
+                  resourceType: 'Images'
+                },
+                openerMethod: 'popup',
+                uploadUrl: BACK_END_MAPPING_URL_FOR_SAVE_IMG
+              }
+            }"></ckeditor>
+
+          <div class="col-md-12">
+            <button (click)="onSubmitAward()"  type="button" class="btn btn-primary">
+              Save and Next
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="stepExpn == 4" (click)="matStep(4)" >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Bank Details </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <form [formGroup]="bForm" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Full name in bank account</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.name.errors
+              }" formControlName="name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Bank name</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.bank_name.errors
+              }" formControlName="bank_name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Branch name</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.branch_name.errors
+              }" formControlName="branch_name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>IFSC</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.ifsc.errors
+              }" formControlName="ifsc" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Account Number</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.ac_no.errors
+              }" formControlName="ac_no" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Account Type</mat-label>
+            <mat-select matInput [ngClass]="{
+                'is-invalid': b4 && f4.ac_type.errors
+              }" formControlName="ac_type" required>
+              <mat-option value="saving">Saving</mat-option>
+              <mat-option value="current">Current</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>MICR Code</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.micr_code.errors
+              }" formControlName="micr_code" />
+          </mat-form-field>
+          <label class="mt-2">Cancelled Cheque
+            <a href="{{ bankDetails?.cancel_cheque }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'cancel_cheque')" type="file" />
+
+          <mat-form-field appearance="fill">
+            <mat-label>PAN Number</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b4 && f4.pan_no.errors
+              }" formControlName="pan_no" required />
+          </mat-form-field>
+          <label class="mt-2">PAN Image
+            <a href="{{ bankDetails?.pan_image }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'pan_image')" type="file" />
+          <div class="col-md-12">
+            <button (click)="onSubmitBank()"  type="button" class="btn btn-primary">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<ng-template #addressAddModel let-modal>
+  <div class="modal-body" style="padding-top: 30px">
+    <app-addresss-add [address_type]="address_type" [updating_for]="'doctor'"></app-addresss-add>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+      Cancel
+    </button>
+  </div>
+</ng-template>

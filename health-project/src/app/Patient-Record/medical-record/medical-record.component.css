@@ -1,0 +1,18 @@
+.common-record {
+  font-size: 13px;
+}
+.common-record .text-small {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.date {
+  font-weight: 600;
+  font-size: 22px;
+  color: #fff;
+}
+
+.month {
+  font-weight: 600;
+  color: #fff;
+}/*# sourceMappingURL=medical-record.component.css.map */

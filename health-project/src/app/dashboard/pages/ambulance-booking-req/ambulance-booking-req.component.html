@@ -1,0 +1,75 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0"> Ambulance Requests</strong>
+        <!-- <button printSectionId="section" styleSheetFile="../../../../styles.css" ngxPrint>Print</button> -->
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-warning" *ngIf="doc_id != ''" (click)="backClicked()">
+            Go Back
+        </button>
+    </div>
+    <div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0">
+        <div class="card mb-3" *ngFor="let o of tList">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-9">
+                        Request ID : {{o?.receipt}}
+                    </div> 
+                    <div class="col-md-3">
+                        <app-rating-section [review]="o?.comment"  [user_id]="o?.ambulance_id"  [count]="o?.stars" [service_id]="o?.id" [agent_type]="'Ambulance'" (reviewData)="onReviewData($event)"></app-rating-section>
+                      </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color: ghostwhite;">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            Ambulance Services contact : <a href="tel:{{o?.public_number}}">{{o?.public_number}}</a> <br>
+                            <span class="badge badge-success"> {{o?.ambulance_type}} </span> <br>
+                            For date : <span class="badge badge-info">{{o?.date}}</span> <br>
+                            Name : {{o?.name}} <br>
+                            Mobile : {{o?.mobile}} <br>
+                            Booked for : {{o?.booking_for}} {{o?.booking_type}} <br>
+                            Pickup Address : {{o?.address}} <br>
+                            Drop Address : {{o?.drop_address}} <br>
+                            Payment status : {{o?.payment_status | titlecase}} <br>
+                            Price Paid : {{o?.amount_paid}} <br> 
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <mat-form-field appearance="fill"  *ngIf="myInfo.type == 'Ambulance'">
+                                <mat-label>Status</mat-label>
+                                <mat-select matInput [(ngModel)]="o.status"
+                                    (selectionChange)="changeStatus($event,o?.id)">
+                                    <mat-option value="0">Request not accepted yet</mat-option>
+                                    <mat-option value="1">Request Accepted </mat-option>
+                                    <mat-option value="2">Out for service</mat-option>
+                                    <mat-option value="3">Reached at location</mat-option>
+                                    <mat-option value="4">Request Completed  </mat-option>
+                                    <mat-option value="5">Request cancelled  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <span class="badge badge-success" *ngIf="myInfo.type != 'Ambulance'">
+                                 {{
+                                    o.status == '0' ? 'Request not accepted yet' : 
+                                    o.status == '1' ? 'Request Accepted' :
+                                    o.status == '2' ? 'Out for service' :
+                                    o.status == '3' ? 'Reached at location' :
+                                    o.status == '4' ? 'Request Completed  ' : 'Request cancelled'
+                                 }} 
+                            </span> 
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+             
+        </div>
+
+
+    </div>
+</div>
+<div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0" *ngIf="tList?.length == 0">
+    <p>No record found</p>
+</div>

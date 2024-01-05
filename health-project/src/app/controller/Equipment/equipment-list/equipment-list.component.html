@@ -1,0 +1,39 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<section class="pharmacy-slider-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12" style="min-height:500px">
+                <h3 class="heading mt-3">Total Product ({{pList?.length}})</h3>
+                <div class="row m0">
+                    <div *ngFor="let p of pList" class="col-md-3 shadow mt-2 mb-2 pt-2 pb-2">
+                        <div class="pharmacy-common-box">
+                            <figure>
+                                <a [routerLink]="['/equipment/i/' + p?.id]">
+                                    <img [src]="p?.image | concatBase: 'uploads/'" width="100%" />
+                                </a>
+                            </figure>
+                            <div class="product-details">
+                                <h4>
+                                    <a [routerLink]="['/equipment/i/' + p?.id]">{{
+                                        p?.item_name
+                                        }}</a>
+                                </h4>
+                                <div class="price-add-cart">
+                                    <a [routerLink]="['/equipment/i/' + p?.id]">
+                                        <button class="btn btn-success w100">
+                                            View Details
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<app-top-footer></app-top-footer>
+<app-footer></app-footer>

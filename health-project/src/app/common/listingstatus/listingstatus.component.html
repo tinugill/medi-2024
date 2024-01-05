@@ -1,0 +1,25 @@
+<div class="alert alert-warning col-md-12" role="alert" *ngIf="info && (myStatus == '' || !myStatus ) && !selectPage">
+    Your listing is inactive <button class="btn btn-primary" style="float: right;margin-top: -9px;" (click)="nextNow()">Pay Now </button>
+</div>
+<div class="alert alert-success col-md-12" role="alert" *ngIf="info && myStatus != '' && !selectPage">
+    Listing expiry date : {{myStatus?.end_date | date:'longDate'}} ({{calculateDiff(myStatus?.end_date)}} days left)
+</div>
+<div class="alert alert-warning col-md-12" role="alert" [hidden]="!selectPage">
+    <mat-form-field appearance="fill" style="width: 80%;">
+        <mat-label>Time period</mat-label>
+        <mat-select matInput  [(ngModel)]="for_count" (selectionChange)="changePeriod()"  required>
+          <mat-option value="1">30 Days (INR {{info?.price - info?.discount}})</mat-option>
+          <mat-option value="4">4 Months (INR {{info?.price_4 - info?.discount_4}})</mat-option>
+          <mat-option value="6">6 Month (INR {{info?.price_6 - info?.discount_6}})</mat-option>
+          <mat-option value="12">1 Year (INR {{info?.price_12 - info?.discount_12}})</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div style="display:flex; width:100%">
+        <mat-form-field appearance="fill">
+          <mat-label>Coupon Code</mat-label>
+          <input matInput  [(ngModel)]="couponCode" type="text" />
+        </mat-form-field>
+        <button class="btn btn-success" style="float: right;margin-top: 0px;height: 50px " (click)="applyNow()">Apply </button>
+      </div>
+    <button class="btn btn-primary" style="float: right;margin-top: -9px;" (click)="payNow()">Checkout {{finalAmount}}/- </button>
+</div>

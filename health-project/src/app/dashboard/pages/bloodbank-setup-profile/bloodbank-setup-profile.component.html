@@ -1,0 +1,142 @@
+<div class="common-record">
+  <div class="d-block p-2">
+    <strong class="text-gray rounded-0">
+      Note: Fill all info to make yourself visible on website
+    </strong>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="stepExpn == 1">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Basic Information </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <form [formGroup]="setupForm" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Registered name</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b1 && f1.name.errors
+              }" formControlName="name" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Owner Name</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b1 && f1.owner_name.errors
+              }" formControlName="owner_name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Contact Number (For Users)</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b1 && f1.public_number.errors
+              }" type="number" formControlName="public_number" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>About / Details</mat-label>
+            <textarea matInput [ngClass]="{
+                'is-invalid': b1 && f1.about.errors
+              }" formControlName="about"></textarea>
+          </mat-form-field>
+
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  Bloodbank Address
+                  <button class="btn btn-success f-right" type="button" (click)="openAddressPopup(addressAddModel)">Edit</button>
+                </div>
+                <div class="card-body">
+                  {{this.Linfo.address}} {{this.Linfo.city}} {{this.Linfo.pincode}} {{this.Linfo.country}}
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Working Days</mat-label>
+            <mat-select [ngClass]="{
+                'is-invalid': b1 && f1.days.errors
+              }" formControlName="days" multiple>
+              <mat-option value="Monday">Monday</mat-option>
+              <mat-option value="Tuesday">Tuesday</mat-option>
+              <mat-option value="Wednesday">Wednesday</mat-option>
+              <mat-option value="Thursday">Thursday</mat-option>
+              <mat-option value="Friday">Friday</mat-option>
+              <mat-option value="Saturday">Saturday</mat-option>
+              <mat-option value="Sunday">Sunday</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <label class="mt-2">UPLOAD LOGO
+            <a href="{{ Linfo?.image }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'image')" type="file" accept="image/*" />
+
+          <mat-form-field appearance="fill">
+            <mat-label>Liscence Number</mat-label>
+            <textarea matInput max="1000" min="1" [ngClass]="{
+                'is-invalid': b1 && f1.liscence_no.errors
+              }" formControlName="liscence_no" required></textarea>
+          </mat-form-field>
+
+          <label class="mt-2">UPLOAD REGESTRATION PROOF
+            <a href="{{ Linfo?.liscence_file }}" target="_blank">View File</a></label>
+          <input class="form-control mb13" (change)="onFileChange($event, 'liscence_file')" type="file"
+            accept="image/*" />
+
+          <div class="col-md-12">
+            <button (click)="onSubmit()"  type="button" class="btn btn-primary">UPDATE</button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="stepExpn == 2">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Login & Contact Details </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <form [formGroup]="lForm" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Contact person name</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b2 && f2.cp_name.errors
+              }" formControlName="cp_name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b2 && f2.email.errors
+              }" formControlName="email" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Mobile number</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b2 && f2.mobile.errors
+              }" formControlName="mobile" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password (Enter you want to change)</mat-label>
+            <input matInput [ngClass]="{
+                'is-invalid': b2 && f2.password.errors
+              }" formControlName="password" />
+          </mat-form-field>
+          <div class="col-md-12">
+            <button (click)="onSubmitCp()"  type="button" class="btn btn-primary">
+              UPDATE
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<ng-template #addressAddModel let-modal>
+  <div class="modal-body" style="padding-top: 30px">
+    <app-addresss-add [updating_for]="'bloodbank'"></app-addresss-add>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+      Cancel
+    </button>
+  </div>
+</ng-template>

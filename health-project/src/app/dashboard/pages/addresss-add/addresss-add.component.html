@@ -1,0 +1,49 @@
+<div class="row">
+    <label>Enter full address</label>
+    <div class="input-group">
+
+        <input type="text" class="form-control"
+            placeholder="Enter full address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+            [(ngModel)]="addressData.full_address">
+
+    </div>
+   
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Address: {{address}} <br> -->
+            Latitude: {{markers.lat}} <br>
+            Longitude: {{markers.lng}}
+        </div>
+        <div class="col-md-4 text-center" style="display: flex ;">
+            <button class="input-group-text" style="margin: auto;" (click)="updateAddressInfo()">Update</button>
+        </div>
+    </div>
+    <label>Search address (for map location)</label>
+    <div class="input-group">
+
+        <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+            placeholder="Search Your Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+            #search>
+
+    </div>
+
+</div>
+
+<agm-map [latitude]="markers.lat" [longitude]="markers.lng" [zoom]="zoom" [disableDefaultUI]="false"
+    [zoomControl]="true" (mapClick)="mapClicked($event)">
+
+    <agm-marker (markerClick)="clickedMarker(markers.label)" [latitude]="markers.lat" [longitude]="markers.lng"
+        [label]="markers.label" [markerDraggable]="markers.draggable" (dragEnd)="markerDragEnd(markers, $event)"
+        [agmFitBounds]="true">
+
+        <agm-info-window>
+            <strong>Address: {{address}} <br> Lat: {{markers.lat}} <br> Lng: {{markers.lng}}</strong>
+        </agm-info-window>
+
+    </agm-marker>
+
+    <agm-circle [latitude]="markers.lat + 0.3" [longitude]="markers.lng" [radius]="5000" [fillColor]="'red'"
+        [circleDraggable]="true" [editable]="true">
+    </agm-circle>
+
+</agm-map>

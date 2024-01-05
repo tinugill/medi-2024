@@ -1,0 +1,140 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0">
+            Note: Fill all info to make yourself visible on website
+        </strong>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" (click)="editInfo()" *ngIf="p == 'list'">Add New</button>
+                    <button class="btn btn-warning" (click)="p = 'list'" *ngIf="p == 'edit'">Cancel</button>
+                </div>
+                <table class="table table-striped mt-3" *ngIf="p == 'list'">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Regis No</th>
+                            <th>Ambulance Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of list; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{d?.regis_no}}</td>
+                            <td>{{d?.ambulance_type}}</td>
+                            <td>
+                                <span [class]="'badge badge-'+( d?.is_deleted == '0' ? 'success' : 'danger')">{{d?.is_deleted == '0' ? 'Active' : 'In Active'}}</span>
+                            </td>
+                            <td><button class="btn btn-primary" (click)="editInfo(d?.id)">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <form class="mt-2" [formGroup]="setupForm" novalidate *ngIf="p == 'edit'">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ambulance Type</mat-label>
+                        <mat-select matInput [ngClass]="{ 'is-invalid': b1 && f1.ambulance_type.errors
+                            }" formControlName="ambulance_type" placeholder="Eg: Air ambulance, ICU Ambulance, Cardiac Ambulance etc. " required>
+                            <mat-option *ngFor="let a of ambList" [value]="a.title">{{a.title}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Registration Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.regis_no.errors
+                }" formControlName="regis_no" required />
+                    </mat-form-field>
+
+                    <label class="mt-2">UPLOAD REGISTRATION PROOF
+                        <a href="{{ info?.regis_proof }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'regis_proof')" type="file"
+                        accept="image/*" />
+
+                    
+                        <mat-form-field appearance="fill">
+                            <mat-label>Charges per day (in inr)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                      'is-invalid': b1 && f1.charges_per_day.errors
+                    }" formControlName="charges_per_day"  required />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Discount per day (in %)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                      'is-invalid': b1 && f1.discount_per_day.errors
+                    }" formControlName="discount_per_day"  required />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Charges per km (in inr)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                      'is-invalid': b1 && f1.charges_per_km.errors
+                    }" formControlName="charges_per_km"  required />
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Discount per km (in %)</mat-label>
+                            <input matInput type="number" [ngClass]="{
+                      'is-invalid': b1 && f1.discount_per_km.errors
+                    }" formControlName="discount_per_km"  required />
+                        </mat-form-field>
+
+                    <label class="mt-2">AMBULANCE IMAGE 1
+                        <a href="{{ info?.img_1 }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'img_1')" type="file"
+                        accept="image/*" />
+
+                    <label class="mt-2">AMBULANCE IMAGE 2
+                        <a href="{{ info?.img_2 }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'img_2')" type="file"
+                        accept="image/*" />
+
+                    <label class="mt-2">AMBULANCE IMAGE 3
+                        <a href="{{ info?.img_3 }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'img_3')" type="file"
+                        accept="image/*" />
+
+                    <label class="mt-2">AMBULANCE IMAGE 4
+                        <a href="{{ info?.img_4 }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'img_4')" type="file"
+                        accept="image/*" />
+
+                    <label class="mt-2">AMBULANCE IMAGE 5
+                        <a href="{{ info?.img_5 }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'img_5')" type="file"
+                        accept="image/*" />
+                    <label class="mt-2">AMBULANCE IMAGE 6
+                        <a href="{{ info?.img_6 }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'img_6')" type="file"
+                        accept="image/*" />
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Status</mat-label>
+                        <mat-select matInput formControlName="is_deleted" required>
+                            <mat-option value="0">Active</mat-option>
+                            <mat-option value="1">Delete</mat-option> 
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="col-md-12 mt-2">
+                        <button (click)="onSubmit()"  type="button" class="btn btn-primary">SAVE</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,85 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0">
+            Note: Fill all info to make yourself visible on website
+        </strong>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" (click)="editInfo()" *ngIf="p == 'list'">Add New</button>
+                    <button class="btn btn-warning" (click)="p = 'list'" *ngIf="p == 'edit'">Cancel</button>
+                </div>
+                <table class="table table-striped mt-3" *ngIf="p == 'list'">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Driver Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of list; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{d?.driver_name}}</td>
+                            <td>
+                                <span [class]="'badge badge-'+( d?.is_deleted == '0' ? 'success' : 'danger')">{{d?.is_deleted == '0' ? 'Active' : 'In Active'}}</span>
+                            </td>
+                            <td><button class="btn btn-primary" (click)="editInfo(d?.id)">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <form class="mt-2" [formGroup]="setupForm" novalidate *ngIf="p == 'edit'">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Driver Name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.driver_name.errors
+                }" formControlName="driver_name" required />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Driver's Mobile Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.mobile.errors
+                }" formControlName="mobile" required />
+                    </mat-form-field>
+
+                    <label class="mt-2">UPLOAD Driver's Image
+                        <a href="{{ info?.image }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'image')" type="file"
+                        accept="image/*" />
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Liscense Number</mat-label>
+                        <input matInput [ngClass]="{
+                    'is-invalid': b1 && f1.liscence_no.errors
+                }" formControlName="liscence_no" required />
+                    </mat-form-field>
+
+                    <label class="mt-2">LISCENCE PROOF
+                        <a href="{{ info?.liscence_photo }}" target="_blank">View File</a>
+                    </label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'liscence_photo')" type="file"
+                        accept="image/*" />
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Status</mat-label>
+                        <mat-select matInput formControlName="is_deleted" required>
+                            <mat-option value="0">Active</mat-option>
+                            <mat-option value="1">Delete</mat-option> 
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="col-md-12 mt-2">
+                        <button (click)="onSubmit()"  type="button" class="btn btn-primary">UPDATE</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

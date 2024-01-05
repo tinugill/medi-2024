@@ -1,0 +1,231 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0">
+            Note: Fill all info to make yourself visible on website
+        </strong>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="stepExpn == 1">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Basic Information </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <form [formGroup]="setupForm" novalidate>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Registered Name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.name.errors
+                }" formControlName="name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Owner Name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.owner_name.errors
+                }" formControlName="owner_name" required />
+                    </mat-form-field>
+                    <label class="mt-2">UPLOAD OWNER'S AADHAR
+                        <a href="{{ Linfo?.owner_id }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'owner_id')" type="file"
+                        accept="image/*" />
+                    <mat-form-field appearance="fill">
+                        <mat-label>Partner Name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b1 && f1.partner_name.errors
+                }" formControlName="partner_name" />
+                    </mat-form-field>
+                    <label class="mt-2">UPLOAD PARTNER'S ID
+                        <a href="{{ Linfo?.partner_id }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'partner_id')" type="file"
+                        accept="image/*" />
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>About</mat-label>
+                        <textarea matInput [ngClass]="{
+                    'is-invalid': b1 && f1.about.errors
+                  }" formControlName="about"></textarea>
+                    </mat-form-field>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    Address
+                                    <button class="btn btn-success f-right" type="button"
+                                        (click)="openAddressPopup(addressAddModel)">Edit</button>
+                                </div>
+                                <div class="card-body">
+                                    {{this.Linfo.address}} {{this.Linfo.city}} {{this.Linfo.pincode}}
+                                    {{this.Linfo.country}}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <label class="mt-2">UPLOAD LOGO (For profile image)
+                        <a href="{{ Linfo?.image }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'image')" type="file"
+                        accept="image/*" />
+
+                    <label class="mt-2">UPLOAD BANNER (For profile image)
+                        <a href="{{ Linfo?.banner }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'banner')" type="file"
+                        accept="image/*" /> -->
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>GSTIN Number</mat-label>
+                        <input matInput max="1000" min="1" [ngClass]="{
+                  'is-invalid': b1 && f1.gstin.errors
+                }" formControlName="gstin" required />
+                    </mat-form-field>
+
+                    <label class="mt-2">UPLOAD GSTIN PROOF
+                        <a href="{{ Linfo?.gstin_proof }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'gstin_proof')" type="file" />
+
+
+                    <!-- <mat-form-field appearance="fill">
+                        <mat-label>TIN Number</mat-label>
+                        <input matInput max="1000" min="1" [ngClass]="{
+                  'is-invalid': b1 && f1.tin.errors
+                }" formControlName="tin" required />
+                    </mat-form-field>
+                    <label class="mt-2">UPLOAD TIN PROOF
+                        <a href="{{ Linfo?.tin_proof }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'tin_proof')" type="file"
+                        accept="image/*" /> -->
+
+                    <label class="mt-2">UPLOAD REGISTRATION CERTIFICATE
+                        <a href="{{ Linfo?.registration_certificate }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'registration_certificate')"
+                        type="file" accept="image/*" />
+
+                    <div class="col-md-12">
+                        <button (click)="onSubmit()"  type="button" class="btn btn-primary">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="stepExpn == 2">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Login & Contact Details </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <form [formGroup]="lForm" novalidate>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact person name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.cp_name.errors
+                }" formControlName="cp_name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.email.errors
+                }" formControlName="email" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Mobile number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.mobile.errors
+                }" formControlName="mobile" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password (Enter you want to change)</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b2 && f2.password.errors
+                }" formControlName="password" />
+                    </mat-form-field>
+                    <div class="col-md-12">
+                        <button (click)="onSubmitCp()"  type="button" class="btn btn-primary">
+                            UPDATE
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="stepExpn == 3">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Bank Details </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <form [formGroup]="bForm" novalidate>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Full name in bank account</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.name.errors
+                }" formControlName="name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Bank name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.bank_name.errors
+                }" formControlName="bank_name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Branch name</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.branch_name.errors
+                }" formControlName="branch_name" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>IFSC</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.ifsc.errors
+                }" formControlName="ifsc" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Account Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.ac_no.errors
+                }" formControlName="ac_no" required />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Account Type</mat-label>
+                        <mat-select matInput [ngClass]="{
+                  'is-invalid': b4 && f4.ac_type.errors
+                }" formControlName="ac_type" required>
+                            <mat-option value="saving">Saving</mat-option>
+                            <mat-option value="current">Current</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>MICR Code</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.micr_code.errors
+                }" formControlName="micr_code" />
+                    </mat-form-field>
+                    <label class="mt-2">Cancelled Cheque
+                        <a href="{{ Linfo?.cancel_cheque }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'cancel_cheque')" type="file" />
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>PAN Number</mat-label>
+                        <input matInput [ngClass]="{
+                  'is-invalid': b4 && f4.pan_no.errors
+                }" formControlName="pan_no" required />
+                    </mat-form-field>
+                    <label class="mt-2">PAN Image
+                        <a href="{{ Linfo?.pan_image }}" target="_blank">View File</a></label>
+                    <input class="form-control mb13" (change)="onFileChange($event, 'pan_image')" type="file" />
+                    <div class="col-md-12">
+                        <button (click)="onSubmitBank()"  type="button" class="btn btn-primary">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+
+<ng-template #addressAddModel let-modal>
+    <div class="modal-body" style="padding-top: 30px">
+        <app-addresss-add [updating_for]="'dealer'"></app-addresss-add>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+            Cancel
+        </button>
+    </div>
+</ng-template>

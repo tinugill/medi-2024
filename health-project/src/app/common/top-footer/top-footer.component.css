@@ -1,0 +1,100 @@
+.top-footer-section {
+  padding: 5px 0px;
+  background-color: #f8f8f9;
+}
+.top-footer-section .top-footer-box {
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
+  text-align: left;
+}
+.top-footer-section .top-footer-box span {
+  width: 40px;
+  height: 40px;
+  float: left;
+  background-color: #00ab65;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  border-radius: 50%;
+}
+.top-footer-section .top-footer-box span i {
+  line-height: 40px;
+}
+.top-footer-section .top-footer-box h6 {
+  font-size: 14px !important;
+  margin: 3px 0px 5px 50px;
+  color: #000;
+}
+.top-footer-section .top-footer-app {
+  width: 100%;
+  height: auto;
+  padding: 0px 15px;
+}
+.top-footer-section .top-footer-app h6 {
+  width: 100px;
+  font-size: 14px !important;
+}
+.top-footer-section .top-footer-app a {
+  width: 100px;
+  margin: 0px 5px 0px 0px;
+  float: left;
+}
+.top-footer-section .top-footer-app a img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 820px) {
+  .top-footer-section {
+    padding: 5px 0px;
+  }
+  .top-footer-section .top-footer-box {
+    padding: 10px 5px;
+  }
+  .top-footer-section .top-footer-box span {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+  .top-footer-section .top-footer-box h6 {
+    font-size: 14px;
+    margin: 3px 0px 5px 37px;
+  }
+  .top-footer-section .top-footer-app {
+    width: 100%;
+    height: auto;
+    padding: 0px 15px;
+  }
+  .top-footer-section .top-footer-app h6 {
+    width: 100px;
+    font-size: 14px;
+  }
+  .top-footer-section .top-footer-app a {
+    width: 45%;
+    margin: 0px 5px 0px 0px;
+    float: left;
+  }
+  .top-footer-section .top-footer-app a img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .top-footer-section .top-footer-box {
+    padding: 10px 5px;
+  }
+  .top-footer-section .top-footer-box span {
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+  .top-footer-section .top-footer-box span i {
+    line-height: 27px;
+  }
+  .top-footer-section .top-footer-box h6 {
+    font-size: 11px;
+    margin: 3px 0px 5px 33px;
+  }
+  .top-footer-section .top-footer-app {
+    display: none;
+  }
+}/*# sourceMappingURL=top-footer.component.css.map */

@@ -1,0 +1,338 @@
+section {
+  border-bottom: 10px solid #f0f0f0;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.product-detail {
+  display: inline-block;
+}
+.product-detail ul {
+  width: 20%;
+  float: left;
+  padding: 0px;
+  z-index: 1;
+  border-bottom: 0px solid #ddd;
+}
+.product-detail ul li {
+  float: none;
+  width: 100%;
+}
+.product-detail ul li a {
+  margin-right: 2px;
+  margin-bottom: 0px;
+  padding: 0px;
+  border-radius: 0px;
+}
+.product-detail ul li a img {
+  width: 100%;
+  height: 73px;
+  border: 1px solid #ccc;
+}
+.product-detail ul li .active {
+  border: 1px solid #0072cb;
+}
+.product-detail .tab-content {
+  float: left;
+  width: 80%;
+  height: 300px;
+  padding: 0px 40px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.product-detail .tab-content img {
+  width: auto;
+  height: 292px;
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 820px) {
+  .product-detail {
+    display: inline-block;
+  }
+  .product-detail ul {
+    width: 20%;
+  }
+  .product-detail ul li a {
+    margin-right: 2px;
+  }
+  .product-detail ul li a img {
+    width: 100%;
+    height: 48px;
+  }
+  .product-detail .tab-content {
+    float: left;
+    width: 80%;
+    height: 200px;
+    padding: 0px 10px;
+  }
+  .product-detail .tab-content img {
+    width: 100%;
+    height: 192px;
+  }
+}
+.product-name h4 {
+  padding: 0px;
+  font-size: 20px;
+}
+.product-name h5 {
+  padding: 5px 0px;
+  font-size: 14px;
+}
+.product-name .additional-discount {
+  width: 100%;
+  position: relative;
+  border: 1px dashed #ccc;
+  padding: 7px;
+  display: flex;
+  margin-bottom: 5px;
+}
+.product-name .additional-discount .ad-img {
+  width: 25%;
+  float: left;
+}
+.product-name .additional-discount .ad-img p {
+  margin-bottom: 3px;
+}
+.product-name .additional-discount .ad-img img {
+  width: 60%;
+  min-height: 51px;
+  max-height: 60px;
+}
+.product-name .additional-discount .ad-price {
+  width: 75%;
+  float: left;
+  text-align: right;
+}
+.product-name .additional-discount .ad-price h5 {
+  margin: 0px;
+  padding: 5px 0px;
+  font-weight: 600;
+}
+.product-name .additional-discount .ad-price h6 {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.product-name .additional-discount .ad-price h6 .off {
+  color: #067e46;
+}
+.product-name .additional-discount .ad-price h6 .mrp {
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+.product-name .additional-discount a {
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 820px) {
+  .product-name h4 {
+    font-size: 14px;
+  }
+  .product-name h5 {
+    font-size: 12px;
+  }
+  .product-name .additional-discount .ad-img {
+    width: 45%;
+  }
+  .product-name .additional-discount .ad-img p {
+    margin-bottom: 3px;
+    font-size: 12px;
+  }
+  .product-name .additional-discount .ad-img img {
+    width: 50%;
+    min-height: 40px;
+    max-height: 50px;
+  }
+  .product-name .additional-discount .ad-price {
+    width: 55%;
+  }
+  .product-name .additional-discount .ad-price h5 {
+    font-size: 12px;
+  }
+  .product-name .additional-discount .ad-price h6 {
+    margin-bottom: 7px;
+    font-size: 12px;
+  }
+  .product-name .additional-discount .ad-price h6 .mrp {
+    margin-right: 5px;
+  }
+  .product-name .additional-discount .ad-price a {
+    font-size: 10px;
+  }
+}
+.product-price {
+  padding: 10px;
+  width: 100%;
+  box-shadow: 1px 3px 10px #ccc;
+  display: inline-block;
+  margin: 0px;
+  padding: 10px;
+  font-weight: 600;
+}
+.product-price h5 {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.product-price h5 .off {
+  color: #067e46;
+}
+.product-price h5 .mrp {
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+.product-price .quantity span {
+  padding-right: 20px;
+  display: inline-block;
+  font-size: 14px;
+}
+.product-price .quantity span span select {
+  width: 75px;
+}
+.product-price .quantity span a {
+  float: right;
+}
+
+@media only screen and (max-width: 820px) {
+  .product-price {
+    padding: 10px;
+    width: 100%;
+    padding: 10px;
+  }
+  .product-price h4 {
+    font-size: 16px;
+    margin: 0px;
+  }
+  .product-price h5 {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .product-price h5 .mrp {
+    margin-right: 10px;
+  }
+  .product-price .quantity span {
+    padding-right: 10px;
+    font-size: 12px;
+  }
+  .product-price .quantity span span select {
+    width: 75px;
+  }
+  .product-price .quantity a {
+    margin-top: 10px;
+    display: block;
+  }
+}
+.product-overview h3 {
+  padding: 5px 0px 15px;
+  font-size: 18px;
+}
+.product-overview .nav {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  top: 0;
+  font-size: 14px;
+  z-index: 99;
+  padding: 0px 0px;
+}
+.product-overview .nav li a {
+  position: relative;
+  display: block;
+  padding: 3px 15px;
+}
+.product-overview .tab-content {
+  padding-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .product-overview .nav {
+    width: -moz-max-content;
+    width: max-content;
+    height: auto;
+  }
+  .product-overview .nav li a {
+    padding: 3px 15px;
+  }
+}
+.pharmacy-slider-section h3 {
+  margin: 0px 5px;
+  font-size: 18px;
+  color: #0071cb;
+  font-weight: 500;
+}
+.pharmacy-slider-section .pharmacy-common-slider {
+  padding: 10px 0px;
+  width: 100%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box {
+  position: relative;
+  min-height: 150px;
+  width: 97%;
+  float: left;
+  border: 1px solid #e4dbdb;
+  padding: 5px;
+  margin: 10px 0px;
+  transition: 0.5s;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box figure {
+  width: 100%;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box figure img {
+  width: 100%;
+  height: 150px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details {
+  width: 100%;
+  margin-left: 0px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details h4 {
+  margin: 0px;
+  padding-top: 7px;
+  line-height: 16px;
+  margin-bottom: 7px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details h4 a {
+  padding: 0px;
+  font-size: 13px;
+  margin: 5px 0px;
+  color: #000;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details p {
+  margin: 0px;
+  font-size: 14px;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off {
+  width: 100%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span {
+  padding: 5px 0;
+  font-size: 14px;
+  color: hsla(0, 0%, 46%, 0.87);
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off span :first-child {
+  text-decoration: line-through;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .mrp_off .off {
+  color: #4caf50;
+  font-weight: 600;
+  margin-left: 20%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart {
+  width: 100%;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span {
+  width: 49%;
+  font-size: 14px;
+  padding: 5px 0px;
+  font-weight: 600;
+}
+.pharmacy-slider-section .pharmacy-common-slider .pharmacy-common-box .product-details .price-add-cart span :last-child {
+  float: right;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  width: 100%;
+}/*# sourceMappingURL=equipment-info.component.css.map */

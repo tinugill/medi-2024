@@ -1,0 +1,268 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<div id="slider" class="carousel" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img [src]="['./assets/images/lab-list-banner.jpg']" alt="" class="d-block" />
+    </div>
+  </div>
+  <div class="dr-profile">
+    <figure>
+      <img [src]="dInfo?.image | concatBase: 'laboratorist_image/'" alt="" />
+    </figure>
+    <div class="dr-details">
+      <h5>{{ dInfo?.name }}</h5>
+      <div class="rating">
+        <span><i class="fas fa-star"></i> {{stars || 0.0}}</span>
+        <a  [routerLink]="['/review-of/Labtest/', dInfo?.id]" target="_blank">reviews: {{dInfo?.reviews?.total_reviews || 0}}</a> 
+      </div>
+      <p>
+        <i class="fas fa-map-marker-alt"></i> {{ dInfo?.address }}
+        {{ dInfo?.city }} {{ dInfo?.pincode }} {{ dInfo?.country }}
+      </p>
+      <div class="col-12 p-0">
+        <app-rating-info [star]="stars" [slug]="''"></app-rating-info>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider section end -->
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-9 col-12">
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-{{tab == 'test' ? 'success' : 'light'}}" (click)="tab = 'test'">Test</button>
+            <button class="btn btn-{{tab == 'package' ? 'success' : 'light'}}"(click)="tab = 'package'">Packages</button>
+          </div>
+          <div class="col-md-12 test-name">
+            <ng-container *ngIf="tab == 'test'">
+            <div class="row">
+              <div class="col-md-12"><h3>Tests:</h3></div>
+              <div class="col-md-3" *ngFor="let t of tList">
+                <div class="card">
+                  <!-- <div class="card-header text-center">
+                    <img [src]="t?.image | concatBase: 'laboratorist_image/'"
+                      style="width: auto; height:100px; max-width: 100%" />
+                  </div> -->
+                  <div class="card-body">
+                    <label class="form-check-label">
+                      {{ t?.test_name }}
+                    </label>
+                    <div>
+                      <del><small>{{ t?.price }}</small></del>
+                      {{ (t?.price - (t?.discount*t?.price/100)) }} Rs.
+                    </div>
+                  </div>
+                  <div class="card-footer text-center">
+                    <button *ngIf="!isNotExist(t?.id, 'test')" class="btn btn-warning rounded-pill
+                    " (click)="removeOrder(t?.id, 'test')">Remove</button>
+                    <button *ngIf="isNotExist(t?.id, 'test')" (click)="viewTestDetails(t,'buy')" class="btn btn-success rounded-pill">ADD</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </ng-container>
+            <ng-container *ngIf="tab == 'package'">
+            <div class="col-md-12"><h3>Packages:</h3></div>
+            <div class="card mt-2" *ngFor="let p of pList">
+              <div class="card-header">
+                <button *ngIf="!isNotExist(p?.id, 'labpackage')" class="btn btn-warning f-right rounded-pill" (click)="removeOrder(p?.id, 'labpackage')">Remove</button>
+                <button (click)="viewTestDetails(p,'labpackage')" *ngIf="isNotExist(p?.id, 'labpackage')"
+                  class="btn btn-success f-right rounded-pill">ADD</button>
+                <span class="font18">{{p?.package_name}}</span> <br>
+                Price : <span>
+                  <b>
+                    <del><small>{{ p?.price }}</small></del>
+                    {{ (p?.price - (p?.discount * p?.price/100))  }} Rs.
+                  </b>
+                </span>
+
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-3" *ngFor="let t of p?.tList">
+                    <div class="card">
+                      <!-- <div class="card-header text-center">
+                        <img [src]="t?.image | concatBase: 'laboratorist_image/'"
+                          style="width: auto; height:100px; max-width: 100%" />
+                      </div> -->
+                      <div class="card-body">
+                        <label class="form-check-label">
+                          {{ t?.test_name }}
+                        </label>
+                      </div>
+                      <div class="card-footer text-center">
+                        <button (click)="viewTestDetails(t,'view', ltiModel)" class="btn btn-warning rounded-pill">View Info</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          </div>
+
+        </div>
+        <h4 class="heading">About {{ dInfo?.name }}</h4>
+        <div class="profile-details-box">
+          <div [innerHtml]="dInfo?.about"></div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-12">
+        <div class="widget" *ngIf="this.cartArray.length > 0">
+          <div class="widget-content"> 
+            <h4>Order Info</h4>
+             <table class="table table-responsive">
+              <tbody>
+                <tr *ngFor="let d of this.cartArray">
+                  <td>{{d?.title}}</td>
+                  <td>{{d?.price}} INR</td>
+                </tr> 
+                <tr>
+                  <td colspan="2">
+                    <button class="btn btn-success rounded-pill" type="button" (click)="openBuyModel(ltiModel)">BUY NOW</button>
+                  </td>
+                </tr>
+              </tbody>
+             </table>
+          </div>
+          <!-- /.widget-content -->
+        </div>
+        <div class="widget">
+          <div class="widget-content">
+            <div class="widget-icon">
+              <img [src]="['./assets/images/icon/healthcare-prof.png']" alt="" />
+            </div>
+            <h4>Open on days</h4>
+            <ul class="list-unstyled mb-0">
+              <li>{{ dInfo?.days_string }}</li>
+              <li>Accredition : <span><a [href]="dInfo?.accredition_certificate | concatBase: 'laboratorist_image/'"
+                    target="_blank">{{
+                    dInfo?.accredition_details }}</a></span></li>
+            </ul>
+          </div>
+          <!-- /.widget-content -->
+        </div>
+
+        <div class="widget emergency-call-bg">
+          <div class="widget-content">
+            <div class="widget-icon">
+              <img [src]="['./assets/images/icon/emergency-call.png']" alt="" />
+            </div>
+            <h4>Emergency Cases</h4>
+            <p>
+              Please feel welcome to contact our friendly reception staff with
+              any general or medical enquiry call us.
+            </p>
+            <a href="tel:8585930185" class="phone__number">
+              <i class="fas fa-phone-volume"></i> <span>858-593-0185</span>
+            </a>
+          </div>
+          <!-- /.widget-content -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #ltiModel let-modal>
+  <div class="modal-body" style="padding-top: 30px">
+    <h4 class="text-center"> Details</h4>
+    <table class="table table-striped">
+      <tbody> 
+        <tr>
+          <td>Price </td>
+          <td>INR {{bkInfo?.price}} </td>
+        </tr>
+        <tr *ngIf="bkInfo?.prerequisite !=''">
+          <td>Prerequisite </td>
+          <td [innerHTML]="bkInfo?.prerequisite"></td>
+        </tr>
+        <ng-container *ngIf="buyType != ''">
+        <tr>
+          <td>Sample collection at home Available for test </td>
+          <td [innerHTML]="bkInfo?.home_sample_collection+ '\</br> Sample collection charges applied only for one test and apply only when total order value is less then or equal to '+this.dInfo?.h_c_fee_apply_before"></td>
+        </tr>
+        
+        <tr *ngIf="f?.is_home_delivery?.value == 'Yes'">
+          <td>Report Home Delivery Avaliblity for test </td>
+          <td [innerHTML]="bkInfo?.report_home_delivery + '\</br> Report delivery charges applied only for one test and apply only when total order value is less then or equal to '+this.dInfo?.r_d_fee_apply_before"></td>
+        </tr> 
+        <tr *ngIf="bkInfo?.ambulance_fee != 0">
+          <td>Ambulance Fee</td>
+          <td>INR {{bkInfo?.ambulance_fee}} </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    <form [formGroup]="form" novalidate *ngIf="buyType != ''">
+      <table class="table table-striped">
+        <tbody>
+          <tr *ngIf="bkInfo?.home_sample_collection != ''">
+            <td>Do you want Sample collection at home?</td>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select matInput formControlName="is_home_collection" required (selectionChange)="amountChange()">
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr *ngIf="bkInfo?.report_home_delivery != ''">
+            <td>Do you want home delivery?</td>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select matInput formControlName="is_home_delivery" required (selectionChange)="amountChange()">
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No (Only online)</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr *ngIf="bkInfo?.ambulance_available != ''">
+            <td>Do you want ambulance?</td>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select matInput formControlName="is_ambulance" required (selectionChange)="amountChange()">
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr *ngIf="f?.is_home_collection?.value == 'Yes' || f?.is_ambulance?.value == 'Yes' || f?.is_home_delivery?.value == 'Yes'">
+            <td>Address</td>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Enter address</mat-label>
+                <input matInput [ngClass]="{
+                    'is-invalid': submitted && f.address.errors
+                  }" formControlName="address" required />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center" >
+              <button class="btn btn-success" (click)="submitForm()">Proceed to checkout - {{totalAmount}} rs.</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+      Cancel
+    </button>
+  </div>
+</ng-template>
+
+<app-top-footer></app-top-footer>
+<app-footer></app-footer>

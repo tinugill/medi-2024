@@ -1,0 +1,188 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+
+<div id="slider" class="carousel" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        [src]="['./assets/images/blood-bank-slider.jpg']"
+        alt=""
+        class="d-block"
+      />
+    </div>
+  </div>
+  <div class="banner-search">
+    <div class="row">
+      <div class="col-md-6 col-sm-8 col-12">
+        <h1>YOUR BLOOD CAN BRING SMILEIN OTHER PERSON FACE</h1>
+        <h6>
+          I realized that becoming a doctor, I can only help a small community.
+          But by becoming a doctor, I can help my whole country.
+        </h6>
+        <div class="col-md-12 col-sm-12 col-12">
+          <a
+            href="javascript:void(0)"
+            class="btn btn-danger border-2 rounded-0 mt-4"
+          >
+            Donate now
+          </a>
+          <a
+            [routerLink]="['/blood-bank/blood-bank-list']"
+            class="btn btn-dark border-2 rounded-0 mt-4"
+          >
+            See Nearest Blood Bank
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider section end -->
+
+<section class="blood-bank-process py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12">
+        <h3 class="header text-center m-0">Donation Process</h3>
+        <p class="text-center">
+          Cholesterol Ldl Enzymatic Colorimetric Method Blood
+        </p>
+        <div class="pharmacy-common-slider">
+          <div class="pharmacy-common-box blood-b-box">
+            <figure>
+              <img [src]="['./assets/images/bloodbank/process_1.jpg']" alt="" />
+              <span>1</span>
+            </figure>
+            <div class="product-details">
+              <h4>REGISTRATION</h4>
+              <p>
+                You need to complete a very simple registration form. Which
+                contains all required contact information to enter in the
+                donation process.
+              </p>
+            </div>
+          </div>
+          <div class="pharmacy-common-box blood-b-box">
+            <figure>
+              <img [src]="['./assets/images/bloodbank/process_2.jpg']" alt="" />
+              <span>2</span>
+            </figure>
+            <div class="product-details">
+              <h4>SCREENING</h4>
+              <p>
+                A drop of blood from your finger will take for simple test to
+                ensure that your blood iron levels are proper enough for
+                donation process.
+              </p>
+            </div>
+          </div>
+          <div class="pharmacy-common-box blood-b-box">
+            <figure>
+              <img [src]="['./assets/images/bloodbank/process_3.jpg']" alt="" />
+              <span>3</span>
+            </figure>
+            <div class="product-details">
+              <h4>DONATION</h4>
+              <p>
+                After ensuring and passed screening test successfully you will
+                be directed to a donor bed for donation. It will take only 6-10
+                minutes.
+              </p>
+            </div>
+          </div>
+          <div class="pharmacy-common-box blood-b-box">
+            <figure>
+              <img [src]="['./assets/images/bloodbank/process_4.jpg']" alt="" />
+              <span>4</span>
+            </figure>
+            <div class="product-details">
+              <h4>REFRESHMENT</h4>
+              <p>
+                A drop of blood from your finger will take for simple test to
+                ensure that your blood iron levels are proper enough for
+                donation process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-doctor-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-6 col-12">
+        <p class="text-danger">About Us</p>
+        <h2 class="heading">Together We Can Make World More Health & Better</h2>
+        <p>
+          Delightful unreserved impossible few estimating men favourable see
+          entreaties. She propriety immediate was improving. He or entrance
+          humoured likewise moderate. Much nor game son say feel. On am in
+          nearer square wanted.
+        </p>
+        <ul>
+          <li>Good Service</li>
+          <li>24h Service</li>
+          <li>Help People</li>
+          <li>Health Check</li>
+          <li>Hygine Tools</li>
+          <li>Blood Bank</li>
+        </ul>
+        <a
+          [routerLink]="['/blood-bank/blood-bank-list']"
+          class="btn btn-danger rounded-0"
+        >
+          <i class="fas fa-chevron-circle-right"></i>
+          Make Appointment
+        </a>
+      </div>
+      <div class="col-md-5 col-sm-6 col-12">
+        <div class="row about-img">
+          <div class="col-md-12 col-sm-12 col-12">
+            <img class="" [src]="['./assets/images/welcome-1.jpg']" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-testimonial></app-testimonial>
+<app-blog></app-blog>
+
+<section class="my-3">
+  <div class="container Subscribe">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-12">
+        <div class="Subscribe-box">
+          <h6>Need help with booking your test?</h6>
+          <p>Our experts are here to help you.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-12">
+        <form class="mt-4">
+          <div class="row">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter email"
+                name="email"
+              />
+            </div>
+            <div class="col-4">
+              <button type="button" value="submit" class="btn btn-dark">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-top-footer></app-top-footer>
+<app-footer></app-footer>

@@ -1,0 +1,25 @@
+.app{ padding: 50px 10%; background-color: #ecf5fe;
+    h2 {color: #2d495e; font-size: 40px; }
+    p {font-size: 16px;color: #0a0a0a;  padding-left: 5px; padding-top: 10px;}
+    a{text-transform: uppercase;}
+    .App_link img{width:150px;}
+    .img-app{width: 50%; float: right; margin-right: 10%;}
+}
+
+
+@media only screen and (max-width: 1180px){
+    .app{ padding: 50px 0%;
+        h2 {font-size: 40px; }
+        p {font-size: 16px; padding-left: 5px; padding-top: 10px;}
+        .App_link img{width:150px;}
+        .img-app{width: 100%; float: right; margin-right: 0%;}
+    }
+}
+@media only screen and (max-width: 767px){
+    .app{ padding: 25px 0%;
+        h2 {font-size: 18px; }
+        p {font-size: 14px;}
+        button{font-size: 12px;}
+        .App_link img{width:90px;}
+    }
+}

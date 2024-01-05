@@ -1,0 +1,27 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-12" *ngIf="reviews && reviews?.length == 0">
+            <div class="card mt-2">
+                No reviews
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-12" *ngIf="reviews?.length > 0">
+            <div class="card mt-2" *ngFor="let r of reviews">
+                <div class="card-body">
+                    <div class="rating">
+                        <span><i class="fas fa-star"></i> {{r?.stars || 0.0}}</span>  
+                    </div>
+                    <p>{{ r.comment || 'No review'}}</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<app-top-footer></app-top-footer>
+<app-footer></app-footer>

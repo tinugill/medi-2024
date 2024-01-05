@@ -1,0 +1,211 @@
+<section class="login-section">
+  <div class="container">
+    <div class="row">
+      <div class="login">
+        <form
+          class="login-content animate"
+          *ngIf="!isLoggedIn && !isOtpSent && !isForgetPass"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+        >
+          <figure>
+            <img [src]="['./assets/images/login.png']" alt="Avatar" />
+          </figure>
+
+          <div class="login-container">
+            <div class="form-group">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="submitted && errorMessage != ''"
+                [innerHTML]="errorMessage"
+              ></div>
+            </div>
+            <label for="uname"><b>Username</b></label>
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              [(ngModel)]="form.username"
+              #username="ngModel"
+              required
+            />
+            <div
+              class="alert-danger"
+              role="alert"
+              *ngIf="username.errors && f.submitted"
+            >
+              Email is required!
+            </div>
+
+            <label for="psw"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              [(ngModel)]="form.password"
+              name="password"
+              minlength="6"
+              #password="ngModel"
+              required
+            />
+            <div
+              class="alert-danger"
+              role="alert"
+              *ngIf="password.errors && f.submitted"
+            >
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">
+                Password must be at least of 6 characters
+              </div>
+            </div>
+            <label>
+              <input type="checkbox" checked="checked" name="remember" />
+              Remember me
+            </label>
+
+            <button class="submit" type="submit">Login</button>
+            <div class="row">
+              <span class="psw">
+                <a [routerLink]="['/signup']">Create an account ?</a></span
+              >
+              <span class="psw2" (click)="forgetPass()">
+                Forget password ?</span
+              >
+            </div>
+          </div>
+        </form>
+        <form
+          [formGroup]="forgetForm"
+          class="login-content animate"
+          *ngIf="isForgetPass"
+        >
+          <div class="login-container p10">
+            <figure>
+              <img [src]="['./assets/images/login.png']" alt="Avatar" />
+            </figure>
+
+            <label><b>Type of user</b></label>
+            <select
+              formControlName="type"
+              required
+            >
+              <option value="Doctor">Doctor</option>
+              <option value="Hospital">Hospital</option>
+              <option value="User">User</option>
+              <option value="Pharmacy">Pharmacy</option>
+              <option value="Lab">Lab</option>
+              <option value="Bloodbank">Bloodbank</option>
+              <option value="Nursing">Nursing</option>
+              <option value="Dealer">Dealer</option>
+              <option value="Ambulance">Ambulance</option>
+              <option value="ForgetPassword">ForgetPassword</option>
+            </select>
+
+            <div class="d-flex">
+              <div>
+                <label><b>Enter Mobile Number</b></label>
+                <input
+                  type="text" 
+                  formControlName="mobile"
+                  required
+                />
+              </div>
+              <div>
+                <label><b>&nbsp; </b></label><br>
+                <button class="btn btn-success mt-3" (click)="forgetSendOtp()">Send OTP</button>
+              </div>
+              
+            </div>
+
+            <label><b>Enter OTP</b></label>
+            <input
+              type="text"
+              max="6"
+              min="6" 
+              formControlName="otp" 
+            />
+            <label><b>Enter New Password</b></label>
+            <input
+              type="text" 
+              formControlName="password" 
+            />
+            <label><b>Confirm New Password</b></label>
+            <input
+              type="text" 
+              formControlName="c_password" 
+            />
+
+            <div class="col-lg-12 mt--20">
+              <button mat-button class="btn btn-success" (click)="verifyOtpForgetPass()">
+                <span>SUBMIT</span>
+                <i class="feather-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <form
+          [formGroup]="otpForm"
+          class="login-content animate"
+          *ngIf="isOtpSent && !isLoggedIn"
+        >
+          <div class="login-container p10">
+            <figure>
+              <img [src]="['./assets/images/login.png']" alt="Avatar" />
+            </figure>
+
+            <label><b>Enter OTP</b></label>
+            <input
+              type="text"
+              max="6"
+              min="6"
+              [ngClass]="{
+                'is-invalid': isOtpSent && op.otp.errors
+              }"
+              formControlName="otp"
+              required
+            />
+
+            <div class="col-lg-12 mt--20">
+              <button mat-button class="btn btn-success" (click)="verifyOtp()">
+                <span>SUBMIT</span>
+                <i class="feather-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <form class="login-content animate" *ngIf="isLoggedIn">
+          <div class="login-container text-center">
+            <p>You are already logged in.</p>
+            <button
+              type="button"
+              tabindex="0"
+              class="btn btn-warning"
+              (click)="openVerticallyCentered(logoutModel)"
+            >
+              Logout
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #logoutModel let-modal>
+  <div class="modal-body" style="padding-top: 30px">
+    <p class="text-center">Are you sure you want to logout?</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-sm btn-light"
+      ngbAutofocus
+      (click)="modal.close('Close click')"
+    >
+      Cancel
+    </button>
+    <button type="button" class="btn btn-sm btn-danger" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</ng-template>

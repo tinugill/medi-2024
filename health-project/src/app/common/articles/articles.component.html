@@ -1,0 +1,37 @@
+<section class="top-articles-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">                
+                <h3 class="heading mb-4">Read top articles from health experts</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" responsive="breakpoints">
+                    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                        <div class="articles-box">
+                            <a href="javascript:void:(0)">
+                                <figure>                        
+                                    <img [src]="['./assets/images/service4.jpg']" alt="">
+                                </figure>
+                                <div class="px-3 py-2">
+                                    <div class="author-name">
+                                        <span>Amit Kumar</span> |
+                                        <span>15 Jun, 2022</span>
+                                    </div>
+                                    <div class="articles_heading">
+                                        <h6>A step toward breaking the language barrier in healthcare</h6>
+                                    </div>
+                                    <div class="articles_text">
+                                        <p>Launched earlier this year, Practo’s vernacular language service has clocked 30% of the total number of teleconsultations on the platform in 2021.</p>
+                                    </div>
+                                    <p class="mt-2">Read More</p>
+                                </div>                       
+                            </a> 
+                        </div>
+                    </div>
+                </ngx-slick-carousel>                                             
+            </div>
+        </div>
+    </div>
+</section>

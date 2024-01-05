@@ -1,0 +1,192 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+
+<div id="slider" class="carousel" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img [src]="['./assets/images/lab-banner.jpg']" alt="" class="d-block" />
+    </div>
+  </div>
+  <div class="banner-search">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-12">
+        <h1>Providing Best Lab Services</h1>
+        <h6>
+          I realized that becoming a doctor, I can only help a small community.
+          But by becoming a doctor, I can help my whole country.
+        </h6>
+        <div class="col-md-12 col-sm-12 col-12">
+          <a
+            [routerLink]="['/lab/lab-list']"
+            class="btn btn-outline-info border-2 rounded-0 mt-4"
+          >
+            Our Partner
+          </a>
+          <a
+            [routerLink]="['/lab/lab-list']"
+            class="btn btn-dark border-2 rounded-0 mt-4"
+          >
+            Book Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- slider section end -->
+
+<section class="banner-bottom-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-4 m-padding">
+        <div class="banner-bottom-box">
+          <a href="javascript:void(0)">
+            <span>
+              <img [src]="['./assets/images/icon/icon-1.png']" alt="" />
+            </span>
+            <h6>Laboratory Technician</h6>
+            <p>
+              Our firm is expert to create an efficient user interface that.
+            </p>
+            <p class="text-end"><small>read more..</small></p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-4 m-padding">
+        <div class="banner-bottom-box">
+          <a href="javascript:void(0)">
+            <span>
+              <img [src]="['./assets/images/icon/icon-2.png']" alt="" />
+            </span>
+            <h6>Pathologycam Testing</h6>
+            <p>
+              Our firm is expert to create an efficient user interface that.
+            </p>
+            <p class="text-end"><small>read more..</small></p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-4 m-padding">
+        <div class="banner-bottom-box">
+          <a href="javascript:void(0)">
+            <span>
+              <img [src]="['./assets/images/icon/icon-3.png']" alt="" />
+            </span>
+            <h6>Chemical Pathology</h6>
+            <p>
+              Our firm is expert to create an efficient user interface that.
+            </p>
+            <p class="text-end"><small>read more..</small></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-3">
+  <div class="container Instant-call">
+    <div class="row">
+      <div class="col-md-9 col-sm-8 col-12">
+        <div class="Instant-call-box">
+          <span>
+            <img [src]="['./assets/images/lab/need-help.png']" alt="" />
+          </span>
+          <h6>Need help with booking your test?</h6>
+          <p>Our experts are here to help you.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-12">
+        <a href="javascript:void(0)">
+          <img [src]="['./assets/images/icon/telephone-call.png']" alt="" />
+          91-89746647474
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lab-test-offer-section">
+  <div class="container">
+    <h3 class="heading my-3">Coupons for lab tests</h3>
+    <div class="scroll">
+      <div class="row g-2 inner-scroll">
+        <div class="col">
+          <div class="lab-test-offer">
+            <h4>Get Flat <span>35%</span> Off</h4>
+            <p>on your lab test & health checkups</p>
+            <div class="offer-bg code-1">use:DC35%OFF</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="lab-test-offer">
+            <h4>Get Flat <span>20%</span> Off</h4>
+            <p>on your lab test & health checkups</p>
+            <div class="offer-bg code-2">use:DC20%OFF</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="lab-test-offer">
+            <h4>Get Flat <span>15%</span> Off</h4>
+            <p>on your lab test & health checkups</p>
+            <div class="offer-bg code-1">use:DC10%OFF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lab-test-offer-section">
+  <div class="container">
+    <h3 class="heading my-3">Top Booked Diagnostic Tests</h3>
+    <div class="scroll">
+      <div class="row g-2 inner-scroll">
+        <div class="col" *ngFor="let t of tList">
+          <div class="lab-test">
+            <h4>{{ t?.test_name }}</h4>
+            <p>
+              <strong>RS. {{ t?.price }}</strong>
+            </p>
+            <hr />
+            <p class="text-center mb-0">
+              <a
+                href="javascript:void(0)"
+                class="btn btn-sm btn-outline-success"
+                >Add</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="test-type-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12">
+        <h3 class="heading mt-3">Find Tests by Health Concern</h3>
+        <div class="scroll">
+          <div class="test-type-slider inner-scroll">
+            <div class="test-type" *ngFor="let c of cList">
+              <figure>
+                <a href="">
+                  <img
+                    [src]="c?.image | concatBase: 'category_image/'"
+                    alt=""
+                  />
+                </a>
+              </figure>
+              <a [routerLink]="['']">{{ c?.title }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-download-app></app-download-app>
+<app-footer></app-footer>

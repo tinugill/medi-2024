@@ -1,0 +1,174 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<app-hospital-banner></app-hospital-banner>
+
+<section class="bg-info py-3">
+  <div class="container">
+    <div class="row row-cols-md-6 row-cols-sm-6 row-cols-3 g-md-0 g-1">
+      <div class="col">
+        <div class="service-box">
+          <a [routerLink]="['/hospital-list']">
+            <span>
+              <img [src]="['./assets/images/icon/appointments.png']" alt="" />
+            </span>
+            <h6>Book Appointment</h6>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="service-box">
+          <a [routerLink]="['/hospital-list']">
+            <span>
+              <img [src]="['./assets/images/icon/consult-online.png']" alt="" />
+            </span>
+            <h6>Consult Online</h6>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="service-box">
+          <a [routerLink]="['/pharmacy']">
+            <span>
+              <img [src]="['./assets/images/icon/buy-online.png']" alt="" />
+            </span>
+            <h6>Buy Medicine</h6>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="service-box">
+          <a href="javascript:void(0)">
+            <span>
+              <img [src]="['./assets/images/icon/health-check.png']" alt="" />
+            </span>
+            <h6>Book Health Check</h6>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="service-box">
+          <a [routerLink]="['/hospital']">
+            <span>
+              <img [src]="['./assets/images/icon/find-hospital.png']" alt="" />
+            </span>
+            <h6>Find Hospital</h6>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="service-box">
+          <a [routerLink]="['/lab']">
+            <span>
+              <img [src]="['./assets/images/icon/book-lab-test.png']" alt="" />
+            </span>
+            <h6>Book Lab Test</h6>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="welcome-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-6 col-12">
+        <p>Since 1990-2022, New Delhi India</p>
+        <h2 class="heading">
+          <span>Thousands Of Specialities </span> For
+          <span class="text-info">Any Type Diagnostic.</span>
+        </h2>
+        <p>
+          Delightful unreserved impossible few estimating men favourable see
+          entreaties. She propriety immediate was improving. He or entrance
+          humoured likewise moderate. Much nor game son say feel. On am in
+          nearer square wanted.
+        </p>
+        <p>
+          Delightful unreserved impossible few estimating men favourable see
+          entreaties. She propriety immediate was improving. He or entrance
+          humoured likewise moderate. Much nor game son say feel. On am in
+          nearer square wanted.
+        </p>
+        <a href="javascript:void(0)" class="btn btn-success rounded-0">
+          <i class="fas fa-chevron-circle-right"></i>
+          More About us
+        </a>
+      </div>
+      <div class="col-md-5 col-sm-6 col-12">
+        <div class="row welcome-img">
+          <img class="" [src]="['./assets/images/about-hospital.png']" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hospital-Specialities-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12">
+        <h3 class="heading mt-3">Our Specialities</h3>
+        <p>
+          We offer extensive medical procedures to outbound and inbound patients
+          what it is and we are very proud of achievement of our staff, We are
+          all work together to help our all patients for recovery
+        </p>
+        <div class="hospital-Specialities-slider">
+          <div class="hospital-Specialities" *ngFor="let s of spacialityList">
+            <!-- <figure *ngIf="s.image != ''">
+              <a [routerLink]="['/doctor-list']" [queryParams]="{ sid: s?.id }">
+                <img class="s-img" [src]="s.image | concatBase: 'specialities_image/'" alt="" />
+              </a>
+            </figure> -->
+            <a [routerLink]="['/doctor-list']" [queryParams]="{ sid: s?.id }">{{ s?.speciality_name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="specialit-doctor">
+  <div class="container">
+    <h3 class="heading">Our Specialist Doctors</h3>
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-12 scroll">
+        <ul class="nav nav-tabs inner-scroll">
+          <li class="nav-item" *ngFor="let s of spacialityList">
+            <a class="nav-link active c-pointer" data-bs-toggle="tab" (click)="getSpecialitiesTopDoc(s?.id)">
+              <img *ngIf="s?.image != ''" [src]="s?.image | concatBase: 'specialities_image/'" alt="" />
+              {{ s?.speciality_name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 col-sm-8 col-12">
+        <div class="tab-content">
+          <div id="Surgeon" class="tab-pane fade show active">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-6 m-padding" *ngFor="let d of topDoc">
+                <div class="dr-box">
+                  <a [routerLink]="['/doctor/' + d.slug]">
+                    <figure>
+                      <img [src]="d?.doctor_image | concatBase: 'doctor_image/'" alt="" />
+                    </figure>
+                    <div class="dr-data">
+                      <h6>{{ d?.full_name }}</h6>
+                      <p>{{ d?.experience }} years of experience</p>
+                      <a [routerLink]="['/doctor/' + d?.slug]">read more..</a>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-blog [blogList]="blogList"></app-blog>
+<app-download-app></app-download-app>
+<app-footer></app-footer>

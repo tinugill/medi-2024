@@ -1,0 +1,38 @@
+<section class="blog-section py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12">
+        <h3 class="heading m-0">Our Latest Blog</h3>
+        <!-- <p>Cholesterol Ldl Enzymatic Colorimetric Method Blood</p> -->
+        <div class="blog-slider">
+          <ngx-slick-carousel
+            class="carousel"
+            #slickModal="slick-carousel"
+            [config]="slideConfig"
+            responsive="breakpoints"
+          >
+            <div ngxSlickItem *ngFor="let b of blogList" class="slide">
+              <div class="blog-box blood-b-box">
+                <figure class="zoom">
+                  <img [src]="b?.image | concatBase: 'uploads/'"alt="" />
+                  <div class="date-time">
+                    <span
+                      ><i class="far fa-calendar-alt"></i
+                      >{{ b?.date | date: "longDate" }}</span
+                    >
+                  </div>
+                </figure>
+                <div class="blog-details">
+                  <a [routerLink]="['/blog/' + b?.slug]">
+                    <h4>{{ b?.title }}</h4>
+                    <p [innerHtml]="getSmall(b.desc) | striphtml"></p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

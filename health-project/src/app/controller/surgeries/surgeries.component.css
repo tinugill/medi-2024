@@ -1,0 +1,300 @@
+#slider img {
+  width: 100%;
+  max-height: 300px;
+}
+
+.banner-search {
+  position: absolute;
+  width: 87%;
+  top: 60px;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+}
+.banner-search h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 820px) {
+  #slider img {
+    width: 100%;
+    max-height: 230px;
+  }
+  .banner-search {
+    width: 90%;
+    top: 40px;
+  }
+  .banner-search h1 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #slider img {
+    width: auto;
+    max-height: 100px;
+  }
+  .banner-search {
+    width: 90%;
+    position: absolute;
+    top: 20px;
+    text-align: center;
+  }
+  .banner-search h1 {
+    font-size: 1.5rem;
+  }
+  .banner-search a {
+    margin-top: 0px !important;
+  }
+}
+.banner-bottom-section {
+  padding: 5px 0px;
+  background-color: #f7f6f6;
+}
+.banner-bottom-section p {
+  margin-bottom: 0px;
+}
+.banner-bottom-section .banner-bottom-box {
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
+  border: 1px solid #b4cdeb;
+  border-radius: 3px;
+  background-color: #fff;
+  position: relative;
+  transition: 0.5s;
+  text-align: left;
+}
+.banner-bottom-section .banner-bottom-box a {
+  color: #000;
+}
+.banner-bottom-section .banner-bottom-box a span {
+  width: 20%;
+  float: left;
+  margin-right: 5px;
+}
+.banner-bottom-section .banner-bottom-box a span img {
+  width: 100%;
+}
+.banner-bottom-section .banner-bottom-box a h6 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 8px 0px 5px;
+  color: #000;
+  transition: 0.5s;
+}
+.banner-bottom-section .banner-bottom-box:hover {
+  background-color: #b4cdeb;
+}
+
+@media only screen and (max-width: 820px) {
+  .banner-bottom-section {
+    padding: 5px 0px;
+  }
+  .banner-bottom-section .banner-bottom-box {
+    width: 100%;
+    height: 120px;
+    padding: 5px 5px;
+  }
+  .banner-bottom-section .banner-bottom-box a span {
+    width: 20%;
+  }
+  .banner-bottom-section .banner-bottom-box a h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 5px 0px 5px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .banner-bottom-section .banner-bottom-box {
+    padding: 5px 5px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  .banner-bottom-section .banner-bottom-box a span {
+    width: 20%;
+  }
+  .banner-bottom-section .banner-bottom-box a h6 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .banner-bottom-section .banner-bottom-box a p {
+    font-size: 12px;
+  }
+  .banner-bottom-section .banner-bottom-box a p small {
+    color: #065486;
+  }
+}
+.test-type-section {
+  margin: 0px;
+  padding: 20px 0px;
+}
+.test-type-section h3 {
+  font-size: 18px;
+  color: #065486;
+  margin-bottom: 28px;
+}
+.test-type-section .test-type-slider {
+  display: flex;
+}
+.test-type-section .test-type-slider .test-type {
+  width: 17%;
+  text-align: center;
+}
+.test-type-section .test-type-slider .test-type img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100%;
+  padding: 10px;
+  box-shadow: 0px 0px 2px 2px #8ab4f2;
+}
+.test-type-section .test-type-slider .test-type a {
+  color: #000;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 820px) {
+  .test-type-section {
+    margin: 0px;
+    padding: 20px 0px;
+  }
+  .test-type-section .test-type-slider .test-type img {
+    width: 80px;
+    height: 100%;
+    padding: 10px;
+  }
+  .test-type-section .test-type-slider .test-type a {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .test-type-section .test-type-slider {
+    padding-top: 10px;
+  }
+  .test-type-section .test-type-slider .test-type {
+    width: 108px;
+  }
+  .test-type-section .test-type-slider .test-type img {
+    width: 60px;
+    height: 100%;
+    padding: 10px;
+  }
+  .test-type-section .test-type-slider .test-type a {
+    font-size: 11px;
+  }
+}
+.about-doctor-section {
+  padding: 50px 0px 20px;
+}
+.about-doctor-section p {
+  margin: 0px;
+  text-align: justify;
+}
+.about-doctor-section h2 {
+  margin-bottom: 30px;
+  font-size: 36px;
+}
+.about-doctor-section a {
+  margin-top: 20px;
+}
+.about-doctor-section .about-img img {
+  width: 100%;
+  height: 285px;
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 820px) {
+  .about-doctor-section {
+    padding: 20px 0px 20px;
+  }
+  .about-doctor-section h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  .about-doctor-section .about-img img {
+    width: 100%;
+    height: 285px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .about-doctor-section {
+    padding: 20px 0px 20px;
+  }
+  .about-doctor-section h2 {
+    font-size: 18px;
+  }
+  .about-doctor-section p {
+    font-size: 12px;
+  }
+  .about-doctor-section a {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .about-doctor-section .about-img img {
+    width: 100%;
+    height: 200px;
+  }
+}
+.why-us-box-section {
+  padding: 20px 0px;
+}
+.why-us-box-section .why-us-box {
+  width: 100%;
+  height: 160px;
+  padding: 15px;
+  box-shadow: 0px 0px 5px #aba4a4;
+  transition: 0.5s;
+  text-align: center;
+}
+.why-us-box-section .why-us-box span {
+  width: 50px;
+  height: 50px;
+  margin: 20px 0px;
+}
+.why-us-box-section .why-us-box span img {
+  width: 50px;
+}
+.why-us-box-section .why-us-box h6 {
+  font-size: 32px;
+  margin: 5px 0px 2px;
+}
+.why-us-box-section .why-us-box p {
+  font-size: 16px;
+}
+.why-us-box-section .why-us-box:hover {
+  background-color: rgb(231, 229, 229);
+}
+
+@media only screen and (max-width: 820px) {
+  .why-us-box-section .why-us-box {
+    margin-bottom: 15px;
+  }
+  .why-us-box-section .why-us-box h6 {
+    font-size: 22px;
+  }
+  .why-us-box-section .why-us-box p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .why-us-box-section .why-us-box {
+    margin-bottom: 15px;
+    height: 120px;
+  }
+  .why-us-box-section .why-us-box span {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0px;
+  }
+  .why-us-box-section .why-us-box span img {
+    width: 30px;
+  }
+  .why-us-box-section .why-us-box h6 {
+    font-size: 18px;
+    margin: 5px 0px 2px;
+  }
+  .why-us-box-section .why-us-box p {
+    font-size: 14px;
+  }
+}/*# sourceMappingURL=surgeries.component.css.map */

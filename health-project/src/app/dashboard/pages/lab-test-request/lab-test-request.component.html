@@ -1,0 +1,133 @@
+<div class="common-record">
+    <div class="d-block p-2">
+        <strong class="text-gray rounded-0"> Labtest Requests</strong>
+        <!-- <button printSectionId="section" styleSheetFile="../../../../styles.css" ngxPrint>Print</button> -->
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-warning" *ngIf="doc_id != ''" (click)="backClicked()">
+            Go Back
+        </button>
+    </div>
+    <div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0">
+        <div class="card mb-3" *ngFor="let o of tList">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-4">
+                        Receipt ID : {{o?.receipt}}
+                    </div>
+                    <div class="col-md-2">
+                        <app-rating-section [review]="o?.comment"  [user_id]="o?.lab_id"  [count]="o?.stars" [service_id]="o?.id" [agent_type]="'Labtest'" (reviewData)="onReviewData($event)"></app-rating-section>
+                      </div>
+                    <div class="col-md-3">
+                        <span *ngIf="o?.report_file != ''">
+                            <a [href]="o?.report_file | concatBase: 'uploads/'" target="_blank"> View Report</a>
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="badge badge-warning" *ngIf="o?.is_completed == '0'">Sample collection
+                            pending</span>
+                        <span class="badge badge-info" *ngIf="o?.is_completed == '1'">Sample collected</span>
+                        <span class="badge badge-success" *ngIf="o?.is_completed == '2'">Report Generted</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color: ghostwhite;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    Test List :
+                                </div>
+                                <div class="col-md-12 c-shadow mb-2 p-1" *ngFor="let p of o?.list;let i = index"> 
+                                    <span *ngIf="p?.type == 'test'">{{i+1}}. {{p?.info?.test_name}} <br>
+                                        <span class="badge badge-success">Prerequisite : {{p?.info?.prerequisite}}</span>
+                                        <span class="badge badge-info">Sample collection : {{p?.info?.home_sample_collection}}</span> 
+                                        <span class="badge badge-primary">Report Delivery : {{p?.info?.report_home_delivery}}</span> 
+                                        <span class="badge badge-info" *ngIf="p?.info?.is_ambulance != ''">Ambulance : {{p?.info?.is_ambulance}}</span> 
+                                    </span>
+                                    <p *ngIf="p?.type == 'labpackage'">
+                                        <span>{{i+1}} {{p?.package_name}}</span>  <br>
+                                        <ng-container *ngFor="let s of p?.info;let j = index">
+                                            <span>{{1+j}}. {{s?.test_name}}  <br>
+                                                <span class="badge badge-success">Prerequisite : {{s?.prerequisite}}</span> 
+                                                <span class="badge badge-info">Sample collection : {{s?.home_sample_collection}}</span> 
+                                                <span class="badge badge-primary">Report Delivery : {{s?.report_home_delivery}}</span> 
+                                                <span class="badge badge-info" *ngIf="s?.is_ambulance != ''">Ambulance: {{s?.is_ambulance}}</span> 
+                                            </span> 
+                                            <br>
+                                        </ng-container>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            Name : {{o?.u_name}} <br>
+                            Mobile : {{o?.u_mobile}} <br>
+                            Email : {{o?.u_email}} <br>
+                            Address : {{o?.u_address}} {{o?.u_city}} {{o?.u_pincode}} <br>
+                            Payment status : {{o?.payment_status | titlecase}} <br>
+                            Price Paid : {{o?.amount_paid}} <br>
+                            <span class="badge badge-success" *ngIf="o?.is_home_collection == 'Yes'">Home
+                                Collection</span>
+                            <span class="badge badge-info" *ngIf="o?.is_home_delivery == 'Yes'">Home Delivery</span>
+                            <span class="badge badge-danger" *ngIf="o?.is_ambulance == 'Yes'">Ambulance Required</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Report Delivery Boy</mat-label>
+                                <mat-select matInput [(ngModel)]="o.delivery_boy"
+                                    (selectionChange)="updateEC($event,o?.id,'delivery_boy')">
+                                    <ng-container *ngFor="let d of listDb">
+                                        <mat-option [value]="d?.id" *ngIf="d?.type == 'Delivery Boy'">{{d?.name}}</mat-option>
+                                    </ng-container> 
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select Sample Collector</mat-label>
+                                <mat-select matInput [(ngModel)]="o.sample_collector"
+                                    (selectionChange)="updateEC($event,o?.id, 'sample_collector')">
+                                    <ng-container *ngFor="let d of listDb">
+                                        <mat-option [value]="d?.id"  *ngIf="d?.type == 'Sample Collector'">{{d?.name}}</mat-option> 
+                                    </ng-container>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Status</mat-label>
+                                <mat-select matInput [(ngModel)]="o.is_completed"
+                                    (selectionChange)="changeStatus($event,o?.id)">
+                                    <mat-option value="0">Sample collection pending</mat-option>
+                                    <mat-option value="1">Sample collected</mat-option>
+                                    <mat-option value="2">Report Generted</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="prcid_{{o?.id}}">Upload Test Report</label>
+                            <input class="form-control mb13" (change)="onFileChange($event, o?.id)" id="prcid_{{o?.id}}"
+                                type="file" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="bg-opacity-10 card d-block px-2 py-3 mt-2 rounded-0" *ngIf="tList?.length == 0">
+    <p>No record found</p>
+</div>

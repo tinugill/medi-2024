@@ -1,0 +1,445 @@
+<div class="head">
+  <div class="container">
+    <header>
+      <!-- <div id="sideNav" href="#" class="toggle">
+                      <i class="fa fa-bars"></i> 
+                  </div> -->
+      <div class="row">
+        <div class="col-md-7 col-sm-7 col-6">
+          <a class="logo" [routerLink]="['/home']">
+            <img [src]="['./assets/images/logo.jpg']" alt="Logo" />
+          </a>
+        </div>
+        <div class="col-md-5 col-sm-5 col-6">
+          <ul>
+            <li *ngIf="isLoggedIn">
+              <span>
+                {{ myInfo?.name }}
+                <i class="fas fa-chevron-down"></i>
+              </span>
+            </li>
+            <li *ngIf="isLoggedIn">
+              <span (click)="openVerticallyCentered(logoutModel)" style="cursor: pointer">Logout
+                <i class="fas fa-sign-out"></i>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<div class="bg-dark bg-opacity-10 px-3">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-12 my-2">
+      <div class="patient-name bg-success bg-opacity-75 p-3">
+        <img [src]="['./assets/images/doctor-demo.png']" alt="" />
+        <span>{{ myInfo?.name }}</span>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <app-listingstatus [service_id]="3"></app-listingstatus>
+    </div>
+    <div class="col-md-3 col-sm-">
+      <aside>
+        <nav>
+          <ul>
+            <li>
+              <a href="javascript:void(0)" (click)="changePage('my-products','medicine')">
+                <span><i class="fas fa-archive"></i></span>My Products (Medicine)
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changePage('my-products','other')">
+                <span><i class="fas fa-archive"></i></span>Health Products (Other then medicine)
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changePage('orders')">
+                <span><i class="fas fa-th-large"></i></span>Orders
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changePage('setup-profile')">
+                <span><i class="fas fa-user"></i></span>Setup Profile
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" (click)="changePage('executive-list')">
+                <span><i class="fas fa-users"></i></span>Manage Executives
+              </a>
+            </li>
+            <!-- <li>
+              <a href="javascript:void(0)" (click)="changePage('blog-list')">
+                <span><i class="fas fa-rss-square"></i></span>Blog List
+              </a>
+            </li> -->
+          </ul>
+        </nav>
+      </aside>
+    </div>
+    <div class="col-md-9 col-sm-9 col-12">
+      <div class="row">
+        <app-dashboard-blog *ngIf="page == 'blog-list'"></app-dashboard-blog>
+        <div class="card pt-3" *ngIf="page == 'my-products'">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <input type="text" class="form-control" placeholder="Search Product" style="width:250px" [(ngModel)]="filterText">
+            </div>
+            <div style="text-align: right">
+              <button class="btn btn-primary" (click)="editProduct()">
+                Add Product
+              </button>
+            </div>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Image</th>
+                <th> {{ productType == 'medicine' ? 'Brand Name' : 'Product Name'}}</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="productList?.length > 0"> 
+                <tr *ngFor="let p of productList | productFilter: filterText:'title'; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <img [src]="p?.image | concatBase: 'product_image/'" height="50px" />
+                  </td>
+                  <td>
+                    {{ p?.title }} <br />
+                    <small><a [routerLink]="['/pharmacy/p/' + p?.slug]" target="_blank">View on website</a></small>
+                  </td>
+
+                  <td>
+                    <button class="btn btn-primary" (click)="editProduct(p?.id)">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+              <ng-container *ngIf="productList?.length == 0">
+                <tr>
+                  <td colspan="4"> {{isLoading ? 'Loading...' : 'No product found'}} </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <div class="card pt-3" *ngIf="page == 'edit-product'">
+          <mat-accordion>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title> Basic Information </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div style="text-align: right">
+                  <button class="btn btn-warning" (click)="cancelProduct()">
+                    Cancel
+                  </button>
+                </div>
+                <form [formGroup]="form" style="margin-top: 20px"> 
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{productType == 'medicine' ? 'Brand Name' : 'Item Name'}} </mat-label>
+                    <input matInput max="500" min="1" [ngClass]="{
+                        'is-invalid': submitted && f.title.errors
+                      }" formControlName="title" (keyup)="productChange($event)" required />
+                  </mat-form-field>
+                 
+                  <div class="col-md-12" style="margin-top: -21px;margin-bottom: 21px;">
+                    <div class="card c-point" (click)="fillProduct(sp)" *ngFor="let sp of sData">
+                      <div class="card-header">
+                        <p *ngIf="productType == 'medicine'">{{sp?.title}} - {{sp?.variant_name}} {{sp?.strength}} </p>
+                        <p *ngIf="productType == 'other'">{{sp?.title}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select Category</mat-label>
+                    <mat-select matInput formControlName="category_id" (selectionChange)="catChange($event)" required>
+                      <mat-option [value]="c?.id" *ngFor="let c of catList">
+                        {{ c?.title }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" *ngIf="productType == 'medicine'">
+                    <mat-label>Select Formulation</mat-label>
+                    <mat-select matInput formControlName="formulation_id" required>
+                      <mat-option [value]="c?.id" *ngFor="let c of fmList">
+                        {{ c?.title }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label> {{ productType == 'medicine' ? 'Variant (pack size)' : 'Pack Size' }}</mat-label>
+                    <input matInput type="text" [ngClass]="{
+                        'is-invalid': submitted && f.variant_name.errors
+                      }" formControlName="variant_name" required />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" *ngIf="productType == 'medicine'">
+                    <mat-label>Specification/Strength (Ex: 100mg, 500ml etc)</mat-label>
+                    <input matInput type="text" [ngClass]="{
+                        'is-invalid': submitted && f.strength.errors
+                      }" formControlName="strength" />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>MRP (Per pack)</mat-label>
+                    <input matInput type="number" [ngClass]="{
+                        'is-invalid': submitted && f.mrp.errors
+                      }" formControlName="mrp" required />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Discount (in %)</mat-label>
+                    <input matInput type="number" [ngClass]="{
+                        'is-invalid': submitted && f.discount.errors
+                      }" formControlName="discount" required />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Is Prescription required?</mat-label>
+                    <mat-select matInput formControlName="prescription_required" required>
+                      <mat-option value="Yes"> Yes </mat-option>
+                      <mat-option value="No"> No </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput max="500" min="1" [ngClass]="{
+                        'is-invalid': submitted && f.manufacturer_name.errors
+                      }" formControlName="manufacturer_name" />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Company Address</mat-label>
+                    <input matInput max="500" min="1" [ngClass]="{
+                        'is-invalid': submitted && f.manufacturer_address.errors
+                      }" formControlName="manufacturer_address" />
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" *ngIf="productType == 'medicine'">
+                    <mat-label>Composition Name</mat-label>
+                    <mat-select matInput formControlName="salt_name">
+                      <mat-option [value]="c?.id" *ngFor="let c of compList">
+                        {{ c?.title }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  
+                  <div class="row">
+                    <!-- <div class="col-md-4">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Expiry</mat-label>
+                        <mat-select matInput formControlName="expiry_type" required>
+                          <mat-option value="on">Expiry On/After</mat-option>
+                          <mat-option value="after">Expiry After</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div> -->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Expiry Month</mat-label>
+                        <mat-select formControlName="expiry_month">
+                          <mat-option value="">Select month</mat-option> 
+                          <mat-option value="Jan">Jan</mat-option> 
+                          <mat-option value="Feb">Feb</mat-option> 
+                          <mat-option value="Mar">Mar</mat-option> 
+                          <mat-option value="Apr">Apr</mat-option> 
+                          <mat-option value="May">May</mat-option> 
+                          <mat-option value="Jun">Jun</mat-option> 
+                          <mat-option value="Jul">Jul</mat-option> 
+                          <mat-option value="Aug">Aug</mat-option> 
+                          <mat-option value="Sep">Sep</mat-option> 
+                          <mat-option value="Oct">Oct</mat-option> 
+                          <mat-option value="Nov">Nov</mat-option> 
+                          <mat-option value="Dec">Dec</mat-option> 
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Expiry Year</mat-label>
+                        <mat-select formControlName="expiry_year">
+                          <mat-option value="">Select year</mat-option> 
+                          <mat-option [value]="(y + 2023)" *ngFor="let y of yearLoop">{{y + 2023}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <!-- <mat-form-field appearance="fill">
+                    <mat-label>Select Sub Category</mat-label>
+                    <mat-select matInput formControlName="sub_category_id" required>
+                      <mat-option [value]="c?.id" *ngFor="let c of subCatList">
+                        {{ c?.title }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                  <ckeditor [editor]="editor" formControlName="description" [config]="{
+                      placeholder: 'Enter description...',
+                      ckfinder: {
+                        options: {
+                          resourceType: 'Images'
+                        },
+                        openerMethod: 'popup',
+                        uploadUrl: BACK_END_MAPPING_URL_FOR_SAVE_IMG
+                      }
+                    }"></ckeditor>
+
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Select Avaliblity</mat-label>
+                    <mat-select matInput formControlName="avaliblity" required>
+                      <mat-option value="Yes"> Yes </mat-option>
+                      <mat-option value="No"> No </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <label class="mt-2">UPLOAD IMAGE
+                    <a *ngIf="productInfo?.image" href="{{ productInfo?.image | concatBase: 'product_image/' }}"
+                      target="_blank">View File</a></label>
+                  <input class="form-control mb13" (change)="onFileChange($event,'image')" type="file" accept="image/*" />
+                  <label class="mt-2">UPLOAD IMAGE 2 (Optional)
+                    <a *ngIf="productInfo?.image_2" href="{{ productInfo?.image_2 | concatBase: 'product_image/' }}"
+                      target="_blank">View File</a></label>
+                  <input class="form-control mb13" (change)="onFileChange($event,'image_2')" type="file" accept="image/*" />
+                  <label class="mt-2">UPLOAD IMAGE 3 (Optional)
+                    <a *ngIf="productInfo?.image_3" href="{{ productInfo?.image_3 | concatBase: 'product_image/' }}"
+                      target="_blank">View File</a></label>
+                  <input class="form-control mb13" (change)="onFileChange($event,'image_3')" type="file" accept="image/*" />
+                  <label class="mt-2">UPLOAD IMAGE 4 (Optional)
+                    <a *ngIf="productInfo?.image_4" href="{{ productInfo?.image_4 | concatBase: 'product_image/' }}"
+                      target="_blank">View File</a></label>
+                  <input class="form-control mb13" (change)="onFileChange($event,'image_4')" type="file" accept="image/*" />
+
+                  <div style="display: flex">
+                    <button class="btn btn-success ml-2"  type="button" (click)="onSubmit()">
+                      Save & Next
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+        </div>
+        <div class="card pt-3" *ngIf="page == 'orders'">
+          <div class="container">
+            <h5>Order List</h5>
+          </div>
+          <div class="container">
+            <div class="card mb-3" *ngFor="let o of orderList">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-6">
+                    ORDER ID : {{o?.order_id}}  <span class="badge badge-primary" *ngIf="o?.info?.is_completed == '0'">Order not accepted yet</span>
+                    <span class="badge badge-info" *ngIf="o?.info?.is_completed == '1'">Order accepted</span>
+                    <span class="badge badge-success" *ngIf="o?.info?.is_completed == '2'">Order delivered</span>
+                    <span class="badge badge-danger" *ngIf="o?.info?.is_completed == '3'">Order cancelled</span>
+                    <span class="badge badge-warning" *ngIf="o?.info?.is_completed == '4'">Order out for
+                      delivery</span>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select Delivery Boy</mat-label>
+                        <mat-select matInput [(ngModel)]="o.info.delivery_boy"
+                            (selectionChange)="updateEC($event,o?.info?.id,'delivery_boy')">
+                            <mat-option [value]="d?.id" *ngFor="let d of listDb">{{d?.name}}</mat-option> 
+                        </mat-select>
+                    </mat-form-field>
+                  </div> 
+                  <div class="col-md-3"> 
+                    <mat-form-field appearance="fill">
+                      <mat-label>Status</mat-label>
+                      <mat-select matInput [(ngModel)]="o?.info.is_completed"
+                        (selectionChange)="changeStatus($event,o?.info?.id,'order')">
+                        <mat-option value="0">Order not accepted yet</mat-option>
+                        <mat-option value="1">Order accepted</mat-option>
+                        <mat-option value="4">Order out for delivery</mat-option>
+                        <mat-option value="2">Order delivered</mat-option>
+                        <mat-option value="3">Order cancelled</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body" style="background-color: ghostwhite;">
+                <div class="container">
+                  <div class="card mb-1" *ngFor="let p of o?.products">
+                    <div class="card-header">
+                      {{p?.title}} - {{p?.formulation_name}}
+                      <!-- <small>{{ p?.p_name}} - {{ p?.description}}</small> -->
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img [src]="p?.image | concatBase: 'product_image/'" style="width: 40px"
+                            *ngIf="p?.image != ''" />
+                        </div>
+                        <div class="col-md-6">
+                          Payment status : {{p?.payment_status | titlecase}} <br>
+                          Price Paid : {{p?.mrp - (p?.mrp*(p?.discount/100)) }} <br>
+                          Quantity : {{p?.qty}}
+                        </div>
+                        <div class="col-md-4">
+                          <span class="badge badge-primary" *ngIf="p?.is_completed == '0'">Order not accepted yet</span>
+                          <span class="badge badge-info" *ngIf="p?.is_completed == '1'">Order accepted</span>
+                          <span class="badge badge-success" *ngIf="p?.is_completed == '2'">Order delivered</span>
+                          <span class="badge badge-danger" *ngIf="p?.is_completed == '3'">Order cancelled</span>
+                          <span class="badge badge-warning" *ngIf="p?.is_completed == '4'">Order out for
+                            delivery</span>
+
+                          <mat-form-field appearance="fill">
+                            <mat-label>Status</mat-label>
+                            <mat-select matInput [(ngModel)]="p.is_completed"
+                              (selectionChange)="changeStatus($event,p?.id,'item')">
+                              <mat-option value="0">Item Order not accepted yet</mat-option>
+                              <mat-option value="1">Item Order accepted</mat-option>
+                              <mat-option value="4">Item Order out for delivery</mat-option>
+                              <mat-option value="2">Item Order delivered</mat-option>
+                              <mat-option value="3">Item Order cancelled</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer" *ngIf="o?.info">
+                <div class="row">
+                  <div class="col-md-8">
+                    Customer info : {{o?.customer_name}} (<a href="tel:{{o?.customer_mobile}}"> <i class="fa fa-phone-square" aria-hidden="true"></i>{{o?.customer_mobile}}</a>) <br>
+                    Address : {{ o?.info?.address}}, {{ o?.info?.locality}}, {{ o?.info?.city}}, {{ o?.info?.pincode}}
+                  </div>
+                  <div class="col-md-4">
+                    Total Amount : {{o?.info?.total_amount - o?.info?.total_discount}} <br>
+                    <a [href]="o?.info?.prescription | concatBase: 'uploads/'" *ngIf="o?.info?.prescription != ''" target="_blank">View prescription</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <app-dealer-products *ngIf="page == 'my-productss'" [page]="'pharmasy'"></app-dealer-products>
+        <app-pharmacy-setup-profile *ngIf="page == 'setup-profile'"></app-pharmacy-setup-profile>
+        <app-delivery-boy *ngIf="page == 'executive-list'"></app-delivery-boy>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #logoutModel let-modal>
+  <div class="modal-body" style="padding-top: 30px">
+    <p class="text-center">Are you sure you want to logout?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-light" ngbAutofocus (click)="modal.close('Close click')">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-sm btn-danger" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</ng-template>
