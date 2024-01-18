@@ -32,6 +32,23 @@ export class VideoZoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      // Ask for permission to access the camera
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+          .then(function (stream) {
+              // User granted permission
+              // You can now use the stream to do something with the camera
+              // For example, display it in a video element:
+              // const videoElement = document.getElementById('video');
+              // videoElement.srcObject = stream;
+          })
+          .catch(function (error) {
+              // User denied permission or there was an error
+              console.error('Error accessing camera:', error);
+          });
+  } else {
+      console.error('getUserMedia is not supported in this browser');
+  }
     this._Activatedroute.paramMap.subscribe((params) => {
       this.msgId = params.get('msgId');
       this.appointment_id = params.get('appointment_id');

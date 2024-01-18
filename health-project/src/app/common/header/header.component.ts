@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnInit,ViewChild } from '@angular/core';
 import { TokenStorageService } from '../../services/Token/token-storage.service';
 import { EmitService } from '../../services/Emit/emit.service';
 import { Toaster } from 'ngx-toast-notifications';
@@ -16,7 +16,7 @@ import {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   constructor(private tokenStorage: TokenStorageService, private emitService:EmitService,private formBuilder: FormBuilder,private toaster: Toaster,private _Activatedroute: ActivatedRoute, private ApiService: ApiService) {
     this.isLoggedIn = !!this.tokenStorage.getToken();
     if (this.isLoggedIn) {
@@ -87,6 +87,7 @@ export class HeaderComponent implements OnInit {
       menuIcon.classList.toggle('fa-bars');
       menuIcon.classList.toggle('fa-times');
     });
+    
   }
   openPincodeDialog(){
     this.emitService.openPincodeDalogPopup(true);
@@ -203,4 +204,7 @@ export class HeaderComponent implements OnInit {
   searchby2: any = 'Name';
   search: any = '';
   ngOnInit(): void {}
+
+ 
+ 
 }

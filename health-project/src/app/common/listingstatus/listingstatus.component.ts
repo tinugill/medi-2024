@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef, AfterContentChecked, AfterViewInit } from '@angular/core';
 
 import { PayServiceService } from '../../services/Payment/pay-service.service';
 import { ApiService } from '../../services/Api/api.service';
@@ -9,7 +9,7 @@ import { TokenStorageService } from '../../services/Token/token-storage.service'
   templateUrl: './listingstatus.component.html',
   styleUrls: ['./listingstatus.component.scss']
 })
-export class ListingstatusComponent implements OnInit {
+export class ListingstatusComponent implements OnInit, AfterViewInit {
 
   constructor(private cdref: ChangeDetectorRef, private tokenStorage: TokenStorageService,private ApiService: ApiService, private toaster: Toaster,private rzp: PayServiceService) { }
   @Input() service_id : any = '';
@@ -181,5 +181,27 @@ export class ListingstatusComponent implements OnInit {
     amount = parseFloat(amount).toFixed(2);
     let sendData = JSON.stringify({service_id: this.service_id, amount:amount, for_count: day, user_id: this.myInfo.id, coupon: this.couponCode});
     this.rzp.createRzpayOrder(amount,sendData,'listing'); 
+  }
+
+  ngAfterViewInit(): void {
+    this.addClickListeners(); 
+  }
+  addClickListeners() {
+    const navLinks = document.querySelectorAll('aside > nav > ul > li');
+    console.log('navLinks',navLinks);
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => this.scrollToColMd9());
+    });
+  }
+
+  scrollToColMd9() { 
+    const colMd9Element = document.querySelector('.col-md-9');
+    if (colMd9Element) {
+      colMd9Element.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        colMd9Element.scrollIntoView({ behavior: 'smooth' });
+      }, 2000);
+    }
   }
 }
