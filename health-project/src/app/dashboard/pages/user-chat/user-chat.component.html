@@ -1,4 +1,7 @@
 <section class="mdiv pt-4 pb-4">
+    <div class="iframe-container" *ngIf="ifm != ''" style="overflow: hidden; padding-top: 56.25%; position: relative;">
+        <iframe style="border: 0; width: 50%; height: 50%; left: 0; position: absolute; top: 0; " [src]="ifm" frameborder="0"></iframe>
+    </div>
     <div class="container">
         <div class="row minside m0">
             <div class="col-md-3 br-gray">

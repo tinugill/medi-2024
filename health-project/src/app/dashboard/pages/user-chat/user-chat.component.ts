@@ -9,6 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { map, Observable, startWith } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 import {
   AbstractControl,
   FormBuilder,
@@ -32,7 +33,8 @@ export class UserChatComponent implements OnInit, OnDestroy {
     private router: Router,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
-    private toaster: Toaster
+    private toaster: Toaster,
+    private sanitizer: DomSanitizer
   ) {
     this.isLoggedIn = !!this.tokenStorage.getToken();
     if (this.isLoggedIn) {
@@ -519,8 +521,10 @@ export class UserChatComponent implements OnInit, OnDestroy {
       console.log('interval cleared'); 
    }
   }
+  ifm:any = '';
   openMeeting(data:any):any{
-    //this.router.navigate(['/meeting/',data.message,data.appointment_id,{ queryParams: {mid: data.id, sType: data.sender_type}}]);
+    //this.ifm =  this.sanitizer.bypassSecurityTrustResourceUrl('https://topmedz.com/meeting/'+data.message+'/'+data.appointment_id+'/'+data.id+'?mid='+data.id+'&sType='+data.sender_type);
+     
     const url = this.router.serializeUrl(this.router.createUrlTree(['/meeting/',data.message,data.appointment_id,data.id], { queryParams:{mid: data.id, sType: data.sender_type} }));
     window.open(url, '_blank');
   }

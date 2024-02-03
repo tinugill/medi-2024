@@ -74,14 +74,30 @@ export class VideoZoomComponent implements OnInit {
   //registrantToken = 'eyJ0eXAiOiJKV1QiLCJzdiI6IjAwMDAwMSIsInptX3NrbSI6InptX28ybSIsImFsZyI6IkhTMjU2In0.eyJhdWQiOiJjbGllbnRzbSIsInVpZCI6InR3c1UzUldRU01xak1XcmVrczZxWEEiLCJpc3MiOiJ3ZWIiLCJzayI6IjM0MzE4MTA2ODY4OTg5MDc3NTQiLCJzdHkiOjEwMCwid';
   signature:any = '';
   registrantToken:any = '';
+  refresh(){
+    var viewport:any = document.querySelector("meta[name=viewport]");
+      
+    if (viewport) {
+      viewport.parentNode.removeChild(viewport);
+      
+      var newViewport = document.createElement('meta');
+      newViewport.name = "viewport";
+      newViewport.content = "width=1024, user-scalable=no"; // Adjust the width value as needed
+      document.getElementsByTagName('head')[0].appendChild(newViewport);
+    }
+  }
   startMeetingNow() { 
     let zoomrt = document.getElementById('zmmtg-root') as any;
     zoomrt.style.display = 'block'
+  
 
     ZoomMtg.init({
       leaveUrl: this.leaveUrl,
       success: (success:any) => {
         console.log(success)
+       setTimeout(() => {
+        this.refresh();
+       }, 2000);
         ZoomMtg.join({
           signature: this.signature,
           meetingNumber: this.meetingNumber,
