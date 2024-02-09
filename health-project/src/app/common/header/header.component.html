@@ -70,7 +70,7 @@
               </select>
               <div style="position: relative;">
                 <input type="text" class="form-control search" placeholder="Search" [(ngModel)]="search" required
-                [ngModelOptions]="{standalone: true}" style="width: 100%;height: 100%;" (keyup)="changeVal()"/>
+                [ngModelOptions]="{standalone: true}" style="width: 100%;height: auto;" (keyup)="changeVal()"/>
                 <div class="s-result">
                   <ng-container *ngFor="let d of searchData">
                     <ng-container *ngIf="searchby == 'Doctor'">

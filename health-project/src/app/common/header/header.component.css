@@ -2,6 +2,19 @@
   font-size: 13px;
 }
 
+.s-result {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+}
+.s-result div {
+  cursor: pointer;
+  padding: 10px 5px;
+  margin-bottom: 2px;
+  background-color: #eeeeee;
+  width: 100%;
+}
+
 .head {
   padding: 10px 0px;
   border-bottom: 1px solid #ccc;
@@ -124,10 +137,10 @@ header ul li a {
   }
   .head .header-search .search {
     width: 75%;
-    margin-top: 5px;
+    margin-top: 0px;
   }
   .head .header-search .search-icon {
-    margin-top: 5px;
+    margin-top: 0px;
     margin-right: 5px;
   }
   header ul {

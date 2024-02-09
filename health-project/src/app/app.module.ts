@@ -136,6 +136,7 @@ import { RatingInfoComponent } from './common/rating-info/rating-info.component'
 import { ReviewPageComponent } from './controller/review-page/review-page.component';
 import { ContactUsComponent } from './controller/contact-us/contact-us.component';
 import { DrProfileShareComponent } from './controller/dr-profile-share/dr-profile-share.component';
+import { RefundComponent } from './common/refund/refund.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -246,7 +247,8 @@ import { DrProfileShareComponent } from './controller/dr-profile-share/dr-profil
     RatingInfoComponent,
     ReviewPageComponent,
     ContactUsComponent,
-    DrProfileShareComponent
+    DrProfileShareComponent,
+    RefundComponent
   ],
   imports: [
     BrowserModule,
