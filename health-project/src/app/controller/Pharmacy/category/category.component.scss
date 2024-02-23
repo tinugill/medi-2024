@@ -8,6 +8,10 @@
 }
 @media only screen and (max-width: 767px){
     #slider img{width: auto; max-height: 200px;}
+    .list-banner{position: absolute; width: 87%;  bottom: 30px;         
+        h1{font-size: 1rem; font-weight: 600;}
+        h6{font-size: 0.8rem;}
+    }
 }
 
 .aside-brand{ display: block; }
@@ -90,10 +94,10 @@
 
 .pharmacy-slider-section{
     h3{margin: 0px 5px; font-size: 18px;  color: #0071cb; font-weight: 500;}
-    .pharmacy-common-slider{padding:10px 0px; width: 100%;        
+    //.pharmacy-common-slider{padding:10px 0px; width: 100%;        
         .pharmacy-common-box{position: relative;
             min-height: 150px; 
-            width: 98%;
+            width: 100%;
             float: left;   
             border:1px solid #e4dbdb;
             padding: 5px;
@@ -123,13 +127,13 @@
                 }
             }
         }
-    }
+    //}
 }
 @media only screen and (max-width: 820px){
     .pharmacy-slider-section{
          h3{margin: 0px -11px;}
-        .pharmacy-common-slider{       
-            .pharmacy-common-box{width: 98%; margin: 10px 0px;
+        //.pharmacy-common-slider{       
+            .pharmacy-common-box{width: 100%; margin: 10px 0px;
                 figure{
                     img{height: 100px;}
                 }
@@ -149,13 +153,34 @@
                     }
                 }
             }
-        }
+        //}
     } 
 }
 @media only screen and (max-width: 767px){
-    .pharmacy-slider-section{
-        h3{margin: 0px 0px;}
-    }
+    h3{margin: 0px 0px;}
+    //.pharmacy-common-slider{       
+        .pharmacy-common-box{width: 100%; margin: 10px 0px;
+            figure{
+                img{width: auto; height: 100px;}
+            }
+            .product-details{width: 100%;margin-left: 0px;
+                h4{line-height: 12px;
+                    a{font-size: 12px;}
+                }
+                p{margin: 0px; font-size: 12px;}
+                .mrp_off{
+                    span {font-size: 12px;}                    
+                }
+                .price-add-cart{
+                    span{ width: 49%; font-size: 12px;}
+                    .addtocart{
+                        a{font-size: 12px;}
+                    }
+                }
+            }
+        }
+    //}
+    
 }
 
 figure{

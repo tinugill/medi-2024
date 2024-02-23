@@ -16,17 +16,17 @@
           But by becoming a doctor, I can help my whole country.
         </h6>
         <div class="col-md-12 col-sm-12 col-12">
-          <a
+          <!-- <a
             [routerLink]="['/lab/lab-list']"
             class="btn btn-outline-info border-2 rounded-0 mt-4"
           >
             Our Partner
-          </a>
+          </a> -->
           <a
             [routerLink]="['/lab/lab-list']"
             class="btn btn-dark border-2 rounded-0 mt-4"
           >
-            Book Appointment
+            Book Lab Test
           </a>
         </div>
       </div>
@@ -37,14 +37,14 @@
 
 <section class="banner-bottom-section">
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-sm-4 col-4 m-padding">
+    <div class="row row-cols-md-5 row-cols-3 g-sm-2 g-1">
+      <div class="col">
         <div class="banner-bottom-box">
           <a href="javascript:void(0)">
             <span>
               <img [src]="['./assets/images/icon/icon-1.png']" alt="" />
             </span>
-            <h6>Laboratory Technician</h6>
+            <h6>Laboratory <span>Technician</span></h6>
             <p>
               Our firm is expert to create an efficient user interface that.
             </p>
@@ -52,13 +52,13 @@
           </a>
         </div>
       </div>
-      <div class="col-md-4 col-sm-4 col-4 m-padding">
+      <div class="col">
         <div class="banner-bottom-box">
           <a href="javascript:void(0)">
             <span>
               <img [src]="['./assets/images/icon/icon-2.png']" alt="" />
             </span>
-            <h6>Pathologycam Testing</h6>
+            <h6>Pathologycam <span>Testing</span></h6>
             <p>
               Our firm is expert to create an efficient user interface that.
             </p>
@@ -66,13 +66,41 @@
           </a>
         </div>
       </div>
-      <div class="col-md-4 col-sm-4 col-4 m-padding">
+      <div class="col">
         <div class="banner-bottom-box">
           <a href="javascript:void(0)">
             <span>
               <img [src]="['./assets/images/icon/icon-3.png']" alt="" />
             </span>
-            <h6>Chemical Pathology</h6>
+            <h6>Chemical <span>Pathology</span></h6>
+            <p>
+              Our firm is expert to create an efficient user interface that.
+            </p>
+            <p class="text-end"><small>read more..</small></p>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="banner-bottom-box">
+          <a href="javascript:void(0)">
+            <span>
+              <img [src]="['./assets/images/icon/test-tube.png']" alt="" />
+            </span>
+            <h6>Glycosylated <span>Hemoglobin</span></h6>
+            <p>
+              Our firm is expert to create an efficient user interface that.
+            </p>
+            <p class="text-end"><small>read more..</small></p>
+          </a>
+        </div>
+      </div>
+      <div class="col">
+        <div class="banner-bottom-box">
+          <a href="javascript:void(0)">
+            <span>
+              <img [src]="['./assets/images/icon/laboratory.png']" alt="" />
+            </span>
+            <h6>Allergy <span>Screen</span></h6>
             <p>
               Our firm is expert to create an efficient user interface that.
             </p>
@@ -84,29 +112,9 @@
   </div>
 </section>
 
-<section class="mt-3">
-  <div class="container Instant-call">
-    <div class="row">
-      <div class="col-md-9 col-sm-8 col-12">
-        <div class="Instant-call-box">
-          <span>
-            <img [src]="['./assets/images/lab/need-help.png']" alt="" />
-          </span>
-          <h6>Need help with booking your test?</h6>
-          <p>Our experts are here to help you.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-4 col-12">
-        <a href="javascript:void(0)">
-          <img [src]="['./assets/images/icon/telephone-call.png']" alt="" />
-          91-89746647474
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="lab-test-offer-section">
+
+<!-- <section class="lab-test-offer-section">
   <div class="container">
     <h3 class="heading my-3">Coupons for lab tests</h3>
     <div class="scroll">
@@ -135,7 +143,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="lab-test-offer-section">
   <div class="container">
@@ -162,12 +170,32 @@
     </div>
   </div>
 </section>
-
+<section class="mt-3">
+  <div class="container Instant-call">
+    <div class="row">
+      <div class="col-md-9 col-sm-8 col-12">
+        <div class="Instant-call-box">
+          <span>
+            <img [src]="['./assets/images/lab/need-help.png']" alt="" />
+          </span>
+          <h6>Need help with booking your test?</h6>
+          <p>Our experts are here to help you.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-12">
+        <a href="javascript:void(0)">
+          <img [src]="['./assets/images/icon/telephone-call.png']" alt="" />
+          +91-903-4242-195
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="test-type-section">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-12">
-        <h3 class="heading mt-3">Find Tests by Health Concern</h3>
+        <h3 class="heading mt-3">Find Tests by Type of Diagnostic Test</h3>
         <div class="scroll">
           <div class="test-type-slider inner-scroll">
             <div class="test-type" *ngFor="let c of cList">
@@ -188,5 +216,71 @@
   </div>
 </section>
 
+<section class="how-it-work-section">
+  <div class="container">
+      <h3>How it works?</h3>
+      <div class="row g-sm-4 g-2">
+          <div class="col-sm-4 col-12 d-flex">
+              <figure>
+                <img [src]="['./assets/images/lab/science-book-new.png']" alt="" class="d-block" />
+              </figure>
+              <div>
+                  <p>Search for tests and packages and seamlessly book a home sample collection.</p>
+              </div>
+          </div>
+          <div class="col-sm-4 col-12 d-flex">
+            <figure>
+              <img [src]="['./assets/images/lab/doctor.png']" alt="" class="d-block" />
+            </figure>
+            <div>
+                <p>We will send a certified professional to your place to assist you with the sample collection</p>
+            </div>
+          </div>
+          <div class="col-sm-4 col-12 d-flex">
+            <figure>
+              <img [src]="['./assets/images/lab/heart.png']" alt="" class="d-block" />
+            </figure>
+            <div>
+                <p>We will email you the reports. You can also access your reports within your account on the Practo app</p>
+            </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="how-it-work-section bg-white">
+  <div class="container">
+      <h3>Why book with us?</h3>
+      <div class="row g-sm-4 g-2">
+          <div class="col-sm-6 col-12 d-flex">
+              <figure>
+                <img [src]="['./assets/images/lab/test.png']" alt="" class="d-block" />
+              </figure>
+              <div>
+                  <h6 class="text-start">Home sample collection for FREE</h6>
+                  <p class="text-start">A certified professional will collect your sample from your preferred location</p>
+              </div>
+          </div>
+          <div class="col-sm-6 col-12 d-flex">
+            <figure>
+              <img [src]="['./assets/images/lab/medical-report.png']" alt="" class="d-block" />
+            </figure>
+            <div>
+                <h6 class="text-start">Get digital report within a day</h6>
+                <p class="text-start">Our labs ensure turn-around-time of 24 hours from specimen pickup</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12 d-flex">
+            <figure>
+              <img [src]="['./assets/images/lab/discount.png']" alt="" class="d-block" />
+            </figure>
+            <div>
+                <h6 class="text-start"> Offers and affordable prices</h6>
+                <p class="text-start">Get great discounts and offers on tests and packages.</p>
+            </div>
+          </div>
+      </div>
+  </div>
+</section>
 <app-download-app></app-download-app>
 <app-footer></app-footer>

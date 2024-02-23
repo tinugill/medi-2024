@@ -23,19 +23,19 @@
 
 <section class="search-doctor-list-section">
   <div class="container">
-    <div class="row">
+    <div class="row g-2">
       <div class="col-md-3"></div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-6">
         <div class="">
           <select [(ngModel)]="speciality_id" class="form-select rounded-0">
-            <option value="">Spaciality</option>
+            <option value="">Speciality</option>
             <option [value]="s?.id" *ngFor="let s of spacialityList">
               {{ s?.speciality_name }}
             </option>
           </select>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-6">
         <div class="">
           <select [(ngModel)]="selected_gender" class="form-select rounded-0">
             <option value="">Gender (any)</option>
@@ -70,8 +70,8 @@
       <div class="col-md-3 col-sm-3 col-12">
         <aside>
           <div class="join-as-partner">
-            <h3>You Can Join As a Doctor</h3>
-            <ul>
+            <!-- <h3>You Can Join As a Doctor</h3> -->
+            <!-- <ul>
               <li>
                 <a [routerLink]="['/signup']" [queryParams]="{ type: 'Doctor' }">
                   <i class="fas fa-angle-double-right"></i>Create free
@@ -87,7 +87,7 @@
                   <i class="fas fa-angle-double-right"></i>Manage Your
                   Account</a>
               </li>
-            </ul>
+            </ul> -->
             <div class="col text-center">
               <a class="join-botton" [routerLink]="['/signup']" [queryParams]="{ type: 'Doctor' }">Join As a Doctor<i
                   class="fas fa-angle-double-right"></i></a>
@@ -117,8 +117,8 @@
                   Pharmacy <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
-                <a href="#">
-                  Healthcare devices for sale/rent
+                <a [routerLink]="['/equipment/medical-equipment']">
+                  Healthcare devices 
                   <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
@@ -135,7 +135,7 @@
             {{ doctor_count }} doctors available in
             {{ city != "" ? city : "your area" }}
           </h5>
-          <p>
+          <p class="fs-6">
             Book appointments with minimum wait-time & verified doctor details
           </p>
         </div>

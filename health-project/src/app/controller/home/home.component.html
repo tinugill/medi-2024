@@ -3,82 +3,152 @@
 <app-slider></app-slider>
 <section>
   <div class="container">
-    <div class="row">
+    <div class="row gx-3 gy-1">
       <div class="col m-col">
         <div class="service-box">
-          <span>
-            <img [src]="['./assets/images/icon/consultation.png']" alt="" />
-          </span>
-          <h6>InstaDoc</h6>
-          <p class="d-display">Consult Online Now</p>
-          <p>
-            <a class="text-success" [routerLink]="['/video-consult']">Doctors 24/7
-              <img class="bg-success" [src]="['./assets/images/icon/arrow-icon.png']" alt="" />
-            </a>
-          </p>
+          <a class="text-dark" [routerLink]="['/video-consult']">
+            <figure>
+              <img [src]="['./assets/images/icon/consult-dr.webp']" alt="" />
+            </figure>
+            <h6>Consult <span>Online</span>  </h6>
+          </a>
         </div>
       </div>
       <div class="col m-col">
         <div class="service-box">
-          <span>
-            <img [src]="['./assets/images/icon/appointment.png']" alt="" />
-          </span>
-          <h6>Book Appointment</h6>
-          <p class="d-display">Consult Online Now</p>
-          <p>
-            <a class="text-primary" [routerLink]="['/doctor-list']">Doctors 24/7
-              <img class="bg-primary" [src]="['./assets/images/icon/arrow-icon.png']" alt="" />
-            </a>
-          </p>
+          <a class="text-dark" [routerLink]="['/doctor-list']">
+            <figure>
+              <img [src]="['./assets/images/icon/book-appointment-new2.png']" alt="" />
+            </figure>
+            <h6>Book <span>Appointment</span> </h6>
+          </a>
         </div>
       </div>
       <div class="col m-col">
         <div class="service-box">
-          <span>
-            <img [src]="['./assets/images/icon/buy-online1.png']" alt="" />
-          </span>
-          <h6>Buy Medicines</h6>
-          <p class="d-display">Consult Online Now</p>
-          <p>
-            <a class="text-danger" [routerLink]="['/pharmacy']">Doctors 24/7
-              <img class="bg-danger" [src]="['./assets/images/icon/arrow-icon.png']" alt="" />
-            </a>
-          </p>
+          <a class="text-dark" [routerLink]="['/pharmacy']">
+            <figure>
+              <img [src]="['./assets/images/icon/treatment.png']" alt="" />
+            </figure>
+            <h6>Buy <span>Medicines</span> </h6>
+          </a>
         </div>
       </div>
       <div class="col m-col">
         <div class="service-box">
-          <span>
-            <img [src]="['./assets/images/icon/science-book.png']" alt="" />
-          </span>
-          <h6>Book Lab Test</h6>
-          <p class="d-display">Consult Online Now</p>
-          <p>
-            <a class="text-warning" [routerLink]="['/lab']">Doctors 24/7
-              <img class="bg-warning" [src]="['./assets/images/icon/arrow-icon.png']" alt="" />
-            </a>
-          </p>
+          <a class="text-dark" [routerLink]="['/lab']">
+            <figure>
+              <img [src]="['./assets/images/icon/science-book-new.png']" alt="" />
+            </figure>
+            <h6>Book <span>Lab Test</span> </h6>
+          </a>
         </div>
       </div>
       <div class="col m-col">
         <div class="service-box">
-          <span>
-            <img [src]="['./assets/images/icon/order.png']" alt="" />
-          </span>
-          <h6>Buy Packages</h6>
-          <p class="d-display">Consult Online Now</p>
-          <p>
-            <a class="text-info" href="javascript:void(0)">Doctors 24/7
-              <img class="bg-info" [src]="['./assets/images/icon/arrow-icon.png']" alt="" />
-            </a>
-          </p>
+          <a class="text-dark" [routerLink]="['/doctor']">
+            <figure>
+              <img [src]="['./assets/images/icon/list-items.png']" alt="" />
+            </figure>
+            <h6>Buy <span>Package</span> </h6>
+          </a>
+        </div>
+      </div>
+      <div class="col m-col">
+        <div class="service-box">
+          <a class="text-dark" [routerLink]="['/home-nursing']">
+            <figure>
+              <img [src]="['./assets/images/icon/nursing-home.png']" alt="" />
+            </figure>
+            <h6>Nursing Care<span>  at Home</span>  </h6>
+          </a>
+        </div>
+      </div>
+      <div class="col m-col">
+        <div class="service-box">
+          <a class="text-dark" [routerLink]="['/ambulance']">
+            <figure>
+              <img [src]="['./assets/images/icon/ambulance2.png']" alt="" />
+            </figure>
+            <h6>Book <span>Ambulance</span> </h6>
+          </a>
+        </div>
+      </div>
+      <div class="col m-col">
+        <div class="service-box">
+          <a class="text-dark" [routerLink]="['/equipment/medical-equipment']">
+            <figure>
+              <img [src]="['./assets/images/icon/defribillator.png']" alt="" />
+            </figure>
+            <h6>Sale & Rent <span>Healthcare Device</span> </h6>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<section class="welcome-section">
+<section class="mt-sm-5 mt-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-12">
+        <div class="consult-top-doctors">            
+            <div class="section-header-icons">
+                <h2>Consult top Doctors online</h2>
+                <div class="icon-wrap">
+                    <div class="icon">
+                      <i class="far fa-clock"></i>
+                    </div>
+                    <p>Start consultation in 60 seconds</p>
+                </div>
+                <div class="icon-wrap">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p>Free follow-up for the next 5 days</p>
+                </div>
+                <div class="icon-wrap">
+                    <div class="icon">
+                      <i class="far fa-hospital"></i>
+                    </div>
+                    <p>Doctors across 35+ specialties</p>
+                </div>
+                <a [routerLink]="['/doctor-list']" class="btn btn-primary float-end rounded-0">
+                  <i class="fas fa-chevron-circle-right"></i>
+                  Make Appointment / Consult Online
+                </a> 
+            </div>
+            <div class="doct-img">
+              <img [src]="['./assets/images/consult-doctor.jpg']" alt="" />
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-12">
+        <div class="how-it-works">
+          <h3> How does it work? </h3>
+          <div class="icon-wrap">
+              <div class="icon">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <p>Choose a symptom/ speciality</p>
+          </div>
+          <div class="icon-wrap">
+              <div class="icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <p>Video consultation with a doctor</p>
+          </div>
+          <div class="icon-wrap">
+              <div class="icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <p>Get online prescription</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section class="welcome-section">
   <div class="container">
     <div class="row">
       <div class="col-md-7 col-sm-6 col-12">
@@ -121,84 +191,88 @@
       </div>
     </div>
   </div>
-</section>
-<section>
+</section> -->
+
+<section class="slider-section my-5 py-sm-4 py-3" style="background-color: #ecf5fe;">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-sm-8 col-12">
-        <div class="consult-top-doctors">            
-            <div class="section-header-icons">
-                <h2>Consult top Doctors online</h2>
-                <div class="icon-wrap">
-                    <div class="icon">
-                      <i class="far fa-clock"></i>
-                    </div>
-                    <p>Start consultation in 60 seconds</p>
-                </div>
-                <div class="icon-wrap">
-                    <div class="icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <p>Free follow-up for the next 5 days</p>
-                </div>
-                <div class="icon-wrap">
-                    <div class="icon">
-                      <i class="far fa-hospital"></i>
-                    </div>
-                    <p>Doctors across 35+ specialties</p>
-                </div>
-            </div>
-            <div class="doct-img">
-              <img [src]="['./assets/images/consult-doctor.jpg']" alt="" />
-            </div>
-        </div>
+        <h3 class="heading mb-1 fs-3">
+          Get Medicine at Your Doorsteps
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ipsum dolorum perspiciatis nulla inventore tempora numquam rem incidunt beatae officia! Doloremque, pariatur error cum facere quasi atque commodi voluptates minus?</p>
+        <ul class="tick">
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+        </ul>
+        <p class="mt-2">
+          <a [routerLink]="['/pharmacy']" class="btn btn-primary float-start rounded-pill">            
+            Buy Medicine / Heath Product
+            <i class="fas fa-chevron-circle-right"></i>
+          </a> 
+        </p>
       </div>
       <div class="col-md-4 col-sm-4 col-12">
-        <div class="how-it-works">
-          <h3> How does it work? </h3>
-          <div class="icon-wrap">
-              <div class="icon">
-                <i class="fas fa-user-md"></i>
-              </div>
-              <p>Choose a symptom/ speciality</p>
-          </div>
-          <div class="icon-wrap">
-              <div class="icon">
-                <i class="fas fa-video"></i>
-              </div>
-              <p>Video consultation with a doctor</p>
-          </div>
-          <div class="icon-wrap">
-              <div class="icon">
-                <i class="fas fa-file-alt"></i>
-              </div>
-              <p>Get online prescription</p>
-          </div>
+          <figure class="text-center">
+            <img [src]="['./assets/images/get-medicine-at-doorstep.jpg']" class="w-75" alt="" />
+          </figure>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="slider-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-12">
-        <h3 class="heading mb-0">
-          Book an appointment for an in-clinic consultation
-        </h3>
-        <p>Find experienced doctors across all specialties</p>
-      </div>
-    </div>
-    <div class="row">
-      <app-blog [blogList]="blogList"></app-blog>
     </div>
   </div>
 </section>
 
-<section class="top-entry-area-section">
+<section class="slider-section mt-5 py-sm-4 py-3 bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-12 order-1">
+        <h3 class="heading mb-1 fs-3">
+          Book Lab Test From Comfort of your Home
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ipsum dolorum perspiciatis nulla inventore tempora numquam rem incidunt beatae officia! Doloremque, pariatur error cum facere quasi atque commodi voluptates minus?</p>
+        <ul class="tick">
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum excepturi 
+            </li>
+        </ul>
+        <p class="mt-2">
+          <a [routerLink]="['/lab']" class="btn btn-primary float-start rounded-pill">            
+            Book Lab Test
+            <i class="fas fa-chevron-circle-right"></i>
+          </a> 
+        </p>
+      </div>
+      <div class="col-md-4 col-sm-4 col-12">
+          <figure class="text-center">
+            <img [src]="['./assets/images/lab-test-at-home.png']" class="w-100 img-thumbnail" alt="" />
+          </figure>
+        </div>
+    </div>
+  </div>
+</section>
+
+<app-blog [blogList]="blogList"></app-blog>
+<!-- <section class="top-entry-area-section">
   <div class="container">
     <div class="row align-center">
-      <!-- Single Item -->
       <div class="col single-item">
         <div class="item">
           <i class="fas fa-ambulance"></i>
@@ -215,15 +289,11 @@
           </ul>
         </div>
       </div>
-      <!-- End Single Item -->
-      <!-- Single Item -->
       <div class="col single-item d-display t-display">
         <div class="thumb">
           <img [src]="['./assets/images/doct.png']" alt="doctor" />
         </div>
       </div>
-      <!-- End Single Item -->
-      <!-- Single Item -->
       <div class="col single-item">
         <div class="item">
           <i class="fas fa-ribbon"></i>
@@ -240,12 +310,11 @@
           </ul>
         </div>
       </div>
-      <!-- End Single Item -->
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="true-healthcare-section">
+<!-- <section class="true-healthcare-section">
   <div class="container">
     <div class="row">
       <div class="row">
@@ -267,7 +336,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <app-download-app></app-download-app>
 <app-footer></app-footer>

@@ -3,28 +3,28 @@
 <section class="py-3">
   <div class="container">
     <div class="row" *ngIf="info">
-      <div class="col-md-12">
+      <!-- <div class="col-md-12">
         <h3>{{info?.title}} <span *ngIf="info?.strength && info?.strength != 'null'"> {{ info?.strength  || '' }}</span> {{ info?.formulation }} </h3>
         <p *ngIf="info?.manufacturer_name != 'null' && info?.manufacturer_name != ''">Company name : {{ info?.manufacturer_name }}</p>
         <p *ngIf="info?.salt_name && info?.salt_name != 'null'">Composition : {{info?.salt_name}}</p>
         
-      </div>
-      <div class="col-md-8 col-sm-8 col-12">
+      </div> -->
+      <div class="col-md-4 col-sm-4 col-12">
         <div class="product-detail">
-          <img [src]="changeImageUrl || info?.image" style="width:100%"/> 
+          <img [src]="changeImageUrl || info?.image" class="lg-thumbnail w-100"/> 
           <br>
           <div class="d-flex mt-2">
             <div class="col p-1" (click)="changeImage(info?.image)">
-                <img [src]="info?.image" style="width:100%; cursor:pointer"/> 
+                <img [src]="info?.image" class="small-thumbnail w-100"/> 
             </div>
             <div class="col p-1" (click)="changeImage(info?.image_2)"*ngIf="info?.image_2 !=''">
-                <img [src]="info?.image_2" style="width:100%; cursor:pointer"/> 
+                <img [src]="info?.image_2" class="small-thumbnail w-100"/> 
             </div>
             <div class="col p-1" (click)="changeImage(info?.image_3)" *ngIf="info?.image_3 !=''">
-                <img [src]="info?.image_3" style="width:100%; cursor:pointer"/> 
+                <img [src]="info?.image_3" class="small-thumbnail w-100"/> 
             </div>
             <div class="col p-1" (click)="changeImage(info?.image_4)"*ngIf="info?.image_4 !=''">
-                <img [src]="info?.image_4" style="width:100%; cursor:pointer"/> 
+                <img [src]="info?.image_4" class="small-thumbnail w-100"/> 
             </div>
           </div>
             <!-- <div class="tab-content">
@@ -34,7 +34,13 @@
             </div>  -->
         </div>
       </div>
-
+      <div class="col-md-4 col-sm-4 col-12">
+          <div class="product-name">
+            <h4>{{info?.title}} <span *ngIf="info?.strength && info?.strength != 'null'"> {{ info?.strength  || '' }}</span> {{ info?.formulation }} </h4>
+            <h5 *ngIf="info?.manufacturer_name != 'null' && info?.manufacturer_name != ''">Company name : {{ info?.manufacturer_name }}</h5>
+            <p *ngIf="info?.salt_name && info?.salt_name != 'null'">Composition : {{info?.salt_name}}</p>    
+          </div>
+      </div>
       <div class="col-md-4 col-sm-4 col-12">
         <div class="product-price"> 
           <p>Pack size: {{ info?.variant_name | number:'2.0-2' }}</p> 
@@ -65,14 +71,13 @@
     <div class="row" *ngIf="info">
       <div class="col-md-8 col-sm-12 col-xs-12">
         <div class="product-overview">
-          <h3 class="heading">Product Details</h3>
+          <h3 class="fs-4s">Product Details</h3>
           <div class="tab-section">
             <div class="scroll">
               <ul class="nav nav-tabs inner-scroll">
                 <li class="nav-item active">
                   <!-- <a class="nav-link" data-bs-toggle="tab" href="#Home">Description</a> -->
                 </li>
-
               </ul>
             </div>
             <div class="tab-content pb-4">
@@ -104,38 +109,39 @@
         <div class="clear border-one"></div>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12">
-        <h5 class="heading" *ngIf="similar?.length > 0">Similar Composition Products</h5>
-        <div class="row mt-3" *ngIf="similar?.length > 0">
-          <div *ngFor="let p of similar">
-            <div class="shadow row mt-2">
-              <div class="col-md-3 parentdiv">
-                 
-                  <img
-                    [src]="p?.image | concatBase: 'product_image/'"
-                    width="100%" style="max-height: 80px;"
-                  />
-                 
-              </div> 
-              <div class="col-md-9 ">
-                <div class="product-details p-2">
-                  <h4>
-                    <a [routerLink]="['/pharmacy/p/' + p?.slug]">{{
-                      p?.title
-                    }}</a>
-                  </h4>
-                  <div class="price-add-cart">
-                    <a [routerLink]="['/pharmacy/p/' + p?.slug]">
-                      <button class="btn btn-success w100">
-                        View Details
-                      </button>
-                    </a>
-                  </div>
+        <div class="product-name">
+           <h5 class="fs-5" *ngIf="similar?.length > 0">Similar Composition Products</h5>
+            <div class="row mt-3" *ngIf="similar?.length > 0">
+              <div *ngFor="let p of similar">
+                <div class="shadow row mt-2">
+                  <div class="col-md-3 parentdiv">
+                    
+                      <img
+                        [src]="p?.image | concatBase: 'product_image/'"
+                        width="100%" style="max-height: 80px;"
+                      />
+                    
+                  </div> 
+                  <div class="col-md-9 ">
+                    <div class="product-details p-2">
+                      <h4>
+                        <a [routerLink]="['/pharmacy/p/' + p?.slug]">{{
+                          p?.title
+                        }}</a>
+                      </h4>
+                      <div class="price-add-cart">
+                        <a [routerLink]="['/pharmacy/p/' + p?.slug]">
+                          <button class="btn btn-sm btn-success">
+                            View Details
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>                  
                 </div>
               </div>
-              
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>

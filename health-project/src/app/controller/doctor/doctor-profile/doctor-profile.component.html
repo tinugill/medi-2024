@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-3 col-sm-3 col-12">
           <div class="fee">
-            <p><span >Available Today</span></p>
+            <!-- <p><span >Available Today</span></p> -->
             <p>
               <span>
                Consultation Fee: <i class="fas fa-rupee-sign"></i>{{ dInfo?.consultancy_fee }}</span>
@@ -231,12 +231,33 @@
         <div class="col-md-3 col-sm-3 col-12">
           <div class="widget">
             <div class="widget-content">
-              <div class="widget-icon">
-                <img [src]="['./assets/images/icon/healthcare-prof.png']" alt="" />
+              <div class="fee">
+                <!-- <p><span >Available Today</span></p> -->
+                <p>
+                  <span>
+                   Consultation Fee: <i class="fas fa-rupee-sign"></i>{{ dInfo?.consultancy_fee }}</span>
+                </p>
+                <p *ngIf="dInfo?.home_visit == 'Yes'">
+                  <span>Home Visit Fee : <i class="fas fa-rupee-sign"></i>
+                    {{ dInfo?.home_consultancy_fee }}</span>
+                </p>
+                <p>
+                  <span>Online Consultation : <i class="fas fa-rupee-sign"></i>
+                    {{ dInfo?.online_consultancy_fee }}</span>
+                </p>
               </div>
-              <h4>Details</h4>
+            </div>
+            <!-- /.widget-content -->
+          </div>
+
+          <div class="widget">
+            <div class="widget-content">
+              <!-- <div class="widget-icon">
+                <img [src]="['./assets/images/icon/healthcare-prof.png']" alt="" />
+              </div> -->
+              <h4>Working Days</h4>
               <ul class="list-unstyled mb-0">
-                <li>Working Days : {{ dInfo?.days_string }}</li>
+                <li>{{ dInfo?.days_string }}</li>
 
                 <li *ngIf="dInfo?.medical_counsiling?.title != ''">
                   <span>Medical Council :</span>
@@ -247,7 +268,7 @@
             <!-- /.widget-content -->
           </div>
 
-          <div class="widget emergency-call-bg">
+          <!-- <div class="widget emergency-call-bg">
             <div class="widget-content">
               <div class="widget-icon">
                 <img [src]="['./assets/images/icon/emergency-call.png']" alt="" />
@@ -261,8 +282,7 @@
                 <i class="fas fa-phone-volume"></i> <span>858-593-0185</span>
               </a>
             </div>
-            <!-- /.widget-content -->
-          </div>
+          </div> -->
         </div>
       </div>
 

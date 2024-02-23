@@ -9,7 +9,7 @@
         <div class="service-box">
           <a [routerLink]="['/video-consult']">
             <span>
-              <img [src]="['./assets/images/icon/doctor.png']" alt="" />
+              <img [src]="['./assets/images/icon/doctor-consultation.png']" alt="" />
             </span>
             <h6>Doctor Consultation</h6>
           </a>
@@ -17,19 +17,19 @@
       </div>
       <div class="col-md-3 col-sm-3 col-6">
         <div class="service-box">
-          <a href="javascript:void(0)">
+          <a [routerLink]="['/doctor']">
             <span>
-              <img [src]="['./assets/images/icon/healthcare.png']" alt="" />
+              <img [src]="['./assets/images/icon/plastic.png']" alt="" />
             </span>
-            <h6>Healthcare Plans</h6>
+            <h6>Surgical/Treatment Package</h6>
           </a>
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-6">
         <div class="service-box">
-          <a href="javascript:void(0)">
+          <a [routerLink]="['/lab']">
             <span>
-              <img [src]="['./assets/images/icon/chemistry.png']" alt="" />
+              <img [src]="['./assets/images/icon/test-tube.png']" alt="" />
             </span>
             <h6>Lab Test</h6>
           </a>
@@ -37,11 +37,11 @@
       </div>
       <div class="col-md-3 col-sm-3 col-6">
         <div class="service-box">
-          <a href="javascript:void(0)">
+          <a [routerLink]="['/pharmacy']">
             <span>
-              <img [src]="['./assets/images/icon/result.png']" alt="" />
+              <img [src]="['./assets/images/icon/treatment.png']" alt="" />
             </span>
-            <h6>View Medical Records</h6>
+            <h6>Buy Medicine and Health Product</h6>
           </a>
         </div>
       </div>
@@ -49,11 +49,11 @@
   </div>
 </section>
 
-<section class="about-doctor-section">
+<!-- <section class="about-doctor-section">
   <div class="container">
     <div class="row">
       <div class="col-md-7 col-sm-6 col-12">
-        <!-- <p>Since 1990-2022, New Delhi India</p> -->
+        <p>Since 1990-2022, New Delhi India</p>
         <h2 class="heading">Only The Best For You</h2>
         <p>
           Delightful unreserved impossible few estimating men favourable see
@@ -81,15 +81,75 @@
       </div>
     </div>
   </div>
+</section> -->
+<section class="mt-sm-5 mt-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-12">
+        <div class="consult-top-doctors">            
+            <div class="section-header-icons">
+                <h2>Consult top Doctors online</h2>
+                <div class="icon-wrap">
+                    <div class="icon">
+                      <i class="far fa-clock"></i>
+                    </div>
+                    <p>Start consultation in 60 seconds</p>
+                </div>
+                <div class="icon-wrap">
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p>Free follow-up for the next 5 days</p>
+                </div>
+                <div class="icon-wrap">
+                    <div class="icon">
+                      <i class="far fa-hospital"></i>
+                    </div>
+                    <p>Doctors across 35+ specialties</p>
+                </div>
+                <a [routerLink]="['/doctor-list']" class="btn btn-primary float-end rounded-0">
+                  <i class="fas fa-chevron-circle-right"></i>
+                  Make Appointment / Consult Online
+                </a> 
+            </div>
+            <div class="doct-img">
+              <img [src]="['./assets/images/consult-doctor.jpg']" alt="" />
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-12">
+        <div class="how-it-works">
+          <h3> How does it work? </h3>
+          <div class="icon-wrap">
+              <div class="icon">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <p>Choose a symptom/ speciality</p>
+          </div>
+          <div class="icon-wrap">
+              <div class="icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <p>Video consultation with a doctor</p>
+          </div>
+          <div class="icon-wrap">
+              <div class="icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <p>Get online prescription</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
 <app-specialities></app-specialities>
 
 <section class="instant-appointment-section">
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-8 col-12">
-        <h2>Instant Appointment with Doctors.Guaranteed.</h2>
+        <h2>Instant Appointment with Doctors</h2>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -151,7 +211,104 @@
   </div>
 </section>
 
-<app-articles></app-articles>
+<section class="symptoms-section">
+  <div class="container">
+    <h3 class="heading mb-4">Select Symptoms 
+      <a href="#" class="float-end btn btn-sm btn-outline-primary">View more..</a>
+    </h3>
+    <div class="row g-sm-3 g-2 row-cols-sm-5 row-cols-2">
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/fever.jpg']" alt="" />
+          </span>
+          <h6>Fever</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/joint-pain.jpg']" alt="" />
+          </span>
+          <h6>Joint Pain</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/skin-infection.webp']" alt="" />
+          </span>
+          <h6>Skin Infection</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/toothache.jpg']" alt="" />
+          </span>
+          <h6>Toothache</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/period-pregnancy.jpg']" alt="" />
+          </span>
+          <h6>Period or Pregnancy </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="symptoms-section">
+  <div class="container">
+    <h3 class="heading mb-4">Select Disease <a href="#" class="float-end btn btn-sm btn-outline-primary">View more..</a></h3>
+    <div class="row g-sm-3 g-2 row-cols-sm-5 row-cols-2">
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/osteoarthritis.jpg']" alt="" />
+          </span>
+          <h6>Osteoarthritis</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/diabetes-mellitus.webp']" alt="" />
+          </span>
+          <h6>Diabetes Mellitus</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/common-cold.jpg']" alt="" />
+          </span>
+          <h6>Common Cold</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span>
+            <img [src]="['./assets/images/skin-disease.jpg']" alt="" />
+          </span>
+          <h6>Skin Disease</h6>
+        </div>
+      </div>
+      <div class="col">
+        <div class="symptoms-box">
+          <span> 
+            <img [src]="['./assets/images/dental-caries.jpg']" alt="" />
+          </span>
+          <h6>Dental Caries </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <app-articles></app-articles> -->
 <app-download-app></app-download-app>
 <app-top-footer></app-top-footer>
 <app-footer></app-footer>

@@ -20,7 +20,7 @@
               <input type="text" (click)="openPincodeDialog()" class="form-control city f13" readonly
                 placeholder="Enter pincode" name="pincode" [(ngModel)]="pincode" [ngModelOptions]="{standalone: true}" />
               
-              <select class="form-control city searchby" [(ngModel)]="searchby" [ngModelOptions]="{standalone: true}"
+              <select class="form-select city searchby" [(ngModel)]="searchby" [ngModelOptions]="{standalone: true}"
                 (change)="searchByChange()">
                 <option value="Hospital">Search For Hospital/Clinic</option>
                 <option value="Doctor">Doctor</option> 
@@ -31,7 +31,7 @@
                 <option value="Equipment">Healthcare Device</option>
                 <option value="Homecare">Homecare</option>
               </select>
-              <select class="form-control city searchby" *ngIf="searchby != 'Medicine' && searchby != 'Equipment'" [(ngModel)]="searchby2" [ngModelOptions]="{standalone: true}" (change)="searchData = [];">
+              <select class="form-select city searchby text-dark" *ngIf="searchby != 'Medicine' && searchby != 'Equipment'" [(ngModel)]="searchby2" [ngModelOptions]="{standalone: true}" (change)="searchData = [];">
                 <ng-container *ngIf="searchby == 'Doctor'">
                   <option value="Name">Search By Name</option>
                   <option value="Specility">Speciality</option>

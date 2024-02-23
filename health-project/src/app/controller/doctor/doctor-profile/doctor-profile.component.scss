@@ -98,7 +98,7 @@
 
 // aside
 .widget { position: relative; padding: 20px; font-size: 14px; overflow: hidden;
-   border-radius: 10px; margin: 35px 0px; background-color: #def8f6;
+   border-radius: 10px; margin: 35px 0px; background-color: #80c0f7;
    :after {
        content: '';
        position: absolute;
@@ -106,7 +106,7 @@
        bottom: 40px;
        left: 0;
        width: 3px;
-       background-color: #21cdc0;
+       background-color: #80c0f7;
    }
    .widget-content{
        .widget-icon {
