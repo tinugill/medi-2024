@@ -70,8 +70,8 @@
             }
         }
 
-        .category-box{ min-height: 80px; width: 100%;border:1px solid #e4dbdb;
-            figure{ 
+        .category-box{height: 82px; width: 100%; border:1px solid #e4dbdb;
+            figure{ margin: 0px;
                 img{width: 100%; height: 80px;}
             }
         }
@@ -119,11 +119,11 @@
         .pharmacy-common-slider{padding:10px 0px; width: 100%;        
             .pharmacy-common-box{
                 figure{ width: 100%;
-                    img{max-width: 100%;; height: 80px;}
+                    img{max-width: 100%; height: 100px;}
                 }
                 .product-details{
                     h4{margin: 0px 0px 12px;padding-top: 7px; line-height: 12px; min-height: 20px;
-                        a{font-size: 11px;}
+                        a{font-size: 14px;}
                     }
                     p{margin: 0px; font-size: 12px;}
                     .mrp_off{width: 100%;

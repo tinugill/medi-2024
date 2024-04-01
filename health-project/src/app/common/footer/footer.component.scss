@@ -74,3 +74,12 @@ footer{width: 100%; min-height: 100px; padding: 30px 0px 0px; background-color: 
         .all-right{width: 100%;}
     }
 }
+
+.join-as-partner{
+    position: fixed;
+    z-index: 998;
+    bottom: 50%;
+    width: auto;
+    right: 0px;
+    img{width: 33px; border-radius: 10px 0px 0px 10px;}
+}

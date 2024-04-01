@@ -1,0 +1,52 @@
+.dr-profile-share {
+  margin: 10px auto;
+  background-image: url("../../../assets/images/dr-profile-share.jpg");
+  height: 550px;
+  width: 550px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.dr-profile-share .inner-profile {
+  background-color: #fff;
+  width: 34.6%;
+  height: 403px;
+  position: relative;
+  top: 13%;
+  left: 3.3%;
+  border-radius: 20px;
+  padding-top: 15px;
+}
+.dr-profile-share .inner-profile p {
+  margin: 0px;
+  padding: 0px 10px;
+  text-align: center;
+}
+.dr-profile-share .inner-profile h4 {
+  margin: 0px;
+  padding: 0px 10px;
+  font-size: 20px;
+}
+.dr-profile-share .inner-profile h6 {
+  margin: 0px;
+  padding: 0px 10px;
+}
+.dr-profile-share .inner-profile figure {
+  width: 100%;
+  background-color: #087a9a;
+  text-align: center;
+  margin: 10px 0px;
+}
+.dr-profile-share .inner-profile figure img {
+  max-width: 100%;
+  width: 100%;
+  height: 150px;
+}
+.dr-profile-share .inner-profile .topmedz-logo {
+  margin: 30px auto;
+  text-align: center;
+}
+.dr-profile-share .inner-profile .topmedz-logo img {
+  max-width: 80%;
+  height: 40px;
+}/*# sourceMappingURL=dr-profile-share.component.css.map */

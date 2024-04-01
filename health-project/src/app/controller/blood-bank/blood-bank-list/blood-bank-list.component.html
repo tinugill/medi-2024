@@ -31,7 +31,7 @@
       <div class="col-md-3 col-sm-3 col-12 d-display">
         <aside>
           <div class="join-as-partner">
-            <h3>You Can Join As a Bloodbank</h3>
+            <!-- <h3>You Can Join As a Bloodbank</h3>
             <ul>
               <li>
                 <a
@@ -54,7 +54,7 @@
                   Account</a
                 >
               </li>
-            </ul>
+            </ul> -->
             <div class="col text-center">
               <a
                 class="join-botton"
@@ -69,39 +69,32 @@
             <ul>
               <li>
                 <a [routerLink]="['/lab']">
-                  Lab Test <i class="fas fa-angle-double-right"></i
-                ></a>
+                  Lab Test <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
                 <a [routerLink]="['/blood-bank']">
-                  Blood Bank <i class="fas fa-angle-double-right"></i
-                ></a>
+                  Blood Bank <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
                 <a [routerLink]="['/ambulance']">
-                  Ambulance <i class="fas fa-angle-double-right"></i
-                ></a>
+                  Ambulance <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
                 <a [routerLink]="['/home-nursing']">
-                  Home Care <i class="fas fa-angle-double-right"></i
-                ></a>
+                  Home Care <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
                 <a [routerLink]="['/pharmacy']">
-                  Pharmacy <i class="fas fa-angle-double-right"></i
-                ></a>
+                  Pharmacy <i class="fas fa-angle-double-right"></i></a>
+              </li>
+              <li>
+                <a [routerLink]="['/equipment/medical-equipment']">
+                  Healthcare devices 
+                  <i class="fas fa-angle-double-right"></i></a>
               </li>
               <li>
                 <a href="#">
-                  Healthcare devices for sale/rent
-                  <i class="fas fa-angle-double-right"></i
-                ></a>
-              </li>
-              <li>
-                <a href="#">
-                  Others <i class="fas fa-angle-double-right"></i
-                ></a>
+                  Others <i class="fas fa-angle-double-right"></i></a>
               </li>
             </ul>
           </div>
@@ -114,7 +107,7 @@
             {{ bb_count }} bloodbank available in
             {{ city != "" ? city : "your area" }}
           </h5>
-          <p>Book appointments with minimum wait-time & verified bloodbanks</p>
+          <p class="fs-5">Book appointments with minimum wait-time & verified bloodbanks</p>
         </div>
         <div class="list-box" *ngFor="let d of bbList">
           <figure>

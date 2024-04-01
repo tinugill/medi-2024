@@ -58,6 +58,7 @@ import { TermsComponent } from './controller/terms/terms.component';
 import { AmbulanceListComponent } from './controller/Ambulance/ambulance-list/ambulance-list.component';
 import { AmbulanceInfoComponent } from './controller/Ambulance/ambulance-info/ambulance-info.component';
 import { PrivacyPolicyComponent } from './controller/privacy-policy/privacy-policy.component';
+import { RefundComponent } from './common/refund/refund.component';
 import { ReviewPageComponent } from './controller/review-page/review-page.component';
 import { ContactUsComponent } from './controller/contact-us/contact-us.component';
 
@@ -77,6 +78,7 @@ const routes: Routes = [
 
   { path: 'Tnc', component: TermsComponent, pathMatch: 'full' },
   { path: 'privacy-policy', component: PrivacyPolicyComponent, pathMatch: 'full' },
+  { path: 'refund', component: RefundComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'signup', component: SignupComponent, pathMatch: 'full' },
   {
