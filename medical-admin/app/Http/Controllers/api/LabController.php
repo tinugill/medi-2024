@@ -521,7 +521,7 @@ class LabController extends Controller
   {
     if ($request->id == '') {
       $query = Nursing::where('is_deleted', '0')->where('type','!=', '')->where('visit_charges','!=', 0); 
-      if($request->q != ''){
+      if($request->search != ''){
         $query->where(function ($query) use ($request) {
           if($request->sub_cat == 'Name'){ 
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -2011,11 +2011,21 @@ class LabController extends Controller
 
       } else {
         $query = Ambulance::where('slug', '!=', '')->where('is_deleted', '0')->where('type_of_user', '!=', ''); 
-        if($request->q != '' && $request->type == ''){
+        if(($request->q != '' || $request->search != '') && $request->type == ''){
           
-        if($request->searchBy == 'AmbulanceType'){
-          if($request->q != ''){
-            $q = $request->q;
+        if($request->searchBy == 'Ambulance'){
+          if($request->sub_cat == 'Name'){ 
+            $query->where('name', 'like', '%' . $request->search . '%');
+            $like = explode(' ', $request->search);
+            foreach ($like as $value) {
+              if($value !=' ambulance' && $value != 'Ambulance'){
+                $query->orWhere('name', 'like', '%' . $value . '%');
+              } 
+            }
+          }
+        }else if($request->searchBy == 'AmbulanceType'){
+          if($request->search != ''){
+            $q = $request->search;
             $query->whereIn('id', function($query) use ($q){
               $query->select('amb_id')
               ->from(with(new Ambulance_list)->getTable())
@@ -2025,9 +2035,9 @@ class LabController extends Controller
             } 
           }
           if($request->searchBy == 'Ambulance'){
-            $query->where('name',  'like', '%' . $request->q . '%');
+            $query->where('name',  'like', '%' . $request->search . '%');
           }
-        }else if($request->q != '' && $request->type != ''){
+        }else if($request->search != '' && $request->type != ''){
           $ambIds = Ambulance_list::where('ambulance_type', 'like', '%' . $request->type . '%')
                 ->groupBy('amb_id')
                 ->pluck('amb_id')
@@ -2089,7 +2099,9 @@ class LabController extends Controller
           $query->where('name', 'like', '%' . $request->search . '%');
           $like = explode(' ', $request->search);
           foreach ($like as $value) {
-            $query->orWhere('name', 'like', '%' . $value . '%');
+            if($value !=' Bloodbank' && $value != 'bloodbank'){
+              $query->orWhere('name', 'like', '%' . $value . '%');
+            } 
           }
         }else if($request->sub_cat == 'Component'){
           $sp = Bloodbankstock::select('bloodbank_id')->where('component_name', 'like', '%' . $request->search . '%')->limit(20)->get();

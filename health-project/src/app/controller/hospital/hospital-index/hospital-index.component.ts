@@ -49,7 +49,7 @@ export class HospitalIndexComponent implements OnInit {
     this.ApiService.getSpecialities(this.city).subscribe(
       (data) => {
         if (data.status) {
-          this.spacialityList = data.data;
+          this.spacialityList = data.data.splice(0,10);
           if (this.spacialityList?.length > 0) {
             let sid = this.spacialityList[0].id;
             this.getSpecialitiesTopDoc(sid);

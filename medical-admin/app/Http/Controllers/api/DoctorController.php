@@ -858,7 +858,9 @@ class DoctorController extends Controller
           $query->where('full_name', 'like', '%' . $request->search . '%');
           $like = explode(' ', $request->search);
           foreach ($like as $value) {
-            $query->orWhere('full_name', 'like', '%' . $value . '%');
+            if($value != 'Dr' && $value != 'Dr.'){
+              $query->orWhere('full_name', 'like', '%' . $value . '%');
+            } 
           }
         }else if($request->sub_cat == 'Specility'){
           $sp = Specialities::select('id')->where('speciality_name', 'like', '%' . $request->search . '%')->limit(6)->get();

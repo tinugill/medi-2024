@@ -74,7 +74,7 @@ export class PharmacyComponent implements OnInit {
     this.ApiService.getPharmacyCategory(this.city).subscribe(
       (data) => {
         if (data.status) {
-          this.catList = data.data;
+          this.catList = data.data.splice(0,6);
         } else {
           this.toaster.open({
             text: data.message,
@@ -94,7 +94,7 @@ export class PharmacyComponent implements OnInit {
     this.ApiService.getPharmacyCategoryWithProduct(this.city).subscribe(
       (data) => {
         if (data.status) {
-          this.cpList = data.data;
+          this.cpList = data.data.splice(0,4);
         } else {
           this.toaster.open({
             text: data.message,

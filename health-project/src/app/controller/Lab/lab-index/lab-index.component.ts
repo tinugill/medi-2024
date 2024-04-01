@@ -35,7 +35,7 @@ export class LabIndexComponent implements OnInit {
     this.ApiService.getLabTestCategory(this.city).subscribe(
       (data) => {
         if (data.status) {
-          this.cList = data.data;
+          this.cList = data.data.splice(0,7);
         } else {
           this.toaster.open({
             text: data.message,
